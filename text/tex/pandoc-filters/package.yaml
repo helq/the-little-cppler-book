@@ -1,0 +1,80 @@
+name:                thelittlecppler-pandoc-filter
+version:             0.0.0.0
+github:              "helq"
+license:             BSD3
+author:              "Elkin Cruz"
+maintainer:          "linuxero789@gmail.com"
+copyright:           "2018 Elkin Cruz"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Read more in the parent folder
+
+dependencies:
+- base >= 4.7 && < 5
+
+# library:
+#   source-dirs: src
+
+executables:
+  tlcppler-exe:
+    main:            thelittlecppler.hs
+    source-dirs:     app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      # - behead
+      - pandoc
+      - pandoc-types
+
+  runcppcode-exe:
+    main:            runcppcode.hs
+    source-dirs:     app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      # - behead
+      - pandoc
+      - pandoc-types
+      - directory
+      - filepath
+      - shake
+
+  loadcodeinoutput-exe:
+    main:            loadcodeinoutput.hs
+    source-dirs:     app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      # - behead
+      - pandoc
+      - pandoc-types
+      - directory
+      - filepath
+      - shake
+
+# tests:
+#   behead-test:
+#     main:                Spec.hs
+#     source-dirs:         test
+#     ghc-options:
+#     - -threaded
+#     - -rtsopts
+#     - -with-rtsopts=-N
+#     dependencies:
+#     - behead

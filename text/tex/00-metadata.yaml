@@ -1,0 +1,37 @@
+---
+title: "The Little CPPler"
+
+# regular letter size is 215.9 wide by 279.44 long
+geometry:
+  - "verbose"
+  - "a4paper"
+  - "textwidth=190mm"
+  - "textheight=260mm"
+  - "voffset=7mm"
+  # - "paperwidth=275.9mm"
+  # - "paperheight=279.4mm"
+...
+
+<!--\layout{}-->
+
+<!--\newpage-->
+
+<!--
+   -BOOK STRUCTURE
+   -
+   -Prerequisites:
+   -  + A phrase telling them what to do with the book
+   -  + Tools neccesary to follow the book (for everything to work), note: the source code can be
+   -    found in a repo, thought
+   -  + Explain how to compile a file (example hello file) and ask them to modify the file
+   -    and see what happens. Ask them to open a file with a text editor
+   -Content:
+   -  + Explain how the book is supposed to be read (try to answer question with answer
+   -    covered, then reveal answer and try understand what is it doing)
+   -  + Divide book in multiple sections each with a lot of pieces of code
+-->
+
+\inlinetodo{idea: at some point in the code explain why is the book written in English and
+no any other language}
+
+<!-- vim:set filetype=markdown.pandoc : -->

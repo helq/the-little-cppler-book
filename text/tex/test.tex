@@ -1,0 +1,349 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={The Little CPPler},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[verbose,a4paper,textwidth=190mm,textheight=260mm,voffset=7mm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{framed}
+%\renewenvironment{Shaded}{\begin{framed}}{\end{framed}}
+%\usepackage{mdframed}
+%\renewenvironment{Shaded}{\begin{mdframed}}{\end{mdframed}}
+
+\usepackage{pbox}
+
+%\usepackage{layout} % package to look at the page layout
+
+%\usepackage{fancyhdr}
+%\usepackage{lastpage}
+%\pagestyle{fancy}
+%\lhead{hi}
+%\rhead{ho}
+
+\usepackage[l2tabu, orthodox]{nag} % this is to make sure I use some modern LaTeX tactics
+
+%%%
+% Custom footnote taken from https://tex.stackexchange.com/a/78227
+\makeatletter
+\newcommand*{\myfnsymbolsingle}[1]{%
+  \ensuremath{%
+    \ifcase#1% 0
+    \or % 1
+      \dagger
+    \or % 2
+      \ddagger
+    \or % 3
+      \mathsection
+    \else % >= 4
+      \@ctrerr
+    \fi
+  }%
+}
+\makeatother
+
+\newcommand*{\myfnsymbol}[1]{%
+  \myfnsymbolsingle{\value{#1}}%
+}
+
+% remove upper boundary by multiplying the symbols if needed
+\usepackage{alphalph}
+\newalphalph{\myfnsymbolmult}[mult]{\myfnsymbolsingle}{}
+
+\renewcommand*{\thempfootnote}{%
+  \myfnsymbolmult{\value{mpfootnote}}%
+}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%%%
+
+\usepackage{fmtcount}% for adding padding with zeros
+\newcounter{exercise}
+\setcounter{exercise}{1}
+
+\title{The Little CPPler}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{basics}{%
+\section{Basics}\label{basics}}
+
+\hypertarget{getting-to-know-c11}{%
+\subsection{Getting to know C++(11)}\label{getting-to-know-c11}}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 001.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What do you think the following code will output after compiling it?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Here am I!"}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+And the output is:
+
+\begin{framed}
+
+\begin{verbatim}
+Here am I!
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 002.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What do you think this would do\footnote{This is a footnote, any time
+  there is something for clarification a footnote will be used.}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"It's me papus BR"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+And the output is:
+
+\begin{framed}
+
+\begin{verbatim}
+It's me papus BR
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 003.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+End, some text with a footnote
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Another output, yep!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Not much here
+
+\begin{framed}
+
+\begin{verbatim}
+Another output, yep!
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 004.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+A simple loop:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<}\DecValTok{10}\NormalTok{; i++) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+And the output is:
+
+\begin{framed}
+
+\begin{verbatim}
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 005.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+vs:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<}\DecValTok{10}\NormalTok{; i++) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+And the output is:
+
+hi
+
+\begin{framed}
+
+\begin{verbatim*}
+0 1 2 3 4 5 6 7 8 9 
+\end{verbatim*}
+
+\end{framed}
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\end{document}

@@ -1,0 +1,66 @@
+\usepackage{framed}
+%\renewenvironment{Shaded}{\begin{framed}}{\end{framed}}
+%\usepackage{mdframed}
+%\renewenvironment{Shaded}{\begin{mdframed}}{\end{mdframed}}
+
+\usepackage{graphicx}
+
+%\usepackage{layout} % package to look at the page layout
+
+%\usepackage{fancyhdr}
+%\usepackage{lastpage}
+%\pagestyle{fancy}
+%\lhead{hi}
+%\rhead{ho}
+
+\usepackage[l2tabu, orthodox]{nag} % this is to make sure I use some modern LaTeX tactics
+
+%%%
+% Custom footnote taken from https://tex.stackexchange.com/a/78227
+\makeatletter
+\newcommand*{\myfnsymbolsingle}[1]{%
+  \ensuremath{%
+    \ifcase#1% 0
+    \or % 1
+      \dagger
+    \or % 2
+      \ddagger
+    \or % 3
+      \mathsection
+    \else % >= 4
+      \@ctrerr
+    \fi
+  }%
+}
+\makeatother
+
+\newcommand*{\myfnsymbol}[1]{%
+  \myfnsymbolsingle{\value{#1}}%
+}
+
+% remove upper boundary by multiplying the symbols if needed
+\usepackage{alphalph}
+\newalphalph{\myfnsymbolmult}[mult]{\myfnsymbolsingle}{}
+
+\renewcommand*{\thempfootnote}{%
+  \myfnsymbolmult{\value{mpfootnote}}%
+}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%%%
+
+\hypersetup{bookmarks=true,
+            pdfauthor={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta}
+\usepackage{fontspec}
+\usepackage[textsize=tiny,%
+            bordercolor=yellow,%
+            color=yellow,
+            textwidth=4cm]{todonotes}
+\usepackage{setspace} % for pandoc-citeproc-preamble
+%\setmainfont{Noto Serif}
+
+\newcommand{\inlinetodo}[1]{\todo[inline,size=\normalsize]{#1}}
