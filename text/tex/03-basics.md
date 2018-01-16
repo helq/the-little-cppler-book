@@ -81,7 +81,8 @@ test.cc:7:13: error: expected expression
             ^
 ~~~
 
-It is telling us that it was expecting something (a `std::cout` for example) before `<<`.
+It is telling us that it was expecting something (a `std::cout`{.cpp} for example) before
+`<<`{.cpp}.
 
 Try removing or adding random characters (anywhere) to the example and you will find that
 the compiler just admits a certain arrangement of characters and not much more. But, why?
@@ -118,8 +119,75 @@ Yep, it in fact compiles, and its output is:
 ~~~output
 ~~~
 
-Notice how `std::endl` puts text in a new line, that's its whole job in fact.
+Notice how `std::endl`{.cpp} puts text in a new line, that's in fact its whole job.
 
 ---
+
+Well that's getting boring. What if we try something different for a change. What is the
+otput of this program:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+int main()
+{
+  std::cout << "Adding two numbers: "
+            << 2 + 3
+            << std::endl;
+  return 0;
+}
+~~~
+
+= = =
+
+Nice[^afootnote]
+
+~~~output
+~~~
+
+[^afootnote]: this is a footnote, read all of them, they may tell you little things that
+  the main text won't.
+
+---
+
+Let's try something a little more complex[^simplecode]
+
+~~~{.cpp layout="01-simple.cc"}
+std::cout
+  << "A simple operation between " << 3
+  << " " << 5 << " " << 20 << ": "
+  << (3+5)*20 << std::endl;
+~~~
+
+[^simplecode]: Here you can see only a snippet of the whole code. The complete code
+    the snippet represents can be found in the source accompaning this book.
+
+    <!--TODO: Find a way to put verbatim inside footnotes-->
+
+    <!--
+    -~~~{.cpp .noframe}
+    -#include <iostream>
+    -
+    -int main()
+    -{
+    -  std::cout
+    -    << "A simple operation between " << 3
+    -    << " " << 5 << " " << 20 << ": "
+    -    << (3+5)*20 << std::endl;
+    -  return 0;
+    -}
+    -~~~
+    -->
+
+    From now on, all code will be given on snippets for simplicity but remember that they
+    are that, snippets, uncomplete pieces of code that need your help to get complete.
+
+= = =
+
+~~~output
+~~~
+
+---
+
 
 <!-- vim:set filetype=markdown.pandoc : -->

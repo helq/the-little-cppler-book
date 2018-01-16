@@ -33,10 +33,16 @@ checkShowSpaces cb@(CodeBlock (_, classes, _) contents)
 checkShowSpaces x = x
 
 frame :: Block -> Block
-frame block = Div ("",[],[])
-                  [RawBlock (Format "latex") "\\begin{framed}",
-                   block,
-                   RawBlock (Format "latex") "\\end{framed}"]
+frame block = case block of
+                CodeBlock (_, classes, _) _
+                  | "noframe" `elem` classes -> block
+                  | otherwise                -> framed
+                _ -> block
+  where
+    framed = Div ("",[],[])
+                 [RawBlock (Format "latex") "\\begin{framed}",
+                  block,
+                  RawBlock (Format "latex") "\\end{framed}"]
 
 main :: IO ()
 main = toJSONFilter (fmap checkShowSpaces <$> doInclude)

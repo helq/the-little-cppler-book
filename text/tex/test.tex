@@ -27,12 +27,14 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 }
+\usepackage{fancyvrb}
 \usepackage{hyperref}
 \hypersetup{
             pdftitle={The Little CPPler},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\VerbatimFootnotes % allows verbatim text in footnotes
 \usepackage[verbose,a4paper,textwidth=190mm,textheight=260mm,voffset=7mm]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -96,7 +98,7 @@
 %\usepackage{mdframed}
 %\renewenvironment{Shaded}{\begin{mdframed}}{\end{mdframed}}
 
-\usepackage{pbox}
+\usepackage{graphicx}
 
 %\usepackage{layout} % package to look at the page layout
 
@@ -142,9 +144,21 @@
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 %%%
 
-\usepackage{fmtcount}% for adding padding with zeros
-\newcounter{exercise}
-\setcounter{exercise}{1}
+\hypersetup{bookmarks=true,
+            pdfauthor={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta}
+\usepackage{fontspec}
+\usepackage[textsize=tiny,%
+            bordercolor=yellow,%
+            color=yellow,
+            textwidth=4cm]{todonotes}
+\usepackage{setspace} % for pandoc-citeproc-preamble
+%\setmainfont{Noto Serif}
+
+\newcommand{\inlinetodo}[1]{\todo[inline,size=\normalsize]{#1}}
 
 \title{The Little CPPler}
 \date{}
@@ -152,129 +166,128 @@
 \begin{document}
 \maketitle
 
+\inlinetodo{idea: at some point in the code explain why is the book written in English and
+no any other language}
+
+\hypertarget{prerequisites}{%
+\section{Prerequisites}\label{prerequisites}}
+
+\hypertarget{what-to-expect-from-this-book}{%
+\subsection{What to expect from this
+book}\label{what-to-expect-from-this-book}}
+
+\inlinetodo{A phrase telling them what to do with the book}
+
+\hypertarget{tools}{%
+\subsection{Tools}\label{tools}}
+
+\inlinetodo{Tools neccesary to follow the book (for everything to work), note: the source
+code can be found in a repo, thought}
+
+\hypertarget{using-the-tools}{%
+\subsection{Using the tools}\label{using-the-tools}}
+
+\inlinetodo{Ask to open a file with a text editor}
+
+\inlinetodo{Extend explanation on how to compile}
+
+\inlinetodo{ask to modify the file and see what happens}
+
+Given the file \texttt{000-hello-world.cc}:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Hello World!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+compile the file into a executable with either \texttt{clang++} or
+\texttt{g++}:
+
+\inlinetodo{add std option to make it C++11 compilant}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{clang}\NormalTok{++ 000-hello-world.cc -o 000-hello-world.exe}
+\ExtensionTok{g++}\NormalTok{ 000-hello-world.cc -o 000-hello-world.exe}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+and run it with:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{./000-hello-world.exe}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+the output of the program in terminal will be:
+
+\begin{framed}
+
+\begin{verbatim}
+Hello World!
+\end{verbatim}
+
+\end{framed}
+
+\hypertarget{content}{%
+\section{Content}\label{content}}
+
+\hypertarget{how-to-read-this-book}{%
+\subsection{How to read this book}\label{how-to-read-this-book}}
+
+Yeah, you should learn first how to read this book! :P
+
+\inlinetodo{Explain how the book is supposed to be read (try to answer question with answer
+covered, then reveal answer and try understand what is it doing)}
+
 \hypertarget{basics}{%
-\section{Basics}\label{basics}}
+\subsection{Basics}\label{basics}}
 
 \hypertarget{getting-to-know-c11}{%
-\subsection{Getting to know C++(11)}\label{getting-to-know-c11}}
+\subsubsection{Getting to know C++(11)}\label{getting-to-know-c11}}
+
+\inlinetodo{Add interludes asking whoever is reading to pause for a while to recover from
+so much info}
 
 \vspace{2mm}\noindent\hrulefill{}
 
 \noindent
-{\tiny 001.}\\
+{\tiny 000.}\\
 \begin{minipage}[t]{.485\linewidth}
 
-What do you think the following code will output after compiling it?
+What do you think the following code will output after compiling and
+running it?
 
 \begin{framed}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Here am I!"}\NormalTok{;}
-\end{Highlighting}
-\end{Shaded}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
 
-\end{framed}
-
-\end{minipage}
-\hfill
-\begin{minipage}[t]{.485\linewidth}
-
-And the output is:
-
-\begin{framed}
-
-\begin{verbatim}
-Here am I!
-\end{verbatim}
-
-\end{framed}
-
-\end{minipage}
-
-\vspace{2mm}\noindent\hrulefill{}
-
-\noindent
-{\tiny 002.}\\
-\begin{minipage}[t]{.485\linewidth}
-
-What do you think this would do\footnote{This is a footnote, any time
-  there is something for clarification a footnote will be used.}
-
-\begin{framed}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"It's me papus BR"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{framed}
-
-\end{minipage}
-\hfill
-\begin{minipage}[t]{.485\linewidth}
-
-And the output is:
-
-\begin{framed}
-
-\begin{verbatim}
-It's me papus BR
-\end{verbatim}
-
-\end{framed}
-
-\end{minipage}
-
-\vspace{2mm}\noindent\hrulefill{}
-
-\noindent
-{\tiny 003.}\\
-\begin{minipage}[t]{.485\linewidth}
-
-End, some text with a footnote
-
-\begin{framed}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Another output, yep!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{framed}
-
-\end{minipage}
-\hfill
-\begin{minipage}[t]{.485\linewidth}
-
-Not much here
-
-\begin{framed}
-
-\begin{verbatim}
-Another output, yep!
-\end{verbatim}
-
-\end{framed}
-
-\end{minipage}
-
-\vspace{2mm}\noindent\hrulefill{}
-
-\noindent
-{\tiny 004.}\\
-\begin{minipage}[t]{.485\linewidth}
-
-A simple loop:
-
-\begin{framed}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{(}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<}\DecValTok{10}\NormalTok{; i++) \{}
-  \BuiltInTok{std::}\NormalTok{cout << i << }\BuiltInTok{std::}\NormalTok{endl;}
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Hello World!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -285,21 +298,215 @@ A simple loop:
 \hfill
 \begin{minipage}[t]{.485\linewidth}
 
-And the output is:
+The output is:
 
 \begin{framed}
 
 \begin{verbatim}
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
+Hello World!
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 001.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Now, what if you compile this other file:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Hello World!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"I'm a program example and I'm "}
+\NormalTok{            << }\StringTok{"in English."}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+Hello World!
+I'm a program example and I'm in English.
+\end{verbatim}
+
+\end{framed}
+
+Pay close attention to the output, there are three sentences surrounded
+by quotation marks (\texttt{"}), but there are only two lines in the
+output. Why?
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 002.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+If we change our example slightly (notice the semicolon (\texttt{;}))
+what do you think it will happen?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Hello World!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"I'm a program example and I'm "}\NormalTok{;}
+\NormalTok{            << }\StringTok{"in English."}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Well, it doesn't compiles! We get an error similar to:
+
+\begin{framed}
+
+\begin{verbatim}
+test.cc:7:13: error: expected expression
+            << "in English."
+            ^
+\end{verbatim}
+
+\end{framed}
+
+It is telling us that it was expecting something (a \texttt{std::cout}
+for example) before \texttt{\textless{}\textless{}}.
+
+Try removing or adding random characters (anywhere) to the example and
+you will find that the compiler just admits a certain arrangement of
+characters and not much more. But, why? Well, the compiler just
+understands the grammar of C++ as we just understand the grammar of our
+human languages. Going a little further with the analogy, we can
+understand the grammar of any human language (its parts (verbs,
+prepositions, \ldots{}) and how are they connected) but we can only
+understand the meaning (semantics) of those languages we have studied
+(or our mother tongues).
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 003.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Does the following program compiles. If yes, what is its output?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Hello World!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"I'm a program"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{            << }\StringTok{"example and I'm"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{            << }\StringTok{"in English."}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Yep, it in fact compiles, and its output is:
+
+\begin{framed}
+
+\begin{verbatim}
+Hello World!
+I'm a program
+example and I'm
+in English.
+\end{verbatim}
+
+\end{framed}
+
+Notice how \texttt{std::endl} puts text in a new line, that's in fact
+its whole job.
+
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\noindent
+{\tiny 004.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Well that's getting boring. What if we try something different for a
+change. What is the otput of this program:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Adding two numbers: "}
+\NormalTok{            << }\DecValTok{2}\NormalTok{ + }\DecValTok{3}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Nice\footnote{this is a footnote, read all of them, they may tell you
+  little things that the main text won't.}
+
+\begin{framed}
+
+\begin{verbatim}
+Adding two numbers: 5
 \end{verbatim}
 
 \end{framed}
@@ -312,15 +519,37 @@ And the output is:
 {\tiny 005.}\\
 \begin{minipage}[t]{.485\linewidth}
 
-vs:
+Let's try something a little more complex\footnote{Here you can see only
+  a snippet of the whole code, the whole code representing the snippet
+  is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{    << }\StringTok{"A simple operation between "}\NormalTok{ << }\DecValTok{3}
+\NormalTok{    << }\StringTok{" "}\NormalTok{ << }\DecValTok{5}\NormalTok{ << }\StringTok{" "}\NormalTok{ << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}
+\NormalTok{    << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+  From now on, all code will be given on snippets for simplicity but
+  remember that they are that, snippets, uncomplete pieces of code that
+  need your help to get complete.}
 
 \begin{framed}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{(}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<}\DecValTok{10}\NormalTok{; i++) \{}
-  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
-\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"A simple operation between "}\NormalTok{ << }\DecValTok{3}
+\NormalTok{  << }\StringTok{" "}\NormalTok{ << }\DecValTok{5}\NormalTok{ << }\StringTok{" "}\NormalTok{ << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}
+\NormalTok{  << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -330,15 +559,11 @@ vs:
 \hfill
 \begin{minipage}[t]{.485\linewidth}
 
-And the output is:
-
-hi
-
 \begin{framed}
 
-\begin{verbatim*}
-0 1 2 3 4 5 6 7 8 9 
-\end{verbatim*}
+\begin{verbatim}
+A simple operation between 3 5 20: 160
+\end{verbatim}
 
 \end{framed}
 
