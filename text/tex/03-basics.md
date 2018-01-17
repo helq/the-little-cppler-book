@@ -5,6 +5,8 @@
 \inlinetodo{Add interludes asking whoever is reading to pause for a while to recover from
 so much info}
 
+\inlinetodo{Add a space before footnotes}
+
 ---
 
 What do you think the following code will output after compiling and running it?
@@ -558,6 +560,27 @@ is equivalent to
 int var3;
 var3 = var1 * pow(var2, 3);
 ```
+
+---
+
+Till now we've seen just two operations (`*` and `+`), but there are plenty more:
+
+\inlinetodo{finish this exercise!!!}
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 6;
+int var2 = 3;
+int var3 = var1 * 2;
+
+std::cout << "var1 => " << var1 << std::endl;
+std::cout << "var1 => " << var1 << std::endl;
+std::cout << "var1 => " << var1 << std::endl;
+~~~
+
+= = =
+
+~~~output
+~~~
 
 ---
 

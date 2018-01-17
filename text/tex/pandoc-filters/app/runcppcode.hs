@@ -29,12 +29,14 @@ doInclude cb@(CodeBlock (_, _, namevals) contents) =
     contents' = lines contents
     (includes, mainbody) = if "..." `elem` contents'
                               then let (ics, mainc) = break ("..."==) contents'
-                                    in (unlines ics, unlines $ tail mainc)
-                              else ("", contents)
+                                    in (ics, tail mainc)
+                              else ([], contents')
 
-    insertContent "---<<<" = includes
-    insertContent "===<<<" = mainbody
-    insertContent x = x
+    insertContent line = case break (/= ' ') line of
+                           -- TODO: modify so unlines doesn't put a newline at the end of the last line
+                           (spaces, "---<<<") -> unlines $ fmap (spaces++) includes
+                           (spaces, "===<<<") -> unlines $ fmap (spaces++) mainbody
+                           _                  -> line
 
 doInclude x = return x
 
