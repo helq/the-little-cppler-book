@@ -7,7 +7,7 @@
 ## Tools
 
 \inlinetodo{Tools neccesary to follow the book (for everything to work), note: the source
-code can be found in a repo, thought}
+code can be found in a repo, though}
 
 ## Using the tools
 
@@ -49,5 +49,7 @@ the output of the program in terminal will be:
 ~~~
 Hello World!
 ~~~
+
+\newpage
 
 <!-- vim:set filetype=markdown.pandoc : -->

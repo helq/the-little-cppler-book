@@ -36,6 +36,7 @@ frame :: Block -> Block
 frame block = case block of
                 CodeBlock (_, classes, _) _
                   | "noframe" `elem` classes -> block
+                  | "hidden" `elem` classes  -> Null
                   | otherwise                -> framed
                 _ -> block
   where

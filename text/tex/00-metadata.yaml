@@ -22,7 +22,7 @@ geometry:
    -Prerequisites:
    -  + A phrase telling them what to do with the book
    -  + Tools neccesary to follow the book (for everything to work), note: the source code can be
-   -    found in a repo, thought
+   -    found in a repo, though
    -  + Explain how to compile a file (example hello file) and ask them to modify the file
    -    and see what happens. Ask them to open a file with a text editor
    -Content:

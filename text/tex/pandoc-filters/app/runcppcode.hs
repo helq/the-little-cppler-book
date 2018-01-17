@@ -25,10 +25,16 @@ doInclude cb@(CodeBlock (_, _, namevals) contents) =
          return cb
        Nothing -> return cb
 
--- TODO: Add case to read from "*.out" file and put result into {.output} CodeBlock
+  where
+    contents' = lines contents
+    (includes, mainbody) = if "..." `elem` contents'
+                              then let (ics, mainc) = break ("..."==) contents'
+                                    in (unlines ics, unlines $ tail mainc)
+                              else ("", contents)
 
- where insertContent "===<<<" = contents
-       insertContent x = x
+    insertContent "---<<<" = includes
+    insertContent "===<<<" = mainbody
+    insertContent x = x
 
 doInclude x = return x
 
