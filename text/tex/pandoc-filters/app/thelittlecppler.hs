@@ -48,12 +48,14 @@ processBlocks format_m = processBlocks' 0
             (columnBegin, columnMiddle, columnEnd, simpleRule)
               = case format_m of
                   Just format@(Format "latex")
-                    -> (RawBlock format ("\\noindent\n"
+                    -> (RawBlock format ("\\begin{minipage}{\\linewidth}"
+                                      <> "\\noindent\n"
                                       <> "{\\tiny "<> num_id <>".}\\\\\n"
                                       <> "\\begin{minipage}[t]{.485\\linewidth}"),
                         RawBlock format ("\\end{minipage}\n"
                                       <> "\\hfill\n"
                                       <> "\\begin{minipage}[t]{.485\\linewidth}"),
-                        RawBlock format "\\end{minipage}\n",
+                        RawBlock format ("\\end{minipage}\n"
+                                      <> "\\end{minipage}\n"),
                         RawBlock format "\\vspace{2mm}\\noindent\\hrulefill{}")
                   _ -> (Null, Null, Null, HorizontalRule)

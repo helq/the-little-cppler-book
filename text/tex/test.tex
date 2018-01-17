@@ -27,14 +27,12 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 }
-\usepackage{fancyvrb}
 \usepackage{hyperref}
 \hypersetup{
             pdftitle={The Little CPPler},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\VerbatimFootnotes % allows verbatim text in footnotes
 \usepackage[verbose,a4paper,textwidth=190mm,textheight=260mm,voffset=7mm]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -182,7 +180,7 @@ book}\label{what-to-expect-from-this-book}}
 \subsection{Tools}\label{tools}}
 
 \inlinetodo{Tools neccesary to follow the book (for everything to work), note: the source
-code can be found in a repo, thought}
+code can be found in a repo, though}
 
 \hypertarget{using-the-tools}{%
 \subsection{Using the tools}\label{using-the-tools}}
@@ -249,6 +247,8 @@ Hello World!
 
 \end{framed}
 
+\newpage
+
 \hypertarget{content}{%
 \section{Content}\label{content}}
 
@@ -259,6 +259,8 @@ Yeah, you should learn first how to read this book! :P
 
 \inlinetodo{Explain how the book is supposed to be read (try to answer question with answer
 covered, then reveal answer and try understand what is it doing)}
+
+\newpage
 
 \hypertarget{basics}{%
 \subsection{Basics}\label{basics}}
@@ -271,7 +273,7 @@ so much info}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\noindent
+\begin{minipage}{\linewidth}\noindent
 {\tiny 000.}\\
 \begin{minipage}[t]{.485\linewidth}
 
@@ -309,10 +311,11 @@ Hello World!
 \end{framed}
 
 \end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\noindent
+\begin{minipage}{\linewidth}\noindent
 {\tiny 001.}\\
 \begin{minipage}[t]{.485\linewidth}
 
@@ -357,10 +360,11 @@ by quotation marks (\texttt{"}), but there are only two lines in the
 output. Why?
 
 \end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\noindent
+\begin{minipage}{\linewidth}\noindent
 {\tiny 002.}\\
 \begin{minipage}[t]{.485\linewidth}
 
@@ -402,8 +406,9 @@ test.cc:7:13: error: expected expression
 
 \end{framed}
 
-It is telling us that it was expecting something (a \texttt{std::cout}
-for example) before \texttt{\textless{}\textless{}}.
+It is telling us that it was expecting something (a
+\VERB|\BuiltInTok{std::}\NormalTok{cout}| for example) before
+\VERB|\NormalTok{<<}|.
 
 Try removing or adding random characters (anywhere) to the example and
 you will find that the compiler just admits a certain arrangement of
@@ -416,10 +421,11 @@ understand the meaning (semantics) of those languages we have studied
 (or our mother tongues).
 
 \end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\noindent
+\begin{minipage}{\linewidth}\noindent
 {\tiny 003.}\\
 \begin{minipage}[t]{.485\linewidth}
 
@@ -464,14 +470,15 @@ in English.
 
 \end{framed}
 
-Notice how \texttt{std::endl} puts text in a new line, that's in fact
-its whole job.
+Notice how \VERB|\BuiltInTok{std::}\NormalTok{endl}| puts text in a new
+line, that's in fact its whole job.
 
+\end{minipage}
 \end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\noindent
+\begin{minipage}{\linewidth}\noindent
 {\tiny 004.}\\
 \begin{minipage}[t]{.485\linewidth}
 
@@ -512,31 +519,17 @@ Adding two numbers: 5
 \end{framed}
 
 \end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\noindent
+\begin{minipage}{\linewidth}\noindent
 {\tiny 005.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 Let's try something a little more complex\footnote{Here you can see only
-  a snippet of the whole code, the whole code representing the snippet
-  is:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{#include }\ImportTok{<iostream>}
-
-\DataTypeTok{int}\NormalTok{ main()}
-\NormalTok{\{}
-  \BuiltInTok{std::}\NormalTok{cout}
-\NormalTok{    << }\StringTok{"A simple operation between "}\NormalTok{ << }\DecValTok{3}
-\NormalTok{    << }\StringTok{" "}\NormalTok{ << }\DecValTok{5}\NormalTok{ << }\StringTok{" "}\NormalTok{ << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}
-\NormalTok{    << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
-  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+  a snippet of the whole code. The complete code the snippet represents
+  can be found in the source accompaning this book.
 
   From now on, all code will be given on snippets for simplicity but
   remember that they are that, snippets, uncomplete pieces of code that
@@ -567,6 +560,614 @@ A simple operation between 3 5 20: 160
 
 \end{framed}
 
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 006.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the purpose of
+\VERB|\NormalTok{<< }\StringTok{" "}\NormalTok{ <<}| in teh code?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\VERB|\NormalTok{<< }\StringTok{" "}\NormalTok{ <<}| adds an space
+between the numbers otherwise the output would look weird.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 007.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What if we remove all spaces from the last example?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"A simple operation between "}\NormalTok{ << }\DecValTok{3}
+\NormalTok{  << }\DecValTok{5}\NormalTok{ << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}
+\NormalTok{  << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+A simple operation between 3520: 160
+\end{verbatim}
+
+\end{framed}
+
+It looks aweful, doesn't it? Spaces are important as formatting!
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 008.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Let's try it now multiline:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"A simple operation between "}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\DecValTok{3}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\DecValTok{5}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+A simple operation between 
+3
+5
+20: 
+160
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 009.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Did you noticed that we only used a
+\VERB|\BuiltInTok{std::}\NormalTok{cout}|?
+
+What is then the output of the code below?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"A simple operation between "}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{3}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{5}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+A simple operation between 
+3
+5
+20: 
+160
+\end{verbatim}
+
+\end{framed}
+
+Yeah, it's the same as before!
+
+Notice how the semicolon (\texttt{;}) indicates the ending of a
+statement in code. The code above could all be written in a single line
+(and not in 6 lines) and it would output the same:\footnote{sorry, the
+  single line is too long to show in here all at once.}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << ... << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+Remember every \VERB|\BuiltInTok{std::}\NormalTok{cout}| is always
+paired with a semicolon (\texttt{;}) which indicates the ending of its
+effects, like a \emph{dot} indicates the ending of a sentence or
+paragraph.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 010.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What happens if you try to compile and run this faulty code?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"A simple operation between "}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{3}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{5}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl}
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{20}\NormalTok{ << }\StringTok{": "}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << (}\DecValTok{3+5}\NormalTok{)*}\DecValTok{20}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+It fails to compile because there is a semicolo missing in the code!
+
+The error shown by the compiler is actually\footnote{Why ``actually''?
+  Well, you will find that most of the time the errors thrown by the
+  compiler are hard to understand, and it is often something that we
+  programmers need to learn to do. We learn to understand the confusing
+  error messages the compilers give us.} useful here, it is telling us
+that we forgot a \texttt{;}!
+
+\begin{framed}
+
+\begin{verbatim}
+test.cc:8:30: error: expected ';' after expression
+  std::cout << 5 << std::endl
+                             ^
+                             ;
+1 error generated.
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 011.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+But what if we want to not input 5 or 20 twice?
+
+What is the output of the code below?
+
+\inlinetodo{remember to explain how to initialize using \texttt{\{\}}}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ num_1 = }\DecValTok{3}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ num_2 = }\DecValTok{5}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ num_3 = }\DecValTok{20}\NormalTok{;}
+
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"A simple operation between "}
+\NormalTok{  << num_1 << }\StringTok{" "}
+\NormalTok{  << num_2 << }\StringTok{" "}
+\NormalTok{  << num_3 << }\StringTok{": "}
+\NormalTok{  << (num_1+num_2)*nu}\VariableTok{m_3}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+A simple operation between 3 5 20: 160
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 012.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+what is the output if you change the value 5 for 7?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+A simple operation between 3 5 20: 160
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 013.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+\texttt{num\_1} is a \textbf{variable} and it allows us to save integers
+on it, you can try changing it's value for any number between
+\(-2147483649\) and \(2147483648\)\footnote{This numbers are based on a
+  program compiled for a 32bit computer, the real values dependent
+  between different computers.}
+
+What if we put \(-12\) in the variable \texttt{num\_1}?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+A simple operation between -12 5 20: -140
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\newpage
+
+\hypertarget{interlude-variables}{%
+\subsubsection{Interlude: Variables}\label{interlude-variables}}
+
+Now, it's time to explain what are \textbf{variables} and what happens
+when we write \VERB|\DataTypeTok{int}\NormalTok{ name = }\DecValTok{0}|.
+
+\VERB|\DataTypeTok{int}\NormalTok{ name = }\DecValTok{0}| is equivalent
+to:\footnote{only for the simplest values \texttt{int}, \texttt{double},
+  \ldots{}, but not for objects. Objects are out of the scope of this
+  book, but it is important to know they exist.}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ name;}
+\NormalTok{name = }\DecValTok{0}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+The first instruction \textbf{declares} a space for an \texttt{int} in
+memory (RAM memomry).
+
+So, let's study the architecture of computers, mainly RAM and CPU.
+
+\inlinetodo{ADD explanation on the architecture of computers}
+
+\VERB|\DataTypeTok{int}\NormalTok{ name;}| then is telling the compiler
+to reserve (\emph{declare}) some space that nobody else should use. This
+space can have any value we want. Because this space in memory could
+have been used by anybody else in the past, its value is
+\emph{nondefined}, meaning that it can be anything. Therefore we use the
+next line \VERB|\NormalTok{name = }\DecValTok{0}\NormalTok{;}| to save a
+zero in the space declared.
+
+BEWARE! \VERB|\NormalTok{name = }\DecValTok{0}\NormalTok{;}| is NOT an
+equation!
+
+I repeat, \VERB|\NormalTok{name = }\DecValTok{0}\NormalTok{;}| is NOT an
+equation!, you are \textbf{assigning} a value to a variable, you could
+easily assign many different values to a variable, though just the last
+one will stay in memory:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ name;}
+\NormalTok{name = }\DecValTok{0}\NormalTok{;}
+\NormalTok{name = }\DecValTok{12}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+The procedure of \emph{declaring} and then \emph{assigning} a value to a
+variable is so common that the designers of the language have made a
+shortcut:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ name = }\DecValTok{0}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+Now, let's go back to the code!
+
+\newpage
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 014.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var2 = }\DecValTok{3}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var3 = }\DecValTok{10}\NormalTok{;}
+
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << (var1+var2) * var3 - var}\DecValTok{2}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+87
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 015.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var2 = }\DecValTok{3}\NormalTok{;}
+
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << (var1+var2) * var3 - var}\DecValTok{2}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+
+\DataTypeTok{int}\NormalTok{ var3 = }\DecValTok{10}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Yeah, it doesn't compile, you are trying to use a variable \emph{before}
+declaring it (asking for a space in memory to use it). The compiler
+gives you the answer:
+
+\begin{framed}
+
+\begin{verbatim}
+test.cc:9:20: error: use of undeclared identifier 'var3'
+  << (var1+var2) * var3 - var2
+                   ^
+1 error generated.
+\end{verbatim}
+
+\end{framed}
+
+ORDER (of sentences) is key! It is not the same to say ``Peter eats
+spaguetti, then Peter clean his teeth'' than ``Peter clean his teeth,
+then Peter eats spaguetti''.
+
+A program runs sequentially from the first line of code to the last
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 016.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var2 = }\DecValTok{3}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var3 = }\DecValTok{10}\NormalTok{;}
+
+\NormalTok{var2 = var1*}\DecValTok{3}\NormalTok{;}
+
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << (var1+var2) * var3 - var}\DecValTok{2}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+222
+\end{verbatim}
+
+\end{framed}
+
+We can in fact assign to the variable (at the left of \texttt{=}) any
+\VERB|\DataTypeTok{int}| value result of any computation. In this case,
+the computation \VERB|\NormalTok{var1*}\DecValTok{3}| is assigned to
+\VERB|\NormalTok{var}\DecValTok{2}|
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 017.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:\footnote{Notice the dots (\texttt{...}) in the
+  code above. This dots are just for notation, they aren't meant to be
+  written in the source code. The dots represent a division between two
+  different parts of code.
+
+  \inlinetodo{Add whole file here}}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<cmath>}
+\NormalTok{...}
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var2 = }\DecValTok{3}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var3 = var1 * pow(var2, }\DecValTok{3}\NormalTok{);}
+
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 * pow(var2, 3) => "}
+\NormalTok{          << var3 << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+var1 * pow(var2, 3) => 162
+\end{verbatim}
+
+\end{framed}
+
+Remember that
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var3 = var1 * pow(var2, }\DecValTok{3}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+is equivalent to
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var3;}
+\NormalTok{var3 = var1 * pow(var2, }\DecValTok{3}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\end{minipage}
 \end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
