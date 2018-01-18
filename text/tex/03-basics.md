@@ -565,16 +565,64 @@ var3 = var1 * pow(var2, 3);
 
 Till now we've seen just two operations (`*` and `+`), but there are plenty more:
 
-\inlinetodo{finish this exercise!!!}
+~~~{.cpp layout="01-simple.cc"}
+int var1 = (2 + 18 - 6 * 2) * 5;
+int var2 = var1 / 3;
+int var3 = var1 % 3;
+
+std::cout << "var1 => " << var1 << std::endl;
+std::cout << "var2 => " << var2 << std::endl;
+std::cout << "var3 => " << var3 << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+You probably know all operations here, but maybe not `%`. It is the _modulus_ operation, or
+residue operation, and it symbolises the result of the residue of dividing integer
+numbers.
+
+For example, the result of dividing $50$ by $3$ can be written as:
+
+$$ 50 = 3 \times 16 + 2 $$
+
+Where $50$ is the dividend, $3$ is the divisor, $16$ the (integer) result, and $2$ the
+modulus/remainder.
+
+If an integer is divisible by another then the modulus of operating them must be $0$,
+e.g., $21 = 7 \times 3 + 0$.
+
+---
+
+What is the output of:
 
 ~~~{.cpp layout="01-simple.cc"}
-int var1 = 6;
-int var2 = 3;
-int var3 = var1 * 2;
+std::cout << 8 % 3 << " "
+          << 8 % 2 << " "
+          << 7 % 2 << " "
+          << 17 % 1 << " "
+          << 17 % 7 << " "
+          << std::endl;
+~~~
 
-std::cout << "var1 => " << var1 << std::endl;
-std::cout << "var1 => " << var1 << std::endl;
-std::cout << "var1 => " << var1 << std::endl;
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+---
+
+~~~{.cpp layout="01-simple.cc"}
+std::cout << 20 - 6 * 2 << " "
+          << (20 - 6) * 2 << " "
+          << 20 - (6 * 2) << " "
+          << std::endl;
 ~~~
 
 = = =
@@ -582,7 +630,13 @@ std::cout << "var1 => " << var1 << std::endl;
 ~~~output
 ~~~
 
+Notice how `20 - 6 * 2` does not reduce/computes to $8$ and not to $28$! (i.e.,
+$20-6 \times 2 = 20-(6 \times 2) \neq (20-6) \times 2$). Each operator has a specific
+precedence that indicates if it must be applied before another operator, `*` for example
+has a higher precedence than `+`.
+
 ---
+
 
 
 <!-- vim:set filetype=markdown.pandoc : -->
