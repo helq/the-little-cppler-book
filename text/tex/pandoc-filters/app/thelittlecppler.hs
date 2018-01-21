@@ -36,6 +36,8 @@ processBlocks format_m = processBlocks' 0
             parts2 :: [Block] -> [Block] -> [Block] -> [Block]
             parts2 left right (HorizontalRule:blocks)
               = (simpleRule : columnBegin : left) <> (columnMiddle : right) <> (columnEnd : minipager False (n+1) blocks)
+            parts2 left right blocks@(Header{} : _)
+              = (simpleRule : columnBegin : left) <> (columnMiddle : right) <> (columnEnd : processBlocks' (n+1) blocks)
             parts2 left right (cb@(CodeBlock (id_, classes, namevals) code): blocks)
               = if ("output" `elem` classes) && (isNothing . lookup "numid" $ namevals)
                    then parts2 left (right <> [CodeBlock (id_, classes, ("numid", num_id):namevals) code]) blocks

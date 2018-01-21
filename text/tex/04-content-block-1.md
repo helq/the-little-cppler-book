@@ -82,7 +82,7 @@ int main()
 Well, it doesn't compiles! We get an error similar to:
 
 ~~~
-test.cc:7:13: error: expected expression
+:7:13: error: expected expression
             << "in English."
             ^
 ~~~
@@ -293,16 +293,16 @@ The error shown by the compiler is actually[^whyactually] useful here, it is tel
 that we forgot a `;`!
 
 ~~~
-test.cc:8:30: error: expected ';' after expression
+:8:30: error: expected ';' after expression
   std::cout << 5 << std::endl
                              ^
                              ;
 1 error generated.
 ~~~
 
-[^whyactually]: Why "actually"? Well, you will find that most of the time the errors
-  thrown by the compiler are hard to understand, and it is often something that we
-  programmers need to learn to do. We learn to understand the confusing error messages the
+[^whyactually]: Why "actually"? Well, you will find that most of the time errors
+  thrown by the compiler are hard to understand. It is often something that we
+  programmers need to learn to do. We learn to understand the confusing error messages
   compilers give us.
 
 ---
@@ -487,7 +487,7 @@ Yeah, it doesn't compile, you are trying to use a variable *before* declaring it
 for a space in memory to use it). The compiler gives you the answer:
 
 ```
-test.cc:9:20: error: use of undeclared identifier 'var3'
+:9:20: error: use of undeclared identifier 'var3'
   << (var1+var2) * var3 - var2
                    ^
 1 error generated.
@@ -648,6 +648,240 @@ compilation error and ask another to find it and correct it}
 
 ---
 
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+double acction   = 9.8; // m/s^2 acceleration
+double mass      = 3;   // kg    mass
+double initial_v = 10;  // m/s   ini. velocity
+double time      = 2.3; // s     time passed
+
+double final_v = initial_v + acction * time;
+
+std::cout << "Velocity after " << time
+          << "s is: " << final_v << "m/s"
+          << std::endl;
+
+double momentum = mass * final_v;
+
+std::cout << "Momentum after " << time
+          << "s is: " << momentum << "kg*m/s"
+          << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+We are using here the equation $v = u + a*t$ to determine the final velocity of an object
+(in a line) after $2.3 s$. The object starts with a velocity $2.3 m/s$, has a constant
+acceleration of $9.8 m/s^2$^[free fall ;)], and we know the weight of the object, so we
+can calculate too its momentum.
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 8;
+if (var1 < 10) {
+  std::cout << "var1 smaller than 10"
+            << std::endl;
+} else {
+  std::cout
+    << "var1 greater than or equal to 10"
+    << std::endl;
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+---
+
+What is the output of the code above if we change `var1`'s assignment from `8` to `19`?
+
+~~~{.cpp layout="01-simple.cc" .hidden}
+int var1 = 19;
+if (var1 < 10) {
+  std::cout << "var1 smaller than 10"
+            << std::endl;
+} else {
+  std::cout
+    << "var1 greater than or equal to 10"
+    << std::endl;
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+Precisely, the second line runs but not the first.
+
+The structure:
+
+~~~cpp
+if (statement) {
+  true branch
+} else {
+  false branch
+}
+~~~
+
+runs the `true branch` if the statement `statement` evaluates to `true` otherwise it
+runs the `false branch`.
+
+---
+
+What about the output of
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 10;
+if (var1 == 7 + 3) {
+  std::cout << "var1 is equal to 7 + 3"
+            << std::endl;
+} else {
+  std::cout << "var1 does not equal 10"
+    << std::endl;
+}
+~~~
+
+= = =
+
+Well, that's easy:
+
+~~~output
+~~~
+
+Note, `==` is the equality operation[^noassign], and it compares any two statements as
+`var1` or `3+2*12` for equality.
+
+As you expect it, there are many operations to compare between different statements, these
+are `==`, `<=`, `>=`, `<`, `>`, and `!=`.
+
+[^noassign]: take care, don't confuse it with the assignment operator `=`!
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 2*2+2;
+if (var1 != 7 + 3) {
+  std::cout << "2*2+2 != 7+3" << std::endl;
+} else {
+  std::cout << "2*2+2 == 7+3" << std::endl;
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+Yeah, `!=` is the unequality operator.
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 2*2+20;
+if (var1 >= 7 + 3) {
+  std::cout << "i never run :(" << std::endl;
+} else {
+  if (var1 > 23) {
+    std::cout << "hey!!" << std::endl;
+  } else {
+    // nothing in this branch
+  }
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+Usually, if we only care about the true branch of an `if` statement, then we simply ignore
+it. The code at left is equivalent then to:
+
+~~~cpp
+int var1 = 2*2+20;
+if (var1 >= 7 + 3) {
+  std::cout << "i never run :(" << std::endl;
+} else {
+  if (var1 > 23) {
+    std::cout << "hey!!" << std::endl;
+  }
+}
+~~~
+
+---
+
+It's possible to put more than one statement inside the `if` statement. For example:
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 2*2+20;
+if (var1 >= 7 + 3) {
+  std::cout
+    << "you are our visitor number 3889"
+    << std::endl;
+  int magicnumber = 999999;
+  std::cout
+    << "and your our winner! please "
+    << "deposit " << magicnumber
+    << " into our account and you will "
+    << " receive 20x what you deposited "
+    << std::endl;
+}
+std::cout
+  << "Welcome to e-safe-comerce"
+  << std::endl;
+~~~
+
+= = =
+
+The output as you expected.
+
+~~~output
+~~~
+
+---
+
+~~~{.cpp layout="01-simple.cc"}
+int magicnumber = -2;
+if (2!=3) {
+  magicnumber = 0;
+} else {
+  magicnumber = 42;
+}
+std::cout << "Every integer is a divisor of "
+          << magicnumber << std::endl;
+~~~
+
+= = =
+
+Of course, $0$ can be divided by any number, because it can be written in the form
+$0 = k*n$ where $k=0$ and $n$ is an arbitrary number.
+
+~~~output
+~~~
 
 
 <!-- vim:set filetype=markdown.pandoc : -->
