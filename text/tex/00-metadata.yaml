@@ -1,6 +1,8 @@
 ---
 title: "The Little CPPler"
 
+documentclass: book
+
 # regular letter size is 215.9 wide by 279.44 long
 geometry:
   - "verbose"
@@ -14,24 +16,33 @@ geometry:
 
 <!--\layout{}-->
 
-<!--\newpage-->
-
 <!--
    -BOOK STRUCTURE
    -
-   -Prerequisites:
-   -  + A phrase telling them what to do with the book
+   -* What to expect
+   -  A phrase telling them what to do with the book
+   -* Prerequisites:
    -  + Tools neccesary to follow the book (for everything to work), note: the source code can be
    -    found in a repo, though
    -  + Explain how to compile a file (example hello file) and ask them to modify the file
    -    and see what happens. Ask them to open a file with a text editor
-   -Content:
-   -  + Explain how the book is supposed to be read (try to answer question with answer
-   -    covered, then reveal answer and try understand what is it doing)
-   -  + Divide book in multiple sections each with a lot of pieces of code
+   -* How to read:
+   -  Explain how the book is supposed to be read (try to answer question with answer
+   -  covered, then reveal answer and try understand what is it doing)
+   -* Content:
+   -  Divide book in multiple sections each with a lot of pieces of code:
+   -    1. basic operations, output, if, for, while, and functions
+   -    2. recursive functions, input, streams, vector, strings (optional)
+   -    3. pointers, arrays, new keyword (pointers and arrays are a very, very long topic)
 -->
+
+\listoftodos
 
 \inlinetodo{idea: at some point in the code explain why is the book written in English and
 no any other language}
+
+\inlinetodo{idea: have a couple of exercises that could only be done in groups, and make
+students do an activity at the start and middle of the class with totally random people to
+solve those activities (talleres)}
 
 <!-- vim:set filetype=markdown.pandoc : -->

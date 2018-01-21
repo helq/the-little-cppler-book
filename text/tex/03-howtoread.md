@@ -1,6 +1,4 @@
-# Content
-
-## How to read this book
+# How to read this book #
 
 Yeah, you should learn first how to read this book! :P
 

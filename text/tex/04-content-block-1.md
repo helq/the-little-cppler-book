@@ -1,6 +1,10 @@
-## Basics
+# Block 1: Basics #
 
-### Getting to know C++(11)
+<!--
+   -1. basic operations, output, if, for, while, and functions
+   -->
+
+## Getting to know C++(11) ##
 
 \inlinetodo{Add interludes asking whoever is reading to pause for a while to recover from
 so much info}
@@ -191,7 +195,7 @@ std::cout
 
 ---
 
-What is the purpose of `<< " " <<`{.cpp} in teh code?
+What is the purpose of `<< " " <<`{.cpp} in the code?
 
 = = =
 
@@ -283,7 +287,7 @@ std::cout << (3+5)*20 << std::endl;
 
 = = =
 
-It fails to compile because there is a semicolo missing in the code!
+It fails to compile because there is a semicolon missing in the code!
 
 The error shown by the compiler is actually[^whyactually] useful here, it is telling us
 that we forgot a `;`!
@@ -630,10 +634,17 @@ std::cout << 20 - 6 * 2 << " "
 ~~~output
 ~~~
 
-Notice how `20 - 6 * 2` does not reduce/computes to $8$ and not to $28$! (i.e.,
+Notice how `20 - 6 * 2` does reduce^[or compute] to $8$ and not to $28$! (i.e.,
 $20-6 \times 2 = 20-(6 \times 2) \neq (20-6) \times 2$). Each operator has a specific
 precedence that indicates if it must be applied before another operator, `*` for example
 has a higher precedence than `+`.
+
+---
+
+\inlinetodo{add exercises about all of this}
+
+\inlinetodo{add one exercise that ask students to write a program with a single
+compilation error and ask another to find it and correct it}
 
 ---
 

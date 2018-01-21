@@ -1,15 +1,11 @@
-# Prerequisites
+# Prerequisites #
 
-## What to expect from this book
-
-\inlinetodo{A phrase telling them what to do with the book}
-
-## Tools
+## Tools ##
 
 \inlinetodo{Tools neccesary to follow the book (for everything to work), note: the source
 code can be found in a repo, though}
 
-## Using the tools
+## Using the tools ##
 
 \inlinetodo{Ask to open a file with a text editor}
 
@@ -49,7 +45,5 @@ the output of the program in terminal will be:
 ~~~
 Hello World!
 ~~~
-
-\newpage
 
 <!-- vim:set filetype=markdown.pandoc : -->
