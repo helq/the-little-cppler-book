@@ -2,15 +2,13 @@
 
 int main()
 {
-  int var1 = 2*2+20;
-  if (var1 >= 7 + 3) {
-    std::cout << "i never run :(" << std::endl;
+  int var1 = 10;
+  if (var1 == 7 + 3) {
+    std::cout << "var1 is equal to 7 + 3"
+              << std::endl;
   } else {
-    if (var1 > 23) {
-      std::cout << "hey!!" << std::endl;
-    } else {
-      // nothing in this branch
-    }
+    std::cout << "var1 does not equal 10"
+      << std::endl;
   }
 
   return 0;

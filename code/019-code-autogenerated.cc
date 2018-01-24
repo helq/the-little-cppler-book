@@ -1,13 +1,14 @@
 #include <iostream>
+#include <cmath>
 
 int main()
 {
-  std::cout << 8 % 3 << " "
-            << 8 % 2 << " "
-            << 7 % 2 << " "
-            << 17 % 1 << " "
-            << 17 % 7 << " "
-            << std::endl;
+  int var1 = 6;
+  int var2 = 3;
+  int var3 = var1 * pow(var2, 3);
+  
+  std::cout << "var1 * pow(var2, 3) => "
+            << var3 << std::endl;
 
   return 0;
 }

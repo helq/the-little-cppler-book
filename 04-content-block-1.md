@@ -526,6 +526,47 @@ computation. In this case, the computation `var1*3`{.cpp} is assigned to `var2`{
 
 ---
 
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+int var1 = 6;
+std::cout << var1 << " ";
+var1 = 20;
+std::cout << var1 << " ";
+var1 = -5;
+std::cout << var1 << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+```output
+```
+
+---
+
+What is the output of:
+
+~~~cpp
+int var1 = 6;
+std::cout << var1 << " ";
+int var1 = 20;
+std::cout << var1 << " ";
+var1 = -5;
+std::cout << var1 << std::endl;
+~~~
+
+= = =
+
+It doesn't compile because you cannot ask for more space in memory (declare) with the same
+name variable, you gotta use a different name.[^shadowscope]
+
+[^shadowscope]: this will be truth until we learn how to "shadow" a variable name with
+  help of scopes \inlinetodo{mm..., doesn't sound that good, rewrite}
+
+---
+
 What is the output of:[^includes]
 
 ~~~{.cpp layout="01-simple.cc"}
@@ -648,7 +689,7 @@ compilation error and ask another to find it and correct it}
 
 ---
 
-What is the output of:
+What is the output of:[^double]
 
 ~~~{.cpp layout="01-simple.cc"}
 double acction   = 9.8; // m/s^2 acceleration
@@ -668,6 +709,9 @@ std::cout << "Momentum after " << time
           << "s is: " << momentum << "kg*m/s"
           << std::endl;
 ~~~
+
+[^double]: `double`{.cpp} allows us to declare "real" numbers (they are actually
+  rational). ANd we can operate with them as we did with `int`{.cpp}'s
 
 = = =
 
@@ -877,8 +921,216 @@ std::cout << "Every integer is a divisor of "
 
 = = =
 
-Of course, $0$ can be divided by any number, because it can be written in the form
+Of course, $0$ can be divided by any number, because it can be written as
 $0 = k*n$ where $k=0$ and $n$ is an arbitrary number.
+
+~~~output
+~~~
+
+---
+
+What is the output of:
+
+~~~cpp
+if (2!=3) {
+  int magicnumber = 0;
+} else {
+  int magicnumber = 42;
+}
+std::cout << "Every integer is a divisor of "
+          << magicnumber << std::endl;
+~~~
+
+= = =
+
+It doesn't compile! You wanna know why? Well, keep guessing with the following exercises.
+
+---
+
+Does this compile? If yes, then what is its output?
+
+~~~{.cpp layout="01-simple.cc"}
+int magicnumber = -2;
+if (2!=3) {
+  int magicnumber = 0;
+} else {
+  int magicnumber = 42;
+}
+std::cout << "Every integer is a divisor of "
+          << magicnumber << std::endl;
+~~~
+
+It does compile, and its output is:
+
+= = =
+
+~~~output
+~~~
+
+But wait, what? -2 is not always divisible by anyother integer!
+
+---
+
+Maybe, $2$ and $3$ are really the same thing.
+
+~~~{.cpp layout="01-simple.cc"}
+int magicnumber = -2;
+if (2==3) {
+  int magicnumber = 0;
+} else {
+  int magicnumber = 42;
+}
+std::cout << "Every integer is a divisor of "
+          << magicnumber << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+But is the same, why? What have we changed from before? What is the difference with the
+code that gives us a zero?
+
+---
+
+Ok, let's stop with the silliness and try with an example that actually give us some clue
+of the situation.
+
+~~~{.cpp layout="01-simple.cc"}
+int num = 20;
+std::cout << num << " ";
+{
+  int num = 42;
+  std::cout << num << " ";
+  num = 3;
+  std::cout << num << " ";
+}
+std::cout << num << " ";
+num = 0;
+std::cout << num << std::endl;
+~~~
+
+= = =
+
+Well, the code inside the brackets (`{}`) acts as if it was being run alone without the
+intervention of the code of the outside.
+
+~~~output
+~~~
+
+It is effectively as if this was the code being run:
+
+~~~cpp
+int num = 20;
+std::cout << num << " ";
+{
+  int var = 42;
+  std::cout << var << " ";
+  var = 3;
+  std::cout << var << " ";
+}
+std::cout << num << " ";
+num = 0;
+std::cout << num << std::endl;
+~~~
+
+---
+
+Any time we enclose code between brackets (`{}`) we are defining a new **scope**. Any
+variable we declare inside a scope lives only in that scope, the variable _dies_ once the
+scope is closed, is this the reason why this code
+
+~~~cpp
+{
+  int num = 42;
+  std::cout << num << " ";
+}
+std::cout << num << std::endl;
+~~~
+
+doesn't compile. There is no `num`{.cpp} variable in the bigger scope when it wants to
+show it.
+
+A rule about scopes is that they can access to variables from the outside, scopes that
+enclose them. For example this code, does indeed compiles:
+
+~~~{.cpp layout="01-simple.cc"}
+int num = 42;
+std::cout << num << " ";
+{
+  num = 1;
+  std::cout << num << " ";
+}
+std::cout << num << std::endl;
+~~~
+
+What is its output?
+
+= = =
+
+You guessed it right! Given that `num`{.cpp} is a variable outside the inner scope, the
+inner scope can read and modify the variable content.
+
+~~~output
+~~~
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+int num = 42;
+std::cout << num << std::endl;
+{
+  int num = 1;
+  std::cout << num << std::endl;
+}
+std::cout << num << std::endl;
+{
+  num = 1;
+  std::cout << num << std::endl;
+}
+std::cout << num << std::endl;
+~~~
+
+= = =
+
+~~~output
+~~~
+
+Right, in the first inner scope, we declare a new space and shadow the access to the
+outside variable `num`{.cpp}, and in the other inner scope, we use the variable accessible
+from the outside scope.
+
+---
+
+What is the ouput of:[^float]
+
+~~~{.cpp layout="01-simple.cc"}
+int a = 20;
+int b = 21;
+if (b-a > 0) {
+  float num = -12.2;
+  std::cout << num * 3 << std::endl;
+} else {
+  double num = -12.2;
+  std::cout << num * -3 << std::endl;
+}
+~~~
+
+[^float]: yet again another type of data. `float`{.cpp}s are like `double`{.cpp}s but they
+  represent numbers with less precision. Well I haven't talked what precision is, forgive
+  me, for the time being just assume that using `double`{.cpp} in your code is better than
+  using `float`{.cpp}.
+  \inlinetodo{explain at some point what do you mean by precision, maybe another interlude
+  could be helpful here}
+
+= = =
+
+The output is:
 
 ~~~output
 ~~~

@@ -1121,6 +1121,82 @@ the computation \VERB|\NormalTok{var1*}\DecValTok{3}| is assigned to
 {\tiny 017.}\\
 \begin{minipage}[t]{.485\linewidth}
 
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << var1 << }\StringTok{" "}\NormalTok{;}
+\NormalTok{var1 = }\DecValTok{20}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << var1 << }\StringTok{" "}\NormalTok{;}
+\NormalTok{var1 = }\DecValTok{-5}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << var1 << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+6 20 -5
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 018.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << var1 << }\StringTok{" "}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{20}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << var1 << }\StringTok{" "}\NormalTok{;}
+\NormalTok{var1 = }\DecValTok{-5}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << var1 << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+It doesn't compile because you cannot ask for more space in memory
+(declare) with the same name variable, you gotta use a different
+name.\footnote{this will be truth until we learn how to ``shadow'' a
+  variable name with help of scopes
+  \inlinetodo{mm..., doesn't sound that good, rewrite}}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 019.}\\
+\begin{minipage}[t]{.485\linewidth}
+
 What is the output of:\footnote{Notice the dots (\texttt{...}) in the
   code above. This dots are just for notation, they aren't meant to be
   written in the source code. The dots represent a division between two
@@ -1182,7 +1258,7 @@ is equivalent to
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 018.}\\
+{\tiny 020.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 Till now we've seen just two operations (\texttt{*} and \texttt{+}), but
@@ -1240,7 +1316,7 @@ must be \(0\), e.g., \(21 = 7 \times 3 + 0\).
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 019.}\\
+{\tiny 021.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 What is the output of:
@@ -1280,7 +1356,7 @@ The output is:
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 020.}\\
+{\tiny 022.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 \begin{framed}
@@ -1328,10 +1404,12 @@ compilation error and ask another to find it and correct it}
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 021.}\\
+{\tiny 023.}\\
 \begin{minipage}[t]{.485\linewidth}
 
-What is the output of:
+What is the output of:\footnote{\VERB|\DataTypeTok{double}| allows us to
+  declare ``real'' numbers (they are actually rational). ANd we can
+  operate with them as we did with \VERB|\DataTypeTok{int}|'s}
 
 \begin{framed}
 
@@ -1385,7 +1463,7 @@ object, so we can calculate too its momentum.
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 022.}\\
+{\tiny 024.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 What is the output of:
@@ -1428,7 +1506,7 @@ var1 smaller than 10
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 023.}\\
+{\tiny 025.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 What is the output of the code above if we change \texttt{var1}'s
@@ -1475,7 +1553,7 @@ evaluates to \texttt{true} otherwise it runs the \texttt{false\ branch}.
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 024.}\\
+{\tiny 026.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 What about the output of
@@ -1526,7 +1604,7 @@ and \texttt{!=}.
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 025.}\\
+{\tiny 027.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 What is the output of:
@@ -1568,7 +1646,7 @@ Yeah, \texttt{!=} is the unequality operator.
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 026.}\\
+{\tiny 028.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 What is the output of:
@@ -1633,7 +1711,7 @@ to:
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 027.}\\
+{\tiny 029.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 It's possible to put more than one statement inside the \texttt{if}
@@ -1674,7 +1752,7 @@ The output as you expected.
 
 \begin{verbatim}
 you are our visitor number 3889
-and your our winner! please deposit 999999 into our account, thank you
+and your our winner! please deposit 999999 into our account and you will  receive 20x what you deposited 
 Welcome to e-safe-comerce
 \end{verbatim}
 
@@ -1686,7 +1764,7 @@ Welcome to e-safe-comerce
 \vspace{2mm}\noindent\hrulefill{}
 
 \begin{minipage}{\linewidth}\noindent
-{\tiny 028.}\\
+{\tiny 030.}\\
 \begin{minipage}[t]{.485\linewidth}
 
 \begin{framed}
@@ -1711,12 +1789,375 @@ Welcome to e-safe-comerce
 \begin{minipage}[t]{.485\linewidth}
 
 Of course, \(0\) can be divided by any number, because it can be written
-in the form \(0 = k*n\) where \(k=0\) and \(n\) is an arbitrary number.
+as \(0 = k*n\) where \(k=0\) and \(n\) is an arbitrary number.
 
 \begin{framed}
 
 \begin{verbatim}
-Every number is a divisor of 0
+Every integer is a divisor of 0
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 031.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\DecValTok{2}\NormalTok{!=}\DecValTok{3}\NormalTok{) \{}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{0}\NormalTok{;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{42}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Every integer is a divisor of "}
+\NormalTok{          << magicnumber << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+It doesn't compile! You wanna know why? Well, keep guessing with the
+following exercises.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 032.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Does this compile? If yes, then what is its output?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{-2}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (}\DecValTok{2}\NormalTok{!=}\DecValTok{3}\NormalTok{) \{}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{0}\NormalTok{;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{42}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Every integer is a divisor of "}
+\NormalTok{          << magicnumber << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+It does compile, and its output is:
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+Every integer is a divisor of -2
+\end{verbatim}
+
+\end{framed}
+
+But wait, what? -2 is not always divisible by anyother integer!
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 033.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Maybe, \(2\) and \(3\) are really the same thing.
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{-2}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (}\DecValTok{2}\NormalTok{==}\DecValTok{3}\NormalTok{) \{}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{0}\NormalTok{;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{42}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Every integer is a divisor of "}
+\NormalTok{          << magicnumber << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+Every integer is a divisor of -2
+\end{verbatim}
+
+\end{framed}
+
+But is the same, why? What have we changed from before? What is the
+difference with the code that gives us a zero?
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 034.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Ok, let's stop with the silliness and try with an example that actually
+give us some clue of the situation.
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ num = }\DecValTok{20}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\{}
+  \DataTypeTok{int}\NormalTok{ num = }\DecValTok{42}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  num = }\DecValTok{3}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{num = }\DecValTok{0}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Well, the code inside the brackets (\texttt{\{\}}) acts as if it was
+being run alone without the intervention of the code of the outside.
+
+\begin{framed}
+
+\begin{verbatim}
+20 42 3 20 0
+\end{verbatim}
+
+\end{framed}
+
+It is effectively as if this was the code being run:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ num = }\DecValTok{20}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\{}
+  \DataTypeTok{int}\NormalTok{ var = }\DecValTok{42}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << var << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  var = }\DecValTok{3}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << var << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{num = }\DecValTok{0}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 035.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Any time we enclose code between brackets (\texttt{\{\}}) we are
+defining a new \textbf{scope}. Any variable we declare inside a scope
+lives only in that scope, the variable \emph{dies} once the scope is
+closed, is this the reason why this code
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\{}
+  \DataTypeTok{int}\NormalTok{ num = }\DecValTok{42}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+doesn't compile. There is no \VERB|\NormalTok{num}| variable in the
+bigger scope when it wants to show it.
+
+A rule about scopes is that they can access to variables from the
+outside, scopes that enclose them. For example this code, does indeed
+compiles:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ num = }\DecValTok{42}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\{}
+\NormalTok{  num = }\DecValTok{1}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+What is its output?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+You guessed it right! Given that \VERB|\NormalTok{num}| is a variable
+outside the inner scope, the inner scope can read and modify the
+variable content.
+
+\begin{framed}
+
+\begin{verbatim}
+42 1 1
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 036.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ num = }\DecValTok{42}\NormalTok{;}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\{}
+  \DataTypeTok{int}\NormalTok{ num = }\DecValTok{1}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\{}
+\NormalTok{  num = }\DecValTok{1}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << num << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+42
+1
+42
+1
+1
+\end{verbatim}
+
+\end{framed}
+
+Right, in the first inner scope, we declare a new space and shadow the
+access to the outside variable \VERB|\NormalTok{num}|, and in the other
+inner scope, we use the variable accessible from the outside scope.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 037.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the ouput of:\footnote{yet again another type of data.
+  \VERB|\DataTypeTok{float}|s are like \VERB|\DataTypeTok{double}|s but
+  they represent numbers with less precision. Well I haven't talked what
+  precision is, forgive me, for the time being just assume that using
+  \VERB|\DataTypeTok{double}| in your code is better than using
+  \VERB|\DataTypeTok{float}|.
+  \inlinetodo{explain at some point what do you mean by precision, maybe another interlude
+    could be helpful here}}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ a = }\DecValTok{20}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{21}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (b-a > }\DecValTok{0}\NormalTok{) \{}
+  \DataTypeTok{float}\NormalTok{ num = }\FloatTok{-12.2}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num * }\DecValTok{3}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \DataTypeTok{double}\NormalTok{ num = }\FloatTok{-12.2}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout << num * }\DecValTok{-3}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+-36.6
 \end{verbatim}
 
 \end{framed}

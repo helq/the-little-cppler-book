@@ -2,14 +2,16 @@
 
 int main()
 {
-  int magicnumber = -2;
-  if (2!=3) {
-    magicnumber = 0;
+  int var1 = 2*2+20;
+  if (var1 >= 7 + 3) {
+    std::cout << "i never run :(" << std::endl;
   } else {
-    magicnumber = 42;
+    if (var1 > 23) {
+      std::cout << "hey!!" << std::endl;
+    } else {
+      // nothing in this branch
+    }
   }
-  std::cout << "Every integer is a divisor of "
-            << magicnumber << std::endl;
 
   return 0;
 }
