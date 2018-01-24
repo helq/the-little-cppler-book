@@ -8,7 +8,7 @@ int main()
   } else {
     magicnumber = 42;
   }
-  std::cout << "Every number is a divisor of "
+  std::cout << "Every integer is a divisor of "
             << magicnumber << std::endl;
 
   return 0;

@@ -11,7 +11,8 @@ int main()
     std::cout
       << "and your our winner! please "
       << "deposit " << magicnumber
-      << " into our account, thank you"
+      << " into our account and you will "
+      << " receive 20x what you deposited "
       << std::endl;
   }
   std::cout
