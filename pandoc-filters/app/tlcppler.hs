@@ -1,7 +1,9 @@
 -- app/thelittlecppler.hs
-import Text.Pandoc.JSON
+import Text.Pandoc (Block(HorizontalRule,OrderedList,BulletList,DefinitionList,Div,Para,CodeBlock,Header,RawBlock,Null),
+                    Format(Format), Pandoc(Pandoc), Inline(Str,Space))
+import Text.Pandoc.JSON (toJSONFilter)
 import Text.Printf (printf)
-import Data.Maybe
+import Data.Maybe (isJust,isNothing)
 import Data.Monoid ((<>))
 
 main :: IO ()

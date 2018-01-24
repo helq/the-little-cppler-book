@@ -1,7 +1,7 @@
 \PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
+\documentclass[]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -33,7 +33,7 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage[verbose,a4paper,textwidth=190mm,textheight=260mm,voffset=7mm]{geometry}
+\usepackage[verbose,a4paper,textwidth=190mm,textheight=260mm,voffset=7mm,lmargin=12mm]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -164,26 +164,38 @@
 \begin{document}
 \maketitle
 
+\listoftodos
+
 \inlinetodo{idea: at some point in the code explain why is the book written in English and
 no any other language}
 
-\hypertarget{prerequisites}{%
-\section{Prerequisites}\label{prerequisites}}
+\inlinetodo{idea: have a couple of exercises that could only be done in groups, and make
+students do an activity at the start and middle of the class with totally random people to
+solve those activities (talleres)}
 
 \hypertarget{what-to-expect-from-this-book}{%
-\subsection{What to expect from this
+\chapter{What to expect from this
 book}\label{what-to-expect-from-this-book}}
 
 \inlinetodo{A phrase telling them what to do with the book}
 
+This is NOT a reference book, this is a teaching book, it is for anybody
+to acquire experience writing code in C++.
+
+Learn like you do, don't learn just to accumulate. Learning is
+rewarding, but teach/apply what you learn, from day one.
+
+\hypertarget{prerequisites}{%
+\chapter{Prerequisites}\label{prerequisites}}
+
 \hypertarget{tools}{%
-\subsection{Tools}\label{tools}}
+\section{Tools}\label{tools}}
 
 \inlinetodo{Tools neccesary to follow the book (for everything to work), note: the source
 code can be found in a repo, though}
 
 \hypertarget{using-the-tools}{%
-\subsection{Using the tools}\label{using-the-tools}}
+\section{Using the tools}\label{using-the-tools}}
 
 \inlinetodo{Ask to open a file with a text editor}
 
@@ -247,13 +259,8 @@ Hello World!
 
 \end{framed}
 
-\newpage
-
-\hypertarget{content}{%
-\section{Content}\label{content}}
-
 \hypertarget{how-to-read-this-book}{%
-\subsection{How to read this book}\label{how-to-read-this-book}}
+\chapter{How to read this book}\label{how-to-read-this-book}}
 
 Yeah, you should learn first how to read this book! :P
 
@@ -262,14 +269,16 @@ covered, then reveal answer and try understand what is it doing)}
 
 \newpage
 
-\hypertarget{basics}{%
-\subsection{Basics}\label{basics}}
+\hypertarget{block-1-basics}{%
+\chapter{Block 1: Basics}\label{block-1-basics}}
 
 \hypertarget{getting-to-know-c11}{%
-\subsubsection{Getting to know C++(11)}\label{getting-to-know-c11}}
+\section{Getting to know C++(11)}\label{getting-to-know-c11}}
 
 \inlinetodo{Add interludes asking whoever is reading to pause for a while to recover from
 so much info}
+
+\inlinetodo{Add a space before footnotes}
 
 \vspace{2mm}\noindent\hrulefill{}
 
@@ -399,7 +408,7 @@ Well, it doesn't compiles! We get an error similar to:
 \begin{framed}
 
 \begin{verbatim}
-test.cc:7:13: error: expected expression
+:7:13: error: expected expression
             << "in English."
             ^
 \end{verbatim}
@@ -570,7 +579,7 @@ A simple operation between 3 5 20: 160
 \begin{minipage}[t]{.485\linewidth}
 
 What is the purpose of
-\VERB|\NormalTok{<< }\StringTok{" "}\NormalTok{ <<}| in teh code?
+\VERB|\NormalTok{<< }\StringTok{" "}\NormalTok{ <<}| in the code?
 
 \end{minipage}
 \hfill
@@ -756,19 +765,19 @@ What happens if you try to compile and run this faulty code?
 \hfill
 \begin{minipage}[t]{.485\linewidth}
 
-It fails to compile because there is a semicolo missing in the code!
+It fails to compile because there is a semicolon missing in the code!
 
 The error shown by the compiler is actually\footnote{Why ``actually''?
-  Well, you will find that most of the time the errors thrown by the
-  compiler are hard to understand, and it is often something that we
+  Well, you will find that most of the time errors thrown by the
+  compiler are hard to understand. It is often something that we
   programmers need to learn to do. We learn to understand the confusing
-  error messages the compilers give us.} useful here, it is telling us
-that we forgot a \texttt{;}!
+  error messages compilers give us.} useful here, it is telling us that
+we forgot a \texttt{;}!
 
 \begin{framed}
 
 \begin{verbatim}
-test.cc:8:30: error: expected ';' after expression
+:8:30: error: expected ';' after expression
   std::cout << 5 << std::endl
                              ^
                              ;
@@ -846,7 +855,7 @@ The output is:
 \begin{framed}
 
 \begin{verbatim}
-A simple operation between 3 5 20: 160
+A simple operation between 3 7 20: 200
 \end{verbatim}
 
 \end{framed}
@@ -890,7 +899,7 @@ A simple operation between -12 5 20: -140
 \newpage
 
 \hypertarget{interlude-variables}{%
-\subsubsection{Interlude: Variables}\label{interlude-variables}}
+\subsection{Interlude: Variables}\label{interlude-variables}}
 
 Now, it's time to explain what are \textbf{variables} and what happens
 when we write \VERB|\DataTypeTok{int}\NormalTok{ name = }\DecValTok{0}|.
@@ -1041,7 +1050,7 @@ gives you the answer:
 \begin{framed}
 
 \begin{verbatim}
-test.cc:9:20: error: use of undeclared identifier 'var3'
+:9:20: error: use of undeclared identifier 'var3'
   << (var1+var2) * var3 - var2
                    ^
 1 error generated.
@@ -1183,13 +1192,105 @@ there are plenty more:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{6}\NormalTok{;}
-\DataTypeTok{int}\NormalTok{ var2 = }\DecValTok{3}\NormalTok{;}
-\DataTypeTok{int}\NormalTok{ var3 = var1 * }\DecValTok{2}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var1 = (}\DecValTok{2}\NormalTok{ + }\DecValTok{18}\NormalTok{ - }\DecValTok{6}\NormalTok{ * }\DecValTok{2}\NormalTok{) * }\DecValTok{5}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var2 = var1 / }\DecValTok{3}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ var3 = var1 % }\DecValTok{3}\NormalTok{;}
 
 \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 => "}\NormalTok{ << var1 << }\BuiltInTok{std::}\NormalTok{endl;}
-\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 => "}\NormalTok{ << var1 << }\BuiltInTok{std::}\NormalTok{endl;}
-\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 => "}\NormalTok{ << var1 << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var2 => "}\NormalTok{ << var2 << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var3 => "}\NormalTok{ << var3 << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+var1 => 40
+var2 => 13
+var3 => 1
+\end{verbatim}
+
+\end{framed}
+
+You probably know all operations here, but maybe not \texttt{\%}. It is
+the \emph{modulus} operation, or residue operation, and it symbolises
+the result of the residue of dividing integer numbers.
+
+For example, the result of dividing \(50\) by \(3\) can be written as:
+
+\[ 50 = 3 \times 16 + 2 \]
+
+Where \(50\) is the dividend, \(3\) is the divisor, \(16\) the (integer)
+result, and \(2\) the modulus/remainder.
+
+If an integer is divisible by another then the modulus of operating them
+must be \(0\), e.g., \(21 = 7 \times 3 + 0\).
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 019.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{8}\NormalTok{ % }\DecValTok{3}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << }\DecValTok{8}\NormalTok{ % }\DecValTok{2}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << }\DecValTok{7}\NormalTok{ % }\DecValTok{2}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << }\DecValTok{17}\NormalTok{ % }\DecValTok{1}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << }\DecValTok{17}\NormalTok{ % }\DecValTok{7}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+2 0 1 0 3 
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 020.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << }\DecValTok{20}\NormalTok{ - }\DecValTok{6}\NormalTok{ * }\DecValTok{2}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << (}\DecValTok{20}\NormalTok{ - }\DecValTok{6}\NormalTok{) * }\DecValTok{2}\NormalTok{ << }\StringTok{" "}
+\NormalTok{          << }\DecValTok{20}\NormalTok{ - (}\DecValTok{6}\NormalTok{ * }\DecValTok{2}\NormalTok{) << }\StringTok{" "}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1202,14 +1303,434 @@ there are plenty more:
 \begin{framed}
 
 \begin{verbatim}
-var1 => 6
-var1 => 6
-var1 => 6
+8 28 8 
+\end{verbatim}
+
+\end{framed}
+
+Notice how \texttt{20\ -\ 6\ *\ 2} does reduce\footnote{or compute} to
+\(8\) and not to \(28\)! (i.e.,
+\(20-6 \times 2 = 20-(6 \times 2) \neq (20-6) \times 2\)). Each operator
+has a specific precedence that indicates if it must be applied before
+another operator, \texttt{*} for example has a higher precedence than
+\texttt{+}.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\inlinetodo{add exercises about all of this}
+
+\inlinetodo{add one exercise that ask students to write a program with a single
+compilation error and ask another to find it and correct it}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 021.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{double}\NormalTok{ acction   = }\FloatTok{9.8}\NormalTok{; }\CommentTok{// m/s^2 acceleration}
+\DataTypeTok{double}\NormalTok{ mass      = }\DecValTok{3}\NormalTok{;   }\CommentTok{// kg    mass}
+\DataTypeTok{double}\NormalTok{ initial_v = }\DecValTok{10}\NormalTok{;  }\CommentTok{// m/s   ini. velocity}
+\DataTypeTok{double}\NormalTok{ time      = }\FloatTok{2.3}\NormalTok{; }\CommentTok{// s     time passed}
+
+\DataTypeTok{double}\NormalTok{ final_v = initial_v + acction * time;}
+
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Velocity after "}\NormalTok{ << time}
+\NormalTok{          << }\StringTok{"s is: "}\NormalTok{ << final_v << }\StringTok{"m/s"}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+
+\DataTypeTok{double}\NormalTok{ momentum = mass * final_v;}
+
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Momentum after "}\NormalTok{ << time}
+\NormalTok{          << }\StringTok{"s is: "}\NormalTok{ << momentum << }\StringTok{"kg*m/s"}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+Velocity after 2.3s is: 32.54m/s
+Momentum after 2.3s is: 97.62kg*m/s
+\end{verbatim}
+
+\end{framed}
+
+We are using here the equation \(v = u + a*t\) to determine the final
+velocity of an object (in a line) after \(2.3 s\). The object starts
+with a velocity \(2.3 m/s\), has a constant acceleration of
+\(9.8 m/s^2\)\footnote{free fall ;)}, and we know the weight of the
+object, so we can calculate too its momentum.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 022.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{8}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (var1 < }\DecValTok{10}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 smaller than 10"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{    << }\StringTok{"var1 greater than or equal to 10"}
+\NormalTok{    << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+var1 smaller than 10
 \end{verbatim}
 
 \end{framed}
 
 \end{minipage}
 \end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 023.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of the code above if we change \texttt{var1}'s
+assignment from \texttt{8} to \texttt{19}?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+var1 greater than or equal to 10
+\end{verbatim}
+
+\end{framed}
+
+Precisely, the second line runs but not the first.
+
+The structure:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (statement) \{}
+  \KeywordTok{true}\NormalTok{ branch}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{false}\NormalTok{ branch}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+runs the \texttt{true\ branch} if the statement \texttt{statement}
+evaluates to \texttt{true} otherwise it runs the \texttt{false\ branch}.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 024.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What about the output of
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{10}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (var1 == }\DecValTok{7}\NormalTok{ + }\DecValTok{3}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 is equal to 7 + 3"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"var1 does not equal 10"}
+\NormalTok{    << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Well, that's easy:
+
+\begin{framed}
+
+\begin{verbatim}
+var1 is equal to 7 + 3
+\end{verbatim}
+
+\end{framed}
+
+Note, \texttt{==} is the equality operation\footnote{take care, don't
+  confuse it with the assignment operator \texttt{=}!}, and it compares
+any two statements as \texttt{var1} or \texttt{3+2*12} for equality.
+
+As you expect it, there are many operations to compare between different
+statements, these are \texttt{==}, \texttt{\textless{}=},
+\texttt{\textgreater{}=}, \texttt{\textless{}}, \texttt{\textgreater{}},
+and \texttt{!=}.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 025.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{2}\NormalTok{*}\DecValTok{2+2}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (var1 != }\DecValTok{7}\NormalTok{ + }\DecValTok{3}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"2*2+2 != 7+3"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"2*2+2 == 7+3"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+2*2+2 != 7+3
+\end{verbatim}
+
+\end{framed}
+
+Yeah, \texttt{!=} is the unequality operator.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 026.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{2}\NormalTok{*}\DecValTok{2+20}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (var1 >= }\DecValTok{7}\NormalTok{ + }\DecValTok{3}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"i never run :("}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \ControlFlowTok{if}\NormalTok{ (var1 > }\DecValTok{23}\NormalTok{) \{}
+    \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"hey!!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{// nothing in this branch}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+i never run :(
+\end{verbatim}
+
+\end{framed}
+
+Usually, if we only care about the true branch of an \texttt{if}
+statement, then we simply ignore it. The code at left is equivalent then
+to:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{2}\NormalTok{*}\DecValTok{2+20}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (var1 >= }\DecValTok{7}\NormalTok{ + }\DecValTok{3}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"i never run :("}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \ControlFlowTok{if}\NormalTok{ (var1 > }\DecValTok{23}\NormalTok{) \{}
+    \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"hey!!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 027.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+It's possible to put more than one statement inside the \texttt{if}
+statement. For example:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ var1 = }\DecValTok{2}\NormalTok{*}\DecValTok{2+20}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (var1 >= }\DecValTok{7}\NormalTok{ + }\DecValTok{3}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{    << }\StringTok{"you are our visitor number 3889"}
+\NormalTok{    << }\BuiltInTok{std::}\NormalTok{endl;}
+  \DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{999999}\NormalTok{;}
+  \BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{    << }\StringTok{"and your our winner! please "}
+\NormalTok{    << }\StringTok{"deposit "}\NormalTok{ << magicnumber}
+\NormalTok{    << }\StringTok{" into our account and you will "}
+\NormalTok{    << }\StringTok{" receive 20x what you deposited "}
+\NormalTok{    << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"Welcome to e-safe-comerce"}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output as you expected.
+
+\begin{framed}
+
+\begin{verbatim}
+you are our visitor number 3889
+and your our winner! please deposit 999999 into our account, thank you
+Welcome to e-safe-comerce
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 028.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ magicnumber = }\DecValTok{-2}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (}\DecValTok{2}\NormalTok{!=}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  magicnumber = }\DecValTok{0}\NormalTok{;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  magicnumber = }\DecValTok{42}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Every integer is a divisor of "}
+\NormalTok{          << magicnumber << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Of course, \(0\) can be divided by any number, because it can be written
+in the form \(0 = k*n\) where \(k=0\) and \(n\) is an arbitrary number.
+
+\begin{framed}
+
+\begin{verbatim}
+Every number is a divisor of 0
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\hypertarget{block-2-more-space-to-play-with}{%
+\chapter{Block 2: More space to play
+with}\label{block-2-more-space-to-play-with}}
+
+\hypertarget{block-3-deprecated-stuff-that-you-better-know-cos-everybody-uses-it}{%
+\chapter{\texorpdfstring{Block 3: \textbf{deprecated} stuff that you
+better know cos everybody uses
+it}{Block 3: deprecated stuff that you better know cos everybody uses it}}\label{block-3-deprecated-stuff-that-you-better-know-cos-everybody-uses-it}}
 
 \end{document}

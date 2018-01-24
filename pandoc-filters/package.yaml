@@ -21,34 +21,30 @@ description:         Read more in the parent folder
 
 dependencies:
 - base >= 4.7 && < 5
+- pandoc
+- pandoc-types
 
 # library:
 #   source-dirs: src
 
+ghc-options:
+  - -threaded
+  - -rtsopts
+  - -with-rtsopts=-N
+  - -Wall 
+  - -Wincomplete-uni-patterns 
+  - -Wincomplete-record-updates 
+  - -Wmissing-import-lists
+
 executables:
   tlcppler-exe:
-    main:            thelittlecppler.hs
+    main:            tlcppler.hs
     source-dirs:     app
-    ghc-options:
-      - -threaded
-      - -rtsopts
-      - -with-rtsopts=-N
-    dependencies:
-      # - behead
-      - pandoc
-      - pandoc-types
 
   runcppcode-exe:
     main:            runcppcode.hs
     source-dirs:     app
-    ghc-options:
-      - -threaded
-      - -rtsopts
-      - -with-rtsopts=-N
     dependencies:
-      # - behead
-      - pandoc
-      - pandoc-types
       - directory
       - filepath
       - shake
@@ -56,25 +52,7 @@ executables:
   loadcodeinoutput-exe:
     main:            loadcodeinoutput.hs
     source-dirs:     app
-    ghc-options:
-      - -threaded
-      - -rtsopts
-      - -with-rtsopts=-N
     dependencies:
-      # - behead
-      - pandoc
-      - pandoc-types
       - directory
       - filepath
       - shake
-
-# tests:
-#   behead-test:
-#     main:                Spec.hs
-#     source-dirs:         test
-#     ghc-options:
-#     - -threaded
-#     - -rtsopts
-#     - -with-rtsopts=-N
-#     dependencies:
-#     - behead

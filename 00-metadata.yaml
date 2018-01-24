@@ -10,6 +10,7 @@ geometry:
   - "textwidth=190mm"
   - "textheight=260mm"
   - "voffset=7mm"
+  - "lmargin=12mm"
   # - "paperwidth=275.9mm"
   # - "paperheight=279.4mm"
 ...
