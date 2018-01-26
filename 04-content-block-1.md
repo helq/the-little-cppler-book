@@ -1135,5 +1135,92 @@ The output is:
 ~~~output
 ~~~
 
+---
+
+What does this output:
+
+~~~{.cpp layout="01-simple.cc"}
+int n = 15;
+bool either = n<3;
+if (either) {
+  std::cout << ":P" << std::endl;
+} else {
+  std::cout << ":(" << std::endl;
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+with `bool`{.cpp}[^booltruth] we tell the compiler that it should interprete `either` as a boolean
+(either `true`{.cpp} or `false`{.cpp}).
+
+[^booltruth]: True and False are the only two possible values that a statement can take
+  in traditional logic, and so it does for us, there are only two options for bool. But
+  modern computers are build on blocks of 32 or 64 bits and operations, therefore, with
+  values of 32 and 64 bits are cheap to perform. Operations on single bits are not simple
+  when you manipulate multiple bits, it is slightly more expensive to use a single bit to
+  represent truth or false. Compilers usually use a block of memory (32 or 64 bits) to
+  represent a boolean, the convention is for zero (all 32-64 bits in zero) to be false and
+  anything else (eg, all bits in zero, or only one bit in zero, etc) to be true.
+
+  This means that you can in fact store integer values inside a bool (i.e.,
+  `bool bad = 23;`) but it's consider bad practice and may result in undefined behaivor.
+
+---
+
+Let's take a look at another type of variable, `char`{.cpp}:[^ignorecast]
+
+~~~{.cpp layout="01-simple.cc"}
+char apples = 23;
+std::cout << "A small integer: " << (int)apples
+          << std::endl;
+~~~
+
+[^ignorecast]: you can ignore the weird `(int)`{.cpp} thing for now, it is
+  called **cast** if you are curious, we will get to them later.
+
+= = =
+
+The output isn't surprising:
+
+~~~output
+~~~
+
+`char`{.cpp} may not seem different to `int`{.cpp}, but it is. `int`, dependending on the
+system, has a size of 32 or 64, but `char` has always the same size 8 bits. With 8 bits we
+can represent $2^8$ different states, that is 256 different numbers.
+
+---
+
+Every compiler may define the size of `int`, `char`, `double`, ..., differently depending
+on the architecture. If you want to know how many bytes[^abyte] are assigned to any
+variable type, you can use `sizeof`{.cpp}. An example of use:
+
+[^abyte]: one byte is 8 bits
+
+~~~{.cpp layout="01-simple.cc"}
+std::cout << "A char is " << sizeof(char)
+          << " bytes" << std::endl;
+std::cout << "A int is " << sizeof(int)
+          << " bytes" << std::endl;
+std::cout << "A double is " << sizeof(double)
+          << " bytes" << std::endl;
+~~~
+
+(Hint: if a byte is 8 bits, a `char` is 8 bits, how many bytes are a `char`?)
+
+= = =
+
+This may look different in your computer, but mine runs on 64 bits, therefore `double` has
+64 bits and `int` half of that.
+
+~~~output
+~~~
+
 
 <!-- vim:set filetype=markdown.pandoc : -->
