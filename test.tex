@@ -871,9 +871,9 @@ A simple operation between 3 7 20: 200
 
 \texttt{num\_1} is a \textbf{variable} and it allows us to save integers
 on it, you can try changing it's value for any number between
-\(-2147483649\) and \(2147483648\)\footnote{This numbers are based on a
-  program compiled for a 32bit computer, the real values dependent
-  between different computers.}
+\(-2147483648\) and \(2147483647\)\footnote{This numbers are based on a
+  program compiled for a 32bit computer, the values may vary between
+  different computers.}
 
 What if we put \(-12\) in the variable \texttt{num\_1}?
 
@@ -2668,14 +2668,6 @@ The output is:
 
 \end{framed}
 
-Notice how we wrote FOUR (4) \texttt{if} statements but only 3 numbers
-appear. Why?
-
-(answer, well, we start with \texttt{i==0}, then we add \texttt{1} and
-print, and we do it again, and again, and again, and every time we ask
-if \texttt{i} is smaller than 3, and guess what, it isn't always smaller
-than 3, not forever)
-
 \end{minipage}
 \end{minipage}
 
@@ -2685,20 +2677,108 @@ than 3, not forever)
 {\tiny 048.}\\
 \begin{minipage}[t]{.485\linewidth}
 
-But what if we wanted to use a different limit, not 3 but 18, then we
-would need at least 20 if statements just like the one above and that's
-kinda stupid.
+What is the output the above if we change all appearances of
+\VERB|\NormalTok{i<}\DecValTok{3}| for
+\VERB|\NormalTok{i<}\DecValTok{2}| or
+\VERB|\NormalTok{i<}\DecValTok{4}|.
 
-Introducing\ldots{} \VERB|\ControlFlowTok{while}|, it works like many
-\texttt{if} one after the other with no end, it stops when the question
-returns \texttt{false}. Let's see an example:
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The outputs are:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{0} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+for \VERB|\NormalTok{i<}\DecValTok{2}| and
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{0} \DecValTok{1} \DecValTok{2} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+for \VERB|\NormalTok{i<}\DecValTok{4}|.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 049.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output if we change \VERB|\NormalTok{i<}\DecValTok{3}| for
+\VERB|\NormalTok{i<}\DecValTok{5}|?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Well there are only 4 \VERB|\ControlFlowTok{if}|s, the limit is 4
+numbers printed on the screen:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{0} \DecValTok{1} \DecValTok{2} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 050.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What should we do to print five numbers?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Well, there are many options. We could add a
+\VERB|\BuiltInTok{std::}\NormalTok{cout << i << }\BuiltInTok{std::}\NormalTok{endl;}|
+line after the last \VERB|\ControlFlowTok{if}| statement, or we could
+copy an \VERB|\ControlFlowTok{if}| (and this is what I wanted you to
+answer)
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 051.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What do you think this outputs?
 
 \begin{framed}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \DataTypeTok{int}\NormalTok{ i = }\DecValTok{0}\NormalTok{;}
-\ControlFlowTok{while}\NormalTok{ (i<}\DecValTok{18}\NormalTok{) \{}
+\ControlFlowTok{while}\NormalTok{ (i<}\DecValTok{4}\NormalTok{) \{}
   \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
 \NormalTok{  i = i + }\DecValTok{1}\NormalTok{;}
 \NormalTok{\}}
@@ -2712,7 +2792,7 @@ returns \texttt{false}. Let's see an example:
 \hfill
 \begin{minipage}[t]{.485\linewidth}
 
-And the output as we expected, eighteen numbers:
+The output is:
 
 \begin{framed}
 
@@ -2722,8 +2802,588 @@ And the output as we expected, eighteen numbers:
 
 \end{framed}
 
+Nice, no repeated code!
+
 \end{minipage}
 \end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 052.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What happens if we change \VERB|\NormalTok{i<}\DecValTok{4}| above for
+\VERB|\NormalTok{i<}\DecValTok{5}|?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Well, now we can see five numbers:
+
+\begin{framed}
+
+\begin{verbatim}
+0 1 2 3 
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 053.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{1}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<}\DecValTok{4}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  i = i + }\DecValTok{1}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+1 2 3 
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 054.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{-2}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<}\DecValTok{4}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i*}\DecValTok{2}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  i = i + }\DecValTok{1}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+-4
+-2
+0
+2
+4
+6
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 055.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Something a little more elaborated:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{-2}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<}\DecValTok{3}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" squared is: "}\NormalTok{ << i*i}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  i = i + }\DecValTok{1}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+-2 squared is: 4
+-1 squared is: 1
+0 squared is: 0
+1 squared is: 1
+2 squared is: 4
+\end{verbatim}
+
+\end{framed}
+
+But I'm getting bored with all those
+\VERB|\NormalTok{i = i + }\DecValTok{1}|, fortunatelly that operation is
+so common in day to day work that it can be written shorter:
+\VERB|\NormalTok{i++}|.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 056.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{-6}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<=}\DecValTok{-2}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" squared is: "}\NormalTok{ << i*i}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  i++;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+-6 squared is: 36
+-5 squared is: 25
+-4 squared is: 16
+-3 squared is: 9
+-2 squared is: 4
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\inlinetodo{add exercises using \texttt{while}}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 057.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is happenning here?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ a = }\DecValTok{13}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{6}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ c = }\DecValTok{8}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (b<a && b<c) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Both conditions met"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  b++;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+Both conditions met
+Both conditions met
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 058.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+And here?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ a = }\DecValTok{13}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{6}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ c = }\DecValTok{8}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (b<a || b<c) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"At least one condition met"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  b++;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+At least one condition met
+At least one condition met
+At least one condition met
+At least one condition met
+At least one condition met
+At least one condition met
+At least one condition met
+\end{verbatim}
+
+\end{framed}
+
+Well, \VERB|\NormalTok{&&}| is called the \textbf{and} operator, and
+\VERB|\NormalTok{\VerbBar{}\VerbBar{}}| is called the \textbf{or}
+operator, they operate on \VERB|\DataTypeTok{bool}|s only.\footnote{Well,
+  they can actually operate in any number, any number not zero is
+  treated as \VERB|\KeywordTok{true}| otherwise
+  \VERB|\KeywordTok{false}|. This means that \texttt{a\ \&\&\ b} is a
+  valid statement above, but it is a weird one, its result is
+  \VERB|\KeywordTok{true}|. Such expressions, even though totally legal,
+  are discouraged.}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 059.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{bool}\NormalTok{ a = }\DecValTok{5}\NormalTok{ > }\DecValTok{2}\NormalTok{;}
+\DataTypeTok{bool}\NormalTok{ b = }\KeywordTok{true}\NormalTok{;}
+\ControlFlowTok{if}\NormalTok{ (a==b) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"5 > 2 is equal to true"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"bananas!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+5 > 2 is equal to true
+\end{verbatim}
+
+\end{framed}
+
+As usual.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 060.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ ((}\DecValTok{5}\NormalTok{>}\DecValTok{2}\NormalTok{)==}\KeywordTok{true}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"5 > 2 is equal to true"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"bananas!"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+It's basically the same thing from above, isn't it.
+
+\begin{framed}
+
+\begin{verbatim}
+5 > 2 is equal to true
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 061.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+We have printed only \VERB|\DataTypeTok{int}|s and
+\VERB|\DataTypeTok{double}|s to date, what would be the result of
+printing \VERB|\DataTypeTok{bool}|s?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"true gets printed as "}\NormalTok{ << }\KeywordTok{true}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"But false gets printed as "}
+\NormalTok{          << }\KeywordTok{false}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+true gets printed as 1
+But false gets printed as 0
+\end{verbatim}
+
+\end{framed}
+
+Yep, \VERB|\KeywordTok{true}| is represented as \texttt{1}
+always!\footnote{this is standard behaivor, because comparing
+  \texttt{true} with \texttt{1} will result in \texttt{true} again, but
+  it won't if you compare it to \texttt{3} even though \texttt{3} is
+  treated as true if you use it in an \texttt{if} expression.}
+
+Moral of the fable: don't use boolean operations on variables that are
+not boolean! and don't use non-boolean operations on boolean variables!
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 062.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Let's take a look at the \emph{truth table} for
+\VERB|\NormalTok{&&}|:\footnote{the parthesis around the boolean
+  expressions are necessary, otherwise they would get confused with
+  \texttt{\textless{}\textless{}}.}
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"1 && 1 == "}\NormalTok{ << (}\KeywordTok{true}\NormalTok{  && }\KeywordTok{true}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"1 && 0 == "}\NormalTok{ << (}\KeywordTok{true}\NormalTok{  && }\KeywordTok{false}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"0 && 1 == "}\NormalTok{ << (}\KeywordTok{false}\NormalTok{ && }\KeywordTok{true}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"0 && 0 == "}\NormalTok{ << (}\KeywordTok{false}\NormalTok{ && }\KeywordTok{false}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+1 && 1 == 1
+1 && 0 == 0
+0 && 1 == 0
+0 && 0 == 0
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 063.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+And the \emph{truth table} for \VERB|\NormalTok{!}| (not, negation):
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"!1 == "}\NormalTok{ << !}\KeywordTok{true}\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"!0 == "}\NormalTok{ << !}\KeywordTok{false}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+!1 == 0
+!0 == 1
+\end{verbatim}
+
+\end{framed}
+
+All tables as you know them from logic, old stuff (actually, not that
+old, this tables were first used as tables in the 20th century, but they
+are so intuitive that one may think they're an older invention
+\footnote{for some more history see wikipedia article \emph{Truth
+  table}.}).
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 064.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Now, what should be changed in the code above (for
+\VERB|\NormalTok{&&}|) to make the \emph{truth table} for
+\VERB|\NormalTok{\VerbBar{}\VerbBar{}}|. The output of the table should
+be:
+
+\begin{framed}
+
+\begin{verbatim}
+1 || 1 == 1
+1 || 0 == 1
+0 || 1 == 1
+0 || 0 == 0
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+And here is the code:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{  << }\StringTok{"1 || 1 == "}\NormalTok{ << (}\KeywordTok{true}\NormalTok{  || }\KeywordTok{true}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"1 || 0 == "}\NormalTok{ << (}\KeywordTok{true}\NormalTok{  || }\KeywordTok{false}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"0 || 1 == "}\NormalTok{ << (}\KeywordTok{false}\NormalTok{ || }\KeywordTok{true}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl}
+\NormalTok{  << }\StringTok{"0 || 0 == "}\NormalTok{ << (}\KeywordTok{false}\NormalTok{ || }\KeywordTok{false}\NormalTok{)}
+\NormalTok{  << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\inlinetodo{ask them first exercise from project euler, and reference it}
+
+\inlinetodo{ask them to give us the sequence of fibonacci to an arbitrary number, using
+loops and variables on some way (this is the exercise that I remember the clearest doing
+as I took the class, it was so gratifying to solve the puzzle)}
 
 \hypertarget{block-2-more-space-to-play-with}{%
 \chapter{Block 2: More space to play

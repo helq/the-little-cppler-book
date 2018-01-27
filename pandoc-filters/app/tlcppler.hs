@@ -28,10 +28,8 @@ processBlocks format_m = processBlocks' 0
               = parts2 left [] blocks
             parts1 left (HorizontalRule:blocks)
               = (if first then HorizontalRule else simpleRule) : left <> minipager False n blocks
-            parts1 left (cb@(CodeBlock (id_, classes, namevals) code): blocks)
-              = if (isJust . lookup "layout" $ namevals) && (isNothing . lookup "numid" $ namevals)
-                   then parts1 (left <> [CodeBlock (id_, classes, ("numid", num_id):namevals) code]) blocks
-                   else parts1 (left <> [cb]) blocks
+            parts1 left (cb@CodeBlock{} : blocks)
+              = parts1 (left <> [addParamsToCodeBlock cb]) blocks
             parts1 left (b:blocks) = parts1 (left<>[b]) blocks
             parts1 left [] = simpleRule : left
 
@@ -40,13 +38,21 @@ processBlocks format_m = processBlocks' 0
               = (simpleRule : columnBegin : left) <> (columnMiddle : right) <> (columnEnd : minipager False (n+1) blocks)
             parts2 left right blocks@(Header{} : _)
               = (simpleRule : columnBegin : left) <> (columnMiddle : right) <> (columnEnd : processBlocks' (n+1) blocks)
-            parts2 left right (cb@(CodeBlock (id_, classes, namevals) code): blocks)
-              = if ("output" `elem` classes) && (isNothing . lookup "numid" $ namevals)
-                   then parts2 left (right <> [CodeBlock (id_, classes, ("numid", num_id):namevals) code]) blocks
-                   else parts2 left (right <> [cb]) blocks
+            parts2 left right (cb@CodeBlock{} : blocks)
+              = parts2 left (right <> [addParamsToCodeBlock cb]) blocks
             parts2 left right (b:blocks) = parts2 left (right<>[b]) blocks
             parts2 left right []
               = (simpleRule : columnBegin : left) <> (columnMiddle : right) <> [columnEnd]
+
+            addParamsToCodeBlock :: Block -> Block
+            addParamsToCodeBlock cb@(CodeBlock (id_, classes, namevals) code)
+              | isNothing . lookup "numid" $ namevals
+                          = CodeBlock (id_, classes, namevals') code
+              | otherwise = cb
+                where namevals' = if (isJust . lookup "layout" $ namevals) || ("output" `elem` classes)
+                                     then ("numid", num_id) : namevals
+                                     else namevals
+            addParamsToCodeBlock x = x
 
             num_id = printf "%03d" n
             (columnBegin, columnMiddle, columnEnd, simpleRule)
