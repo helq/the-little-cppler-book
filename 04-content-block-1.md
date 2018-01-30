@@ -2010,8 +2010,8 @@ what lines are needed to change or be moved (from the code above) to output:
 
 = = =
 
-Yep, we move the printing statement (line) to inside the true (`then`) branch inside the
-`if` statement:
+Yep, we move the printing statement (line) to inside the true branch of the `if`
+statement:
 
 ~~~{.cpp layout="01-simple.cc"}
 int a = 0;
@@ -2028,12 +2028,93 @@ std::cout << std::endl;
 
 ---
 
+Say now, we want something simple, like knowing what is $1+2+3+ \cdots +10$ equal to.
+There are many ways to do this, for example:[^manyways]
+
+[^manyways]: we may calculate it using the equation $\frac{10+11}{2}$, thus we could write
+  `int sum = (10+11)/2`{.cpp}, but we are going to ignore that and try to use what we've
+  been discussing to date to solve this problem.
+
+~~~.cpp
+int sum = 1+2+3+4+5+6+7+8+9+10;
+std::cout << "1+2+3+...+10 == " << sum
+          << std::endl;
+~~~
+
+But, could there be a way to do the same using a `while`{.cpp} loop?
+
+= = =
+
+Yep, there is, for example:
+
+~~~{.cpp layout="01-simple.cc"}
+int sum = 0;
+int i = 1;
+while (i<=10) {
+  sum = sum + i;
+  i++;
+}
+std::cout << "1+2+3+...+10 == " << sum
+          << std::endl;
+~~~
+
+Notice how this way of writing $1+2+ \cdots +10$ allows us to sum up to any number not only 10!
+This little piece of code is very similar at what we do in maths when we write
+$\sum_{i=1}^{i=10}{i}$ instead of $1+2+ \cdots +10$.
+
+---
+
+And what if we wanted to calculate
+
+$$\sum_{i=1}^{i=10}{i^2} = 1^2+2^2+ \cdots +10^2$$
+
+What should we change from the code above?
+
+= = =
+
+Well, that's right, `sum = sum + i` changes for `sum = sum + i*i`.
+
+The full code and its output:
+
+~~~{.cpp layout="01-simple.cc"}
+int sum = 0;
+int i = 1;
+while (i<=10) {
+  sum = sum + i*i;
+  i++;
+}
+std::cout << "1^2 + 2^2 + 3^2 + ... + 10^2 == "
+          << sum << std::endl;
+~~~
+
+~~~output
+~~~
+
+---
+
 \inlinetodo{ask them first exercise from project euler, and reference it}
+
+---
+
+\inlinetodo{add one or two more exercises (question/answer), something simple using stuff
+they've seen in the past, like printing the result of a simple equation or addition (using
+ifs and other stuff)}
+
+---
+
+\inlinetodo{explain for loop, and two more q\&a exercises}
 
 ---
 
 \inlinetodo{ask them to give us the sequence of fibonacci to an arbitrary number, using
 loops and variables on some way (this is the exercise that I remember the clearest doing
 as I took the class, it was so gratifying to solve the puzzle)}
+
+---
+
+\inlinetodo{finish block explaining c++ functions and how to use them (around ten
+exercises)}
+
+---
 
 <!-- vim:set filetype=markdown.pandoc : -->
