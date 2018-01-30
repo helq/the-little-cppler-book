@@ -2121,7 +2121,7 @@ inner scope, we use the variable accessible from the outside scope.
 {\tiny 037.}\\
 \begin{minipage}[t]{.485\linewidth}
 
-What is the ouput of:\footnote{yet again another type of data.
+What is the output of:\footnote{yet again another type of data.
   \VERB|\DataTypeTok{float}|s are like \VERB|\DataTypeTok{double}|s but
   they represent numbers with less precision. Well I haven't talked what
   precision is, forgive me, for the time being just assume that using
@@ -3379,7 +3379,442 @@ And here is the code:
 
 \vspace{2mm}\noindent\hrulefill{}
 
+\begin{minipage}{\linewidth}\noindent
+{\tiny 065.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What should be the value of \texttt{c} in the code below for the code to
+output \texttt{0\ 1\ 2\ 3\ 4}?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{10}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ c = ???;}
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{0}\NormalTok{;}
+
+\ControlFlowTok{while}\NormalTok{ ((i<b) && (i<c)) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  i++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Precisely, it should be \VERB|\DecValTok{5}|. Let's take a look at the
+code running line by line:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We declare and initialize the variables \texttt{b}, \texttt{c} and
+  \texttt{i} with the values \texttt{10}, \texttt{5} and \texttt{0}
+  respectively.
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{i} content smaller than \texttt{c}?, and both are truth
+  (\(0<10\) and \(0<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(0\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{i} content smaller than \texttt{c}?, and both are truth
+  (\(1<10\) and \(1<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(1\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{i} content smaller than \texttt{c}?, and both are truth
+  (\(2<10\) and \(2<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(2\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{i} content smaller than \texttt{c}?, and both are truth
+  (\(4<10\) and \(3<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(3\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{i} content smaller than \texttt{c}?, and both are truth
+  (\(4<10\) and \(4<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(4\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{i} content smaller than \texttt{c}?, one is false (\(5<10\)
+  and \(5<5\)).
+\item
+  We get out of the while loop and go to the next line, thus we print at
+  last a newline.
+\end{enumerate}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 066.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Describe line by line what the following code does (and its output):
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{10}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ c = }\DecValTok{5}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{0}\NormalTok{;}
+
+\ControlFlowTok{while}\NormalTok{ ((i<b) && (}\DecValTok{2}\NormalTok{*i<c)) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  i++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The steps are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We declare and initialize three \VERB|\DataTypeTok{int}| variables
+  (\texttt{b}, \texttt{c} and \texttt{i} with \texttt{10}, \texttt{7}
+  and \texttt{0} respectively).
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{2*i} content smaller than \texttt{c}?, and both are truth
+  (\(0<10\) and \(0<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(0\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{2*i} content smaller than \texttt{c}?, and both are truth
+  (\(1<10\) and \(2<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(1\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{2*i} content smaller than \texttt{c}?, and both are truth
+  (\(2<10\) and \(4<5\)).
+\item
+  We print in the screen the value of \texttt{i} (\(2\))
+\item
+  We increment the value of the variable \texttt{i}
+\item
+  We ask, is \texttt{i} content smaller than \texttt{b}?, and is
+  \texttt{2*i} content smaller than \texttt{c}?, and one is false
+  (\(3<10\) and \(6<5\)).
+\item
+  We get out of the while loop and go to the next line, thus we print at
+  last a newline.
+\end{enumerate}
+
+The complete output is:
+
+\begin{framed}
+
+\begin{verbatim}
+0 1 2 
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 067.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ imzero = }\DecValTok{0}\NormalTok{;}
+
+\ControlFlowTok{while}\NormalTok{ (imzero < }\DecValTok{4}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << imzero << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is\ldots{}:
+
+\begin{framed}
+
+\begin{verbatim}
+0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+\end{verbatim}
+
+\end{framed}
+
+an unending sequence of zeros, so, what is wrong?
+
+We forgot to add the statement \VERB|\NormalTok{imzero++}|! Without it,
+well, the variable \texttt{imzero} never changes its state/value, and we
+ask \emph{ad infinitum} if zero is smaller than four. \footnote{I
+  actually wrote faulty code like that several times in the writing of
+  this book XD}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 068.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What should be the value of \texttt{c} in the code below for the code to
+output \texttt{0\ 2\ 4\ 6\ 8}?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{7}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ c = ???;}
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{0}\NormalTok{;}
+
+\ControlFlowTok{while}\NormalTok{ ((i<b) || (i}\DecValTok{+1}\NormalTok{<c)) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  i++;}
+\NormalTok{  i++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Yep, either \texttt{c} should be either \texttt{10} or \texttt{11}.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 069.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+3%2 == 1
+4%2 == 0
+0%2 == 0
+7%2 == 1
+2%2 == 0
+\end{verbatim}
+
+\end{framed}
+
+Notice how the odd numbers all return \texttt{1}, and all even numbers
+return \texttt{0}. Why?
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 070.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ a = }\DecValTok{0}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (a<=}\DecValTok{10}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (a%}\DecValTok{2}\NormalTok{ == }\DecValTok{0}\NormalTok{) \{}
+    \BuiltInTok{std::}\NormalTok{cout << a << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  \}}
+\NormalTok{  a++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+0 2 4 6 8 10 
+\end{verbatim}
+
+\end{framed}
+
+Cool, we can skip things while we count up (or down), like --in this
+case-- odd numbers.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 071.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ a = }\DecValTok{0}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{0}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (a<=}\DecValTok{10}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (a%}\DecValTok{2}\NormalTok{ == }\DecValTok{0}\NormalTok{) \{}
+\NormalTok{    b = b + a;}
+\NormalTok{  \}}
+  \BuiltInTok{std::}\NormalTok{cout << b << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  a++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+0 0 2 2 6 6 12 12 20 20 30 
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 072.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What should we change in the code above to print only one time each
+number, i.e., what lines are needed to change or be moved (from the code
+above) to output:
+
+\begin{framed}
+
+\begin{verbatim}
+0 2 6 12 20 30 
+\end{verbatim}
+
+\end{framed}
+
+?
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Yep, we move the printing statement (line) to inside the true
+(\texttt{then}) branch inside the \texttt{if} statement:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ a = }\DecValTok{0}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ b = }\DecValTok{0}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (a<=}\DecValTok{10}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (a%}\DecValTok{2}\NormalTok{ == }\DecValTok{0}\NormalTok{) \{}
+\NormalTok{    b = b + a;}
+    \BuiltInTok{std::}\NormalTok{cout << b << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  \}}
+\NormalTok{  a++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
 \inlinetodo{ask them first exercise from project euler, and reference it}
+
+\vspace{2mm}\noindent\hrulefill{}
 
 \inlinetodo{ask them to give us the sequence of fibonacci to an arbitrary number, using
 loops and variables on some way (this is the exercise that I remember the clearest doing

@@ -1107,7 +1107,7 @@ from the outside scope.
 
 ---
 
-What is the ouput of:[^float]
+What is the output of:[^float]
 
 ~~~{.cpp layout="01-simple.cc"}
 int a = 20;
@@ -1780,7 +1780,257 @@ std::cout
 
 ---
 
+What should be the value of `c` in the code below for the code to output `0 1 2 3 4`?
+
+~~~cpp
+int b = 10;
+int c = ???;
+int i = 0;
+
+while ((i<b) && (i<c)) {
+  std::cout << i << " ";
+  i++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+~~~{.cpp .hidden layout="01-simple.cc"}
+int b = 10;
+int c = 5;
+int i = 0;
+
+while ((i<b) && (i<c)) {
+  std::cout << i << " ";
+  i++;
+}
+std::cout << std::endl;
+~~~
+
+Precisely, it should be `5`{.cpp}. Let's take a look at the code running line by line:
+
+1. We declare and initialize the variables `b`, `c` and `i` with the values `10`, `5` and `0` respectively.
+2. We ask, is `i` content smaller than `b`?, and is `i` content smaller than `c`?, and both are truth ($0<10$ and $0<5$).
+2. We print in the screen the value of `i` ($0$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `i` content smaller than `c`?, and both are truth ($1<10$ and $1<5$).
+2. We print in the screen the value of `i` ($1$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `i` content smaller than `c`?, and both are truth ($2<10$ and $2<5$).
+2. We print in the screen the value of `i` ($2$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `i` content smaller than `c`?, and both are truth ($4<10$ and $3<5$).
+2. We print in the screen the value of `i` ($3$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `i` content smaller than `c`?, and both are truth ($4<10$ and $4<5$).
+2. We print in the screen the value of `i` ($4$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `i` content smaller than `c`?, one is false ($5<10$ and $5<5$).
+2. We get out of the while loop and go to the next line, thus we print at last a newline.
+
+---
+
+Describe line by line what the following code does (and its output):
+
+~~~{.cpp layout="01-simple.cc"}
+int b = 10;
+int c = 5;
+int i = 0;
+
+while ((i<b) && (2*i<c)) {
+  std::cout << i << " ";
+  i++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+The steps are:
+
+1. We declare and initialize three `int`{.cpp} variables (`b`, `c` and `i` with `10`, `7` and `0` respectively).
+2. We ask, is `i` content smaller than `b`?, and is `2*i` content smaller than `c`?, and both are truth ($0<10$ and $0<5$).
+2. We print in the screen the value of `i` ($0$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `2*i` content smaller than `c`?, and both are truth ($1<10$ and $2<5$).
+2. We print in the screen the value of `i` ($1$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `2*i` content smaller than `c`?, and both are truth ($2<10$ and $4<5$).
+2. We print in the screen the value of `i` ($2$)
+2. We increment the value of the variable `i`
+2. We ask, is `i` content smaller than `b`?, and is `2*i` content smaller than `c`?, and one is false ($3<10$ and $6<5$).
+2. We get out of the while loop and go to the next line, thus we print at last a newline.
+
+The complete output is:
+
+~~~output
+~~~
+
+---
+
+What is the output of:
+
+~~~{.cpp .norun layout="01-simple.cc"}
+int imzero = 0;
+
+while (imzero < 4) {
+  std::cout << imzero << " ";
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+The output is...:
+
+~~~
+0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+~~~
+
+an unending sequence of zeros, so, what is wrong?
+
+We forgot to add the statement `imzero++`{.cpp}! Without it, well, the variable `imzero`
+never changes its state/value, and we ask _ad infinitum_ if zero is smaller than
+four. ^[I actually wrote faulty code like that several times in the writing of this book
+XD]
+
+---
+
+What should be the value of `c` in the code below for the code to output `0 2 4 6 8`?
+
+~~~cpp
+int b = 7;
+int c = ???;
+int i = 0;
+
+while ((i<b) || (i+1<c)) {
+  std::cout << i << " ";
+  i++;
+  i++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+Yep, either `c` should be either `10` or `11`.
+
+~~~{.cpp .hidden layout="01-simple.cc"}
+int b = 7;
+int c = 10; // it works with 11 too
+int i = 0;
+
+while ((i<b) || (i+1<c)) {
+  std::cout << i << " ";
+  i++;
+  i++;
+}
+std::cout << std::endl;
+~~~
+
+---
+
+What is the output of:
+
+~~~{.cpp .hidden layout="01-simple.cc"}
+std::cout << "3%2 == " << (3%2) << std::endl;
+std::cout << "4%2 == " << (4%2) << std::endl;
+std::cout << "0%2 == " << (0%2) << std::endl;
+std::cout << "7%2 == " << (7%2) << std::endl;
+std::cout << "2%2 == " << (2%2) << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+Notice how the odd numbers all return `1`, and all even numbers return `0`. Why?
+
+---
+
+What is the output:
+
+~~~{.cpp layout="01-simple.cc"}
+int a = 0;
+while (a<=10) {
+  if (a%2 == 0) {
+    std::cout << a << " ";
+  }
+  a++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+Cool, we can skip things while we count up (or down), like --in this case-- odd numbers.
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="01-simple.cc"}
+int a = 0;
+int b = 0;
+while (a<=10) {
+  if (a%2 == 0) {
+    b = b + a;
+  }
+  std::cout << b << " ";
+  a++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+---
+
+What should we change in the code above to print only one time each number, i.e.,
+what lines are needed to change or be moved (from the code above) to output:
+
+~~~output
+~~~
+
+?
+
+= = =
+
+Yep, we move the printing statement (line) to inside the true (`then`) branch inside the
+`if` statement:
+
+~~~{.cpp layout="01-simple.cc"}
+int a = 0;
+int b = 0;
+while (a<=10) {
+  if (a%2 == 0) {
+    b = b + a;
+    std::cout << b << " ";
+  }
+  a++;
+}
+std::cout << std::endl;
+~~~
+
+---
+
 \inlinetodo{ask them first exercise from project euler, and reference it}
+
+---
 
 \inlinetodo{ask them to give us the sequence of fibonacci to an arbitrary number, using
 loops and variables on some way (this is the exercise that I remember the clearest doing
