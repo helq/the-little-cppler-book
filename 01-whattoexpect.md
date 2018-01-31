@@ -1,4 +1,4 @@
-# What to expect from this book
+# What to expect from this book #
 
 \inlinetodo{A phrase telling them what to do with the book}
 

@@ -711,7 +711,7 @@ std::cout << "Momentum after " << time
 ~~~
 
 [^double]: `double`{.cpp} allows us to declare "real" numbers (they are actually
-  rational). ANd we can operate with them as we did with `int`{.cpp}'s
+  rational). And we can operate with them as we did with `int`{.cpp}'s
 
 = = =
 
@@ -1725,7 +1725,7 @@ std::cout
   << std::endl;
 ~~~
 
-[^parenthesismandatory]: the parthesis around the boolean expressions are necessary,
+[^parenthesismandatory]: the parenthesis around the boolean expressions are necessary,
   otherwise they would get confused with `<<`.
 
 = = =
@@ -2092,28 +2092,291 @@ std::cout << "1^2 + 2^2 + 3^2 + ... + 10^2 == "
 
 ---
 
-\inlinetodo{ask them first exercise from project euler, and reference it}
+**Exercise for home:**
+
+All the multiples of 3 or 5 smaller than 20 are 0, 3, 5, 6, 9, 10, 12, 15 and 18, and
+their sum is $78$.
+^[exercise extracted from project euler (<https://projecteuler.net> exercise 1)]
+
+What is the sum of all natural numbers smaller than 1000 which are multiples of 3 or 5.
 
 ---
 
-\inlinetodo{add one or two more exercises (question/answer), something simple using stuff
-they've seen in the past, like printing the result of a simple equation or addition (using
-ifs and other stuff)}
+Writing code is often annoying because you can get errors that you didn't expect. The
+following code supposedly should print on the screen the numbers from 10 to 1, top-bottom.
+What is wrong with the code?
+
+~~~cpp
+int i = 10;
+while (i<=1) {
+  std::cout << i << " ";
+  i--;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+Precisely, the condition `i<=1`{.cpp} is never met, all we need to do is to change
+"smaller than" for "larger than", i.e., change the condition for `i>=1`{.cpp}.
+
+~~~{.cpp .hidden layout="01-simple.cc"}
+int i = 10;
+while (i>=1) {
+  std::cout << i << " ";
+  i--;
+}
+std::cout << std::endl;
+~~~
 
 ---
 
-\inlinetodo{explain for loop, and two more q\&a exercises}
+Robert has written a weird piece of code, it has two loops! What is it doing? What is the
+output of the code below?
+
+~~~{.cpp layout="01-simple.cc"}
+int i = 0;
+while (i<=10) {
+  int j = 0;
+  while (j<=20) {
+    std::cout << "*";
+    j++;
+  }
+  std::cout << std::endl;
+  i++;
+}
+~~~
+
+= = =
+
+Nice, it runs 10 times the same code, a code that prints twenty asterisks.
+
+~~~output
+~~~
 
 ---
 
-\inlinetodo{ask them to give us the sequence of fibonacci to an arbitrary number, using
-loops and variables on some way (this is the exercise that I remember the clearest doing
-as I took the class, it was so gratifying to solve the puzzle)}
+But I'm getting bored of writing so much code with the `while`{.cpp} loop. In fact, the
+pattern whe have been using with while is so common that there is a shorter version of it,
+the `for`{.cpp}. Let's see if you can guess what the following code does:
+
+~~~{.cpp layout="01-simple.cc"}
+for (int i=0; i<=10; i++) {
+  for (int j=0; j<=20; j++) {
+    std::cout << "*";
+  }
+  std::cout << std::endl;
+}
+~~~
+
+= = =
+
+~~~output
+~~~
+
+It does the same as the previous code![^itdoesbutisnot]
+
+[^itdoesbutisnot]: It does the same, but the two pieces of code are semantically different
+  if we put them in a different context, like inside a block of code which has already a
+    variable named `i` in it.
+
+A `for`{.cpp} loop is syntactic sugar[^syntacticsugar] for a `while`{.cpp} loop, it makes
+convenienent and more explicit that we want to iterate over a value.
+
+[^syntacticsugar]: This word will appear many times here onward, and it means, roughly: a
+  way to write something in a simpler way. Similar to how we write LOL or WTF, and not
+  "that made me laught so hard, man" or "seriously, that's weird as heck!".
+
+A `for`{.cpp} loop has four different parts:
+
+~~~cpp
+for (A; B; C) {
+  D;
+}
+~~~
+
+and it's equivalent to the following `while`{.cpp} loop.
+
+~~~cpp
+{
+  A;
+  while (B) {
+    D;
+    C;
+  }
+}
+~~~
 
 ---
 
-\inlinetodo{finish block explaining c++ functions and how to use them (around ten
-exercises)}
+Write the following `while`{.cpp} loop as `for`{.cpp} loop.
+
+~~~{.cpp layout="01-simple.cc"}
+int top = 10;
+int i = 0;
+while (i<top) {
+  std::cout << i * top + 1 << " ";
+  i++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+Feels good, isn't it? Simple exercises for a while.
+
+~~~cpp
+int top = 10;
+for (int i=0; i<top; i++) {
+  std::cout << i * top + 1 << " ";
+}
+std::cout << std::endl;
+~~~
+
+---
+
+What is the output of the following code:
+
+~~~{.cpp layout="01-simple.cc"}
+for (int i=0; i<18; i++) {
+  if ((i%3!=0) && (i%7!=0)) {
+    std::cout << i << " ";
+  } else {
+    std::cout << ". ";
+  }
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+Numbers multiple of 3 or 7 are printed as dots (`.`), while all others are printed as
+themselves.
+
+---
+
+**Exercise for home:**
+
+The fibonacci sequence is a sequence defined by:
+
+$$ fib(x) =
+  \begin{cases}
+    0                  & \quad \text{if } n = 0 \\
+    1                  & \quad \text{if } n = 1 \\
+    fib(x-1)+fib(x-2)  & \quad \text{if } n > 1
+  \end{cases} $$
+
+Which gives us the sequence $0,1,1,2,3,5,8,13,21,34,55,...$. Notice how every number in
+the sequence (except the first two) is equal to the sum to both its predecesors.
+
+Write a program that prints on the screen the first 20 fibonacci numbers using loops
+(either `while`{.cpp} or `for`{.cpp}).
+
+<!--
+   -Note: this exercise is one of the things that I remember the most from 7 years ago. The
+   -professor left us this as an exercise for home (or we couldn't do it in class, I don't
+   -remember) and I went out of class wondering how to solve it, I stopped in the middle of
+   -my walk back to the bus way home and sat down to write the idea I had in mind, it took me
+   -a long time to write, but I was so damn proud of myself when I solved the puzzle, so much
+   -that to this date I still remember that day (I hope that it is true anyway, the memory
+   -could have changed so much over the course of all these years, but anyway it's an
+   -encouraging tale I have from that time that I think I should try to make others brains
+   -explode in the same way mine did)
+   -->
+
+---
+
+What does the following code does?
+
+~~~{.cpp layout="01-simple.cc"}
+double acction   = 9.8; // m/s^2 acceleration
+double mass      = 3;   // kg    mass
+
+double initial_v = 10;  // m/s   ini. velocity
+double time      = 2.3; // s     time passed
+
+double final_v = initial_v + acction * time;
+double momentum = mass * final_v;
+std::cout << "Momentum after " << time
+          << "s is: " << momentum << "kg*m/s"
+          << std::endl;
+
+time = 4.2;
+final_v = initial_v + acction * time;
+momentum = mass * final_v;
+std::cout << "Momentum after " << time
+          << "s is: " << momentum << "kg*m/s"
+          << std::endl;
+
+time = 9;
+final_v = initial_v + acction * time;
+momentum = mass * final_v;
+std::cout << "Momentum after " << time
+          << "s is: " << momentum << "kg*m/s"
+          << std::endl;
+~~~
+
+= = =
+
+It prints the result of applying the same formula to different values. Its output is:
+
+~~~output
+~~~
+
+You see all that repeated code! Wouldn't it be cool if we could just write that once and
+use it many times?
+
+---
+
+Introducing **functions**. What do you think the following code will do?
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+void momentum(double initial_v, double time) {
+
+  double acction   = 9.8; // m/s^2 acc
+  double mass      = 3;   // kg    mass
+
+  double final_v = initial_v + acction * time;
+  double momentum = mass * final_v;
+  std::cout << "Momentum after " << time
+            << "s is: " << momentum << "kg*m/s"
+            << std::endl;
+}
+
+int main() {
+  momentum(10, 2.3);
+  momentum(10, 4.2);
+  momentum(10, 9);
+
+  return 0;
+}
+~~~
+
+= = =
+
+Its output is the same as the code above, but we have eliminated all the repeated code.
+
+~~~output
+~~~
+
+`momentum` is called a _function_ (or procedure in old people talk terms), and it consists
+in a piece of code that can be run by calling it with the syntax `momentum(num1, num2)`
+(where `num1` and `num2` are either numbers or expressions that evaluate to numbers
+(`double`)).
+
+Functions need to be defined outside `main`!
+
+---
+
+\inlinetodo{Add two exercises of functions with void as return, and 6 more exercises with
+returns of many classes, mainly used to make computation simpler.}
 
 ---
 

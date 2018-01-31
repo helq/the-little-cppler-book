@@ -1408,7 +1408,7 @@ compilation error and ask another to find it and correct it}
 \begin{minipage}[t]{.485\linewidth}
 
 What is the output of:\footnote{\VERB|\DataTypeTok{double}| allows us to
-  declare ``real'' numbers (they are actually rational). ANd we can
+  declare ``real'' numbers (they are actually rational). And we can
   operate with them as we did with \VERB|\DataTypeTok{int}|'s}
 
 \begin{framed}
@@ -3246,7 +3246,7 @@ not boolean! and don't use non-boolean operations on boolean variables!
 \begin{minipage}[t]{.485\linewidth}
 
 Let's take a look at the \emph{truth table} for
-\VERB|\NormalTok{&&}|:\footnote{the parthesis around the boolean
+\VERB|\NormalTok{&&}|:\footnote{the parenthesis around the boolean
   expressions are necessary, otherwise they would get confused with
   \texttt{\textless{}\textless{}}.}
 
@@ -3921,28 +3921,454 @@ The full code and its output:
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\inlinetodo{ask them first exercise from project euler, and reference it}
+\textbf{Exercise for home:}
+
+All the multiples of 3 or 5 smaller than 20 are 0, 3, 5, 6, 9, 10, 12,
+15 and 18, and their sum is \(78\). \footnote{exercise extracted from
+  project euler (\url{https://projecteuler.net} exercise 1)}
+
+What is the sum of all natural numbers smaller than 1000 which are
+multiples of 3 or 5.
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\inlinetodo{add one or two more exercises (question/answer), something simple using stuff
-they've seen in the past, like printing the result of a simple equation or addition (using
-ifs and other stuff)}
+\begin{minipage}{\linewidth}\noindent
+{\tiny 075.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Writing code is often annoying because you can get errors that you
+didn't expect. The following code supposedly should print on the screen
+the numbers from 10 to 1, top-bottom. What is wrong with the code?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{10}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<=}\DecValTok{1}\NormalTok{) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  i--;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Precisely, the condition \VERB|\NormalTok{i<=}\DecValTok{1}| is never
+met, all we need to do is to change ``smaller than'' for ``larger
+than'', i.e., change the condition for
+\VERB|\NormalTok{i>=}\DecValTok{1}|.
+
+\end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\inlinetodo{explain for loop, and two more q\&a exercises}
+\begin{minipage}{\linewidth}\noindent
+{\tiny 076.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Robert has written a weird piece of code, it has two loops! What is it
+doing? What is the output of the code below?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{0}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<=}\DecValTok{10}\NormalTok{) \{}
+  \DataTypeTok{int}\NormalTok{ j = }\DecValTok{0}\NormalTok{;}
+  \ControlFlowTok{while}\NormalTok{ (j<=}\DecValTok{20}\NormalTok{) \{}
+    \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"*"}\NormalTok{;}
+\NormalTok{    j++;}
+\NormalTok{  \}}
+  \BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  i++;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Nice, it runs 10 times the same code, a code that prints twenty
+asterisks.
+
+\begin{framed}
+
+\begin{verbatim}
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+\end{verbatim}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\inlinetodo{ask them to give us the sequence of fibonacci to an arbitrary number, using
-loops and variables on some way (this is the exercise that I remember the clearest doing
-as I took the class, it was so gratifying to solve the puzzle)}
+\begin{minipage}{\linewidth}\noindent
+{\tiny 077.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+But I'm getting bored of writing so much code with the
+\VERB|\ControlFlowTok{while}| loop. In fact, the pattern whe have been
+using with while is so common that there is a shorter version of it, the
+\VERB|\ControlFlowTok{for}|. Let's see if you can guess what the
+following code does:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<=}\DecValTok{10}\NormalTok{; i++) \{}
+  \ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{int}\NormalTok{ j=}\DecValTok{0}\NormalTok{; j<=}\DecValTok{20}\NormalTok{; j++) \{}
+    \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"*"}\NormalTok{;}
+\NormalTok{  \}}
+  \BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+\begin{framed}
+
+\begin{verbatim}
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+*********************
+\end{verbatim}
+
+\end{framed}
+
+It does the same as the previous code!\footnote{It does the same, but
+  the two pieces of code are semantically different if we put them in a
+  different context, like inside a block of code which has already a
+  variable named \texttt{i} in it.}
+
+A \VERB|\ControlFlowTok{for}| loop is syntactic sugar\footnote{This word
+  will appear many times here onward, and it means, roughly: a way to
+  write something in a simpler way. Similar to how we write LOL or WTF,
+  and not ``that made me laught so hard, man'' or ``seriously, that's
+  weird as heck!''.} for a \VERB|\ControlFlowTok{while}| loop, it makes
+convenienent and more explicit that we want to iterate over a value.
+
+A \VERB|\ControlFlowTok{for}| loop has four different parts:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (A; B; C) \{}
+\NormalTok{  D;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+and it's equivalent to the following \VERB|\ControlFlowTok{while}| loop.
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\{}
+\NormalTok{  A;}
+  \ControlFlowTok{while}\NormalTok{ (B) \{}
+\NormalTok{    D;}
+\NormalTok{    C;}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\inlinetodo{finish block explaining c++ functions and how to use them (around ten
-exercises)}
+\begin{minipage}{\linewidth}\noindent
+{\tiny 078.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Write the following \VERB|\ControlFlowTok{while}| loop as
+\VERB|\ControlFlowTok{for}| loop.
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ top = }\DecValTok{10}\NormalTok{;}
+\DataTypeTok{int}\NormalTok{ i = }\DecValTok{0}\NormalTok{;}
+\ControlFlowTok{while}\NormalTok{ (i<top) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i * top + }\DecValTok{1}\NormalTok{ << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  i++;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Feels good, isn't it? Simple exercises for a while.
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ top = }\DecValTok{10}\NormalTok{;}
+\ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<top; i++) \{}
+  \BuiltInTok{std::}\NormalTok{cout << i * top + }\DecValTok{1}\NormalTok{ << }\StringTok{" "}\NormalTok{;}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 079.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What is the output of the following code:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{0}\NormalTok{; i<}\DecValTok{18}\NormalTok{; i++) \{}
+  \ControlFlowTok{if}\NormalTok{ ((i%}\DecValTok{3}\NormalTok{!=}\DecValTok{0}\NormalTok{) && (i%}\DecValTok{7}\NormalTok{!=}\DecValTok{0}\NormalTok{)) \{}
+    \BuiltInTok{std::}\NormalTok{cout << i << }\StringTok{" "}\NormalTok{;}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \BuiltInTok{std::}\NormalTok{cout << }\StringTok{". "}\NormalTok{;}
+\NormalTok{  \}}
+\NormalTok{\}}
+\BuiltInTok{std::}\NormalTok{cout << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is:
+
+\begin{framed}
+
+\begin{verbatim}
+. 1 2 . 4 5 . . 8 . 10 11 . 13 . . 16 17 
+\end{verbatim}
+
+\end{framed}
+
+Numbers multiple of 3 or 7 are printed as dots (\texttt{.}), while all
+others are printed as themselves.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\textbf{Exercise for home:}
+
+The fibonacci sequence is a sequence defined by:
+
+\[ fib(x) =
+  \begin{cases}
+    0                  & \quad \text{if } n = 0 \\
+    1                  & \quad \text{if } n = 1 \\
+    fib(x-1)+fib(x-2)  & \quad \text{if } n > 1
+  \end{cases} \]
+
+Which gives us the sequence \(0,1,1,2,3,5,8,13,21,34,55,...\). Notice
+how every number in the sequence (except the first two) is equal to the
+sum to both its predecesors.
+
+Write a program that prints on the screen the first 20 fibonacci numbers
+using loops (either \VERB|\ControlFlowTok{while}| or
+\VERB|\ControlFlowTok{for}|).
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 080.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What does the following code does?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{double}\NormalTok{ acction   = }\FloatTok{9.8}\NormalTok{; }\CommentTok{// m/s^2 acceleration}
+\DataTypeTok{double}\NormalTok{ mass      = }\DecValTok{3}\NormalTok{;   }\CommentTok{// kg    mass}
+
+\DataTypeTok{double}\NormalTok{ initial_v = }\DecValTok{10}\NormalTok{;  }\CommentTok{// m/s   ini. velocity}
+\DataTypeTok{double}\NormalTok{ time      = }\FloatTok{2.3}\NormalTok{; }\CommentTok{// s     time passed}
+
+\DataTypeTok{double}\NormalTok{ final_v = initial_v + acction * time;}
+\DataTypeTok{double}\NormalTok{ momentum = mass * final_v;}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Momentum after "}\NormalTok{ << time}
+\NormalTok{          << }\StringTok{"s is: "}\NormalTok{ << momentum << }\StringTok{"kg*m/s"}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+
+\NormalTok{time = }\FloatTok{4.2}\NormalTok{;}
+\NormalTok{final_v = initial_v + acction * time;}
+\NormalTok{momentum = mass * final_v;}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Momentum after "}\NormalTok{ << time}
+\NormalTok{          << }\StringTok{"s is: "}\NormalTok{ << momentum << }\StringTok{"kg*m/s"}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+
+\NormalTok{time = }\DecValTok{9}\NormalTok{;}
+\NormalTok{final_v = initial_v + acction * time;}
+\NormalTok{momentum = mass * final_v;}
+\BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Momentum after "}\NormalTok{ << time}
+\NormalTok{          << }\StringTok{"s is: "}\NormalTok{ << momentum << }\StringTok{"kg*m/s"}
+\NormalTok{          << }\BuiltInTok{std::}\NormalTok{endl;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+It prints the result of applying the same formula to different values.
+Its output is:
+
+\begin{framed}
+
+\begin{verbatim}
+Momentum after 2.3s is: 97.62kg*m/s
+Momentum after 4.2s is: 153.48kg*m/s
+Momentum after 9s is: 294.6kg*m/s
+\end{verbatim}
+
+\end{framed}
+
+You see all that repeated code! Wouldn't it be cool if we could just
+write that once and use it many times?
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 081.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Introducing \textbf{functions}. What do you think the following code
+will do?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{void}\NormalTok{ momentum(}\DataTypeTok{double}\NormalTok{ initial_v, }\DataTypeTok{double}\NormalTok{ time) \{}
+
+  \DataTypeTok{double}\NormalTok{ acction   = }\FloatTok{9.8}\NormalTok{; }\CommentTok{// m/s^2 acc}
+  \DataTypeTok{double}\NormalTok{ mass      = }\DecValTok{3}\NormalTok{;   }\CommentTok{// kg    mass}
+
+  \DataTypeTok{double}\NormalTok{ final_v = initial_v + acction * time;}
+  \DataTypeTok{double}\NormalTok{ momentum = mass * final_v;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Momentum after "}\NormalTok{ << time}
+\NormalTok{            << }\StringTok{"s is: "}\NormalTok{ << momentum << }\StringTok{"kg*m/s"}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+\NormalTok{  momentum(}\DecValTok{10}\NormalTok{, }\FloatTok{2.3}\NormalTok{);}
+\NormalTok{  momentum(}\DecValTok{10}\NormalTok{, }\FloatTok{4.2}\NormalTok{);}
+\NormalTok{  momentum(}\DecValTok{10}\NormalTok{, }\DecValTok{9}\NormalTok{);}
+
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Its output is the same as the code above, but we have eliminated all the
+repeated code.
+
+\begin{framed}
+
+\begin{verbatim}
+Momentum after 2.3s is: 97.62kg*m/s
+Momentum after 4.2s is: 153.48kg*m/s
+Momentum after 9s is: 294.6kg*m/s
+\end{verbatim}
+
+\end{framed}
+
+\texttt{momentum} is called a \emph{function} (or procedure in old
+people talk terms), and it consists in a piece of code that can be run
+by calling it with the syntax \texttt{momentum(num1,\ num2)} (where
+\texttt{num1} and \texttt{num2} are either numbers or expressions that
+evaluate to numbers (\texttt{double})).
+
+Functions need to be defined outside \texttt{main}!
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\inlinetodo{Add two exercises of functions with void as return, and 6 more exercises with
+returns of many classes, mainly used to make computation simpler.}
 
 \vspace{2mm}\noindent\hrulefill{}
 
@@ -3950,32 +4376,21 @@ exercises)}
 \chapter{Block 2: More space to play
 with}\label{block-2-more-space-to-play-with}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  recursive functions, input, streams, vector, strings (optional)
-\end{enumerate}
-
-\begin{itemize}
-\item
-  introduce the magic of recursive functions
-\item
-  show examples of input from the user
-\item
-  explain what a stream is and their hierarchy, lots of examples reading
-  and writing to files
-\item
-  show problems of traditional function declarations, and explain how to
-  a declare/define a function using template
-\item
-\end{itemize}
-
 \hypertarget{block-3-deprecated-stuff-that-you-better-know-cos-everybody-uses-it}{%
-\chapter{\texorpdfstring{Block 3: \textbf{deprecated} stuff that you
+\chapter{\texorpdfstring{Block 3: \emph{deprecated} stuff that you
 better know cos everybody uses
 it}{Block 3: deprecated stuff that you better know cos everybody uses it}}\label{block-3-deprecated-stuff-that-you-better-know-cos-everybody-uses-it}}
+
+So, for historical reasons there are hundreds of things we do often that
+don't make any sense but we do them because of tradition, because old
+people refuse or don't know to let go.
+
+This chapter discusses many features of the C++ language that come from
+its legacy with C. But, unlike other human traditions the things you
+will learn here can help you understand why the code you write behaves
+as it does, and you may need it because not only many people uses this
+features but many features are just so central to c++ and computers that
+you better understand them.
 
 \hypertarget{further-reading}{%
 \chapter{Further reading}\label{further-reading}}
