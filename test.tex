@@ -403,7 +403,7 @@ what do you think it will happen?
 \hfill
 \begin{minipage}[t]{.485\linewidth}
 
-Well, it doesn't compiles! We get an error similar to:
+Well, it doesn't compile! We get an error similar to:
 
 \begin{framed}
 
@@ -4231,7 +4231,7 @@ sum to both its predecesors.
 
 Write a program that prints on the screen the first 20 fibonacci numbers
 using loops (either \VERB|\ControlFlowTok{while}| or
-\VERB|\ControlFlowTok{for}|).
+\VERB|\ControlFlowTok{for}| loops).
 
 \vspace{2mm}\noindent\hrulefill{}
 
@@ -4360,15 +4360,146 @@ by calling it with the syntax \texttt{momentum(num1,\ num2)} (where
 \texttt{num1} and \texttt{num2} are either numbers or expressions that
 evaluate to numbers (\texttt{double})).
 
-Functions need to be defined outside \texttt{main}!
+Functions need to be defined outside \texttt{main} because \texttt{main}
+itself is a function! And functions cannot be defined\footnote{actually,
+  it is possible to define as many functions as one may like inside
+  another function, but requires object oriented stuff to understand.
+  For more info see ``lambda functions''.} inside a function.
 
 \end{minipage}
 \end{minipage}
 
 \vspace{2mm}\noindent\hrulefill{}
 
-\inlinetodo{Add two exercises of functions with void as return, and 6 more exercises with
-returns of many classes, mainly used to make computation simpler.}
+\begin{minipage}{\linewidth}\noindent
+{\tiny 082.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+What should we be modify in the function \texttt{show\_addition} for it
+to output the right answer?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{void}\NormalTok{ show_addition(}\DataTypeTok{int}\NormalTok{ a, }\DataTypeTok{int}\NormalTok{ b) \{}
+  \BuiltInTok{std::}\NormalTok{cout << a << }\StringTok{" + "}\NormalTok{ << b}
+\NormalTok{            << }\StringTok{" == "}\NormalTok{ << a*b;}
+\NormalTok{\}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{int}\NormalTok{ i=}\DecValTok{4}\NormalTok{; i<=}\DecValTok{7}\NormalTok{; i++) \{}
+\NormalTok{    show_addition(i,}\DecValTok{3}\NormalTok{);}
+\NormalTok{  \}}
+
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+Yeah, we are using the wrong operation, it shouldn't be \texttt{*}, it
+should be \texttt{+}. Also, we didn't add a newline after each new
+statement. The new function should be written as:
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ show_addition(}\DataTypeTok{int}\NormalTok{ a, }\DataTypeTok{int}\NormalTok{ b) \{}
+  \BuiltInTok{std::}\NormalTok{cout << a << }\StringTok{" + "}\NormalTok{ << b}
+\NormalTok{            << }\StringTok{" == "}\NormalTok{ << a+b}
+\NormalTok{            << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+Notice how we do NOT use in \texttt{show\_addition} the variable names
+we declared in \texttt{main}. Remember the scope thing? Well, each
+function has its own variables and they are invisible to all the other.
+When you call/run/invoque a function, you are copying the values of the
+variables in your scope to a newly created scope for the function.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\begin{minipage}{\linewidth}\noindent
+{\tiny 083.}\\
+\begin{minipage}[t]{.485\linewidth}
+
+Now, what will this code output?
+
+\begin{framed}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{void}\NormalTok{ add_two_nums(}\DataTypeTok{int}\NormalTok{ a, }\DataTypeTok{int}\NormalTok{ b, }\DataTypeTok{int}\NormalTok{ c) \{}
+\NormalTok{  c = b + a;}
+
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"a == "}\NormalTok{ << a << }\BuiltInTok{std::}\NormalTok{endl;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"b == "}\NormalTok{ << b << }\BuiltInTok{std::}\NormalTok{endl;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"c == "}\NormalTok{ << c << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \DataTypeTok{int}\NormalTok{ first  = }\DecValTok{4}\NormalTok{;}
+  \DataTypeTok{int}\NormalTok{ second = }\DecValTok{3}\NormalTok{;}
+  \DataTypeTok{int}\NormalTok{ total  = }\DecValTok{-2}\NormalTok{;}
+
+\NormalTok{  add_two_nums(first, second, total);}
+
+  \BuiltInTok{std::}\NormalTok{cout}
+\NormalTok{    << }\StringTok{"total == "}\NormalTok{ << total << }\BuiltInTok{std::}\NormalTok{endl;}
+
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{framed}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.485\linewidth}
+
+The output is
+
+\begin{framed}
+
+\begin{verbatim}
+a == 4
+b == 3
+c == 7
+total == -2
+\end{verbatim}
+
+\end{framed}
+
+weird, isn't it? No, it is not weird. When we call/run the function
+\texttt{add\_two\_nums} we copy the variables values to newly created
+variables \texttt{a}, \texttt{b} and \texttt{c}, which are only visible
+to the function \texttt{add\_two\_nums} and not to \texttt{main}.
+
+\end{minipage}
+\end{minipage}
+
+\vspace{2mm}\noindent\hrulefill{}
+
+\inlinetodo{add 6 more exercises with returns of many classes, mainly used to make
+computation simpler, like making complex computations and returning values.}
 
 \vspace{2mm}\noindent\hrulefill{}
 

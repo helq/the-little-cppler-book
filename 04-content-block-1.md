@@ -79,7 +79,7 @@ int main()
 
 = = =
 
-Well, it doesn't compiles! We get an error similar to:
+Well, it doesn't compile! We get an error similar to:
 
 ~~~
 :7:13: error: expected expression
@@ -2275,7 +2275,7 @@ Which gives us the sequence $0,1,1,2,3,5,8,13,21,34,55,...$. Notice how every nu
 the sequence (except the first two) is equal to the sum to both its predecesors.
 
 Write a program that prints on the screen the first 20 fibonacci numbers using loops
-(either `while`{.cpp} or `for`{.cpp}).
+(either `while`{.cpp} or `for`{.cpp} loops).
 
 <!--
    -Note: this exercise is one of the things that I remember the most from 7 years ago. The
@@ -2371,12 +2371,96 @@ in a piece of code that can be run by calling it with the syntax `momentum(num1,
 (where `num1` and `num2` are either numbers or expressions that evaluate to numbers
 (`double`)).
 
-Functions need to be defined outside `main`!
+Functions need to be defined outside `main` because `main` itself is a function! And
+functions cannot be defined[^yeahlambda] inside a function.
+
+[^yeahlambda]: actually, it is possible to define as many functions as one may like inside
+  another function, but requires object oriented stuff to understand. For more info see
+  "lambda functions".
 
 ---
 
-\inlinetodo{Add two exercises of functions with void as return, and 6 more exercises with
-returns of many classes, mainly used to make computation simpler.}
+What should we be modify in the function `show_addition` for it to output the right answer?
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+void show_addition(int a, int b) {
+  std::cout << a << " + " << b
+            << " == " << a*b;
+}
+
+int main() {
+  for (int i=4; i<=7; i++) {
+    show_addition(i,3);
+  }
+
+  return 0;
+}
+~~~
+
+= = =
+
+Yeah, we are using the wrong operation, it shouldn't be `*`, it should be `+`. Also, we
+didn't add a newline after each new statement. The new function should be written as:
+
+~~~cpp
+void show_addition(int a, int b) {
+  std::cout << a << " + " << b
+            << " == " << a+b
+            << std::endl;
+}
+~~~
+
+Notice how we do NOT use in `show_addition` the variable names we declared in `main`.
+Remember the scope thing? Well, each function has its own variables and they are invisible
+to all the other. When you call/run/invoque a function, you are copying the values of the
+variables in your scope to a newly created scope for the function.
+
+---
+
+Now, what will this code output?
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+void add_two_nums(int a, int b, int c) {
+  c = b + a;
+
+  std::cout << "a == " << a << std::endl;
+  std::cout << "b == " << b << std::endl;
+  std::cout << "c == " << c << std::endl;
+}
+
+int main() {
+  int first  = 4;
+  int second = 3;
+  int total  = -2;
+
+  add_two_nums(first, second, total);
+
+  std::cout
+    << "total == " << total << std::endl;
+
+  return 0;
+}
+~~~
+
+= = =
+
+The output is
+
+~~~output
+~~~
+
+weird, isn't it? No, it is not weird. When we call/run the function `add_two_nums` we copy
+the variables values to newly created variables `a`, `b` and `c`, which are only visible
+to the function `add_two_nums` and not to `main`.
+
+---
+
+\inlinetodo{add 6 more exercises with returns of many classes, mainly used to make
+computation simpler, like making complex computations and returning values.}
 
 ---
 

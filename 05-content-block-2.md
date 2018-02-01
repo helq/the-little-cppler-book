@@ -4,7 +4,8 @@
    -2. recursive functions, input, streams, vector, strings (optional)
    -  * introduce the magic of recursive functions
    -  * show examples of input from the user
-   -  * explain what a stream is and their hierarchy, lots of examples reading and writing
+   -  * show how variables passed as value don't change while passed by reference do
+   -  * "explain" what a stream is and their hierarchy, lots of examples reading and writing
    -    to files
    -  * show problems of traditional function declarations, and explain how to
    -    declare/define a function using `template`
