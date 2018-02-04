@@ -1,4 +1,4 @@
--- app/loadcodeinoutput.hs
+-- maker-src/loadcodeinoutput.hs
 {-# LANGUAGE LambdaCase #-}
 
 import Text.Pandoc (Block(CodeBlock,RawBlock,Div,Null), Format(Format))

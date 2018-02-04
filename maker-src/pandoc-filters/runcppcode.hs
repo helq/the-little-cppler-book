@@ -1,4 +1,4 @@
--- app/runcppcode.hs
+-- maker-src/runcppcode.hs
 {-# LANGUAGE LambdaCase #-}
 
 import Text.Pandoc.JSON (toJSONFilter)
