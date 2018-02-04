@@ -39,18 +39,18 @@ executables:
     main:            tlcppler.hs
     source-dirs:     maker-src/pandoc-filters
 
-  runcppcode-exe:
-    main:            runcppcode.hs
-    source-dirs:     maker-src/pandoc-filters
-    dependencies:
-      - directory
-      - filepath
-      - shake
-
   loadcodeinoutput-exe:
     main:            loadcodeinoutput.hs
     source-dirs:     maker-src/pandoc-filters
     dependencies:
       - directory
       - filepath
+
+  build-pdf-exe:
+    main:            build-pdf.hs
+    source-dirs:     maker-src
+    dependencies:
       - shake
+      - text
+      - containers
+#      - either

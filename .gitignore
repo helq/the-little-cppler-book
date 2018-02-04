@@ -4,3 +4,4 @@ code/*.bin
 code/*.bin.exe
 the-little-cppler-book.cabal
 .shake/
+_build/

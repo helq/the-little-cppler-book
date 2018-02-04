@@ -1,4 +1,5 @@
--- maker-src/thelittlecppler.hs
+-- maker-src/pandoc-filters/tlcppler.hs
+
 import Text.Pandoc (Block(HorizontalRule,OrderedList,BulletList,DefinitionList,Div,Para,CodeBlock,Header,RawBlock,Null),
                     Format(Format), Pandoc(Pandoc), Inline(Str,Space))
 import Text.Pandoc.JSON (toJSONFilter)
