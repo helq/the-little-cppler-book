@@ -1,5 +1,8 @@
 ---
 title: "The Little CPPler"
+subtitle: v0.1.0
+
+author: Elkin Cruz
 
 documentclass: book
 
@@ -39,11 +42,12 @@ geometry:
 
 \listoftodos
 
-\inlinetodo{idea: at some point in the code explain why is the book written in English and
-no any other language}
-
 \inlinetodo{idea: have a couple of exercises that could only be done in groups, and make
 students do an activity at the start and middle of the class with totally random people to
 solve those activities (talleres)}
+
+\inlinetodo{add version of document in a subtitle}
+
+\inlinetodo{Add a space before footnotes}
 
 <!-- vim:set filetype=markdown.pandoc : -->

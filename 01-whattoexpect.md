@@ -1,11 +1,18 @@
 # What to expect from this book #
 
-\inlinetodo{A phrase telling them what to do with the book}
+This is NOT a reference book, this is a teaching/practicing book. It is for anybody who is
+willing to learn C++ by practicing. This book is also an unusual book. It has taken
+inspiration (copied) from a great teaching book for the Scheme programming language: "The
+little schemer".
 
-This is NOT a reference book, this is a teaching book, it is for anybody to acquire
-experience writing code in C++.
+There is a saying in, uh, somewhere in instructional courses, it goes like: Learn like you
+work, i.e., you should learn in the same way that you will at some point work. For
+example, if you wanna be a chef then cook like a chef, not just learn the recipes! Or if
+you are an student of Engineering, learn to solve problems in your area like you will do
+in your work, not just apply the equations for the exercise.
 
-Learn like you do, don't learn just to accumulate. Learning is rewarding, but teach/apply
-what you learn, from day one.
+Learning is rewarding but it is hard work! If you don't feel that it takes effort to learn,
+(you can recall everything) then you are not learning, you are just applying (which is not
+bad, it is necessary, but it's NOT learning).
 
 <!-- vim:set filetype=markdown.pandoc : -->

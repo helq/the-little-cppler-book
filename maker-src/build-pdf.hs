@@ -35,7 +35,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
     "cpp_book.pdf" %> \out -> do
         let finaljsonpath = "_build//cpp_book.json"
             tex_header = "00-header.tex"
-        need [finaljsonpath]
+        need [tex_header, finaljsonpath]
         cmd_ "stack exec -- pandoc"
                            "-f json"
                            "--standalone"
@@ -54,7 +54,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
 
         -- Looking for all .out files required to be put inside the json (loadcodeinoutput-exe does that, it inputs all code that has type `output`)
         let -- all cpps must be saved
-            outs_cpp = fmap fileNameCpp $ output_cpps
+            outs_cpp = fileNameCpp <$> output_cpps
             -- only the cpp without `norun` should be executed
             outs_bin = fmap (\cpp -> fileNameCpp cpp -<.> "out") . filter (not . doNotRun . optionsCpp) $ output_cpps
         --liftIO $ print outs_bin
@@ -135,7 +135,7 @@ extractCpps json = do
 
   where
     extractCppCodeBlock :: Block -> [Cpp]
-    extractCppCodeBlock (CodeBlock (_, classes, namevals) contents) = 
+    extractCppCodeBlock (CodeBlock (_, classes, namevals) contents) =
       case lookup "layout" namevals of
       Just layout -> [Cpp cppFile layout' contents options]
         -- improve num_id algorithm when a no `numid` is available (eg, hash of contents)
