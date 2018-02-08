@@ -36,15 +36,14 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
         let finaljsonpath = "_build//cpp_book.json"
             tex_header = "00-header.tex"
         need [tex_header, finaljsonpath]
-        cmd_ "stack exec -- pandoc"
-                           "-f json"
-                           "--standalone"
-                           "--pdf-engine xelatex"
-                           "-H" tex_header
-                           finaljsonpath
-                           --"-t latex"
-                           --"--filter runcppcode.sh"
-                           "-o" [out]
+        cmd_ "pandoc" "-f json"
+                      "--standalone"
+                      "--pdf-engine xelatex"
+                      "-H" tex_header
+                      finaljsonpath
+                      --"-t latex"
+                      --"--filter runcppcode.sh"
+                      "-o" [out]
 
     "_build//cpp_book.json" %> \out -> do
         let no_output = "_build//cpp_book-no-output.json"
@@ -60,8 +59,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
         --liftIO $ print outs_bin
         need $ outs_cpp <> outs_bin
 
-        Stdout finaljson <- cmd (FileStdin no_output)
-                            "stack exec -- loadcodeinoutput-exe . latex"
+        Stdout finaljson <- cmd (FileStdin no_output) "loadcodeinoutput-exe . latex"
         writeFile' out finaljson
 
     "_build//cpp_book-no-output.json" %> \_ -> do
@@ -71,9 +69,9 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
 
         -- Creating json from markdown files with the special formating of the little ccpler
         need input_files
-        Stdout pre <- cmd "stack exec -- pandoc -t json -o -" input_files
+        Stdout pre <- cmd "pandoc -t json -o -" input_files
         Stdout formated <-
-            cmd (Stdin pre) "stack exec -- tlcppler-exe latex" -- important to add "latex"
+            cmd (Stdin pre) "tlcppler-exe latex" -- important to add "latex"
         writeFile' no_output formated
 
     ("code" </> "*.cc") %> \out -> do
@@ -113,18 +111,18 @@ getCppsOrThrow outfile =
 
 
 data Cpp = Cpp
-  { fileNameCpp :: FilePath,
-    layoutCpp   :: FilePath,
-    contentCpp  :: String,
-    optionsCpp  :: OptionsCpp
+  { fileNameCpp :: FilePath
+  , layoutCpp   :: FilePath
+  , contentCpp  :: String
+  , optionsCpp  :: OptionsCpp
     --classesCpp  :: [String],
     --namevalsCpp :: [(String,String)]
   }
   deriving (Show, Read)
 
 data OptionsCpp = OptionsCpp
-  { doNotRun :: Bool,
-    hidden   :: Bool
+  { doNotRun :: Bool
+  , hidden   :: Bool
   }
   deriving (Show, Read)
 

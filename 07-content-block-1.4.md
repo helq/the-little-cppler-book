@@ -4,7 +4,7 @@
 
 What is the output of:
 
-~~~{.cpp .hidden layout="01-simple.cc"}
+~~~{.cpp layout="01-simple.cc"}
 std::cout << "3%2 == " << (3%2) << std::endl;
 std::cout << "4%2 == " << (4%2) << std::endl;
 std::cout << "0%2 == " << (0%2) << std::endl;
@@ -23,7 +23,7 @@ Notice how the odd numbers all return `1`, and all even numbers return `0`. Why?
 
 ---
 
-What is the output:
+What is the output of:
 
 ~~~{.cpp layout="01-simple.cc"}
 int a = 0;
@@ -71,8 +71,8 @@ The output is:
 
 ---
 
-What should we change in the code above to print only one time each number, i.e.,
-what lines are needed to change or be moved (from the code above) to output:
+What should we change in the code above to print each number one time only?, i.e.,
+what lines are needed to change or be moved (from the code above) to output this:
 
 ~~~output
 ~~~
@@ -102,8 +102,8 @@ std::cout << std::endl;
 Say now, we want something simple, like knowing what is $1+2+3+ \cdots +10$ equal to.
 There are many ways to do this, for example:[^manyways]
 
-[^manyways]: we may calculate it using the equation $\frac{10+11}{2}$, thus we could write
-  `int sum = (10+11)/2`{.cpp}, but we are going to ignore that and try to use what we've
+[^manyways]: we may calculate it using the equation $\frac{10*11}{2}$, thus we could write
+  `int sum = (10*11)/2`{.cpp}, but we are going to ignore that and try to use what we've
   been discussing to date to solve this problem.
 
 ~~~.cpp
@@ -112,7 +112,7 @@ std::cout << "1+2+3+...+10 == " << sum
           << std::endl;
 ~~~
 
-But, could there be a way to do the same using a `while`{.cpp} loop?
+But, could we code it using a `while`{.cpp} loop?
 
 = = =
 
