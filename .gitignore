@@ -1,5 +1,6 @@
 .stack-work/
 code/*.out
+code/*.flags
 code/*.bin
 code/*.bin.exe
 the-little-cppler-book.cabal

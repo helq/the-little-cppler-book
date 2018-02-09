@@ -2,9 +2,9 @@
 {-# LANGUAGE LambdaCase #-}
 
 import Development.Shake (shakeOptions, shakeArgs, shakeFiles, shakeThreads,
-                          need, readFile', (%>), ShakeException(ShakeException),
-                          writeFileChanged, writeFile', getDirectoryFiles,
-                          newCache, phony, putNormal, removeFilesAfter, want)
+                          need, readFile', (%>), writeFileChanged, writeFile',
+                          getDirectoryFiles, newCache, phony, putNormal,
+                          removeFilesAfter, want)
 import Development.Shake.Command (Stdout(Stdout), CmdOption(Stdin, FileStdin),
                                   cmd, cmd_)
 import Development.Shake.FilePath ((</>), (-<.>), (<.>), exe)
@@ -12,7 +12,6 @@ import Development.Shake.FilePath ((</>), (-<.>), (<.>), exe)
 import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
 --import Data.Either.Combinators (fromRight)
-import Control.Exception.Base (throw, toException, ErrorCall(ErrorCall))
 import Text.Pandoc (readJSON, def, Block(CodeBlock))
 import Text.Pandoc.Error (PandocError)
 import Text.Pandoc.Walk (query)
@@ -30,7 +29,18 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
     -- this cache is used to read "_build//cpp_book-no-output.json" only once
     cachedReadCpps <- newCache $ \file -> do
         content <- readFile' file
-        pure . getCppsOrThrow "code//.*" $ extractCpps content
+        pure . getCppsOrThrow $ extractCpps content
+
+    readCppFile <- newCache $ \cppFile -> do
+        let no_output = "_build//cpp_book-no-output.json"
+        need [no_output]
+
+        -- Loading all cpps
+        cpp_files <- cachedReadCpps no_output
+        -- todo: add exception when there is no cpp (which is weird)
+        pure $ case filter ((cppFile==) . fileNameCpp) cpp_files of
+                 (cpp:_) -> cpp
+                 _       -> error $ "There is for some reason no file `" <> show cppFile <> "` inside the code O_o"
 
     "cpp_book.pdf" %> \out -> do
         let finaljsonpath = "_build//cpp_book.json"
@@ -49,7 +59,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
         let no_output = "_build//cpp_book-no-output.json"
         need [no_output]
 
-        output_cpps  <- cachedReadCpps no_output
+        output_cpps <- cachedReadCpps no_output
 
         -- Looking for all .out files required to be put inside the json (loadcodeinoutput-exe does that, it inputs all code that has type `output`)
         let -- all cpps must be saved
@@ -74,16 +84,15 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
             cmd (Stdin pre) "tlcppler-exe latex" -- important to add "latex"
         writeFile' no_output formated
 
+    ("code" </> "*.flags") %> \out -> do
+        let incpp = out -<.> "cc"
+        cpp <- readCppFile incpp
+        let flags = fromMaybe "" . compilerFlags $ optionsCpp cpp
+        --liftIO . putStrLn $ "it's me (alone): " <> show out
+        writeFileChanged out flags
+
     ("code" </> "*.cc") %> \out -> do
-        let no_output = "_build//cpp_book-no-output.json"
-        need [no_output]
-
-        -- Loading all cpps
-        cpp_files <- cachedReadCpps no_output
-
-        -- todo: add exception when there is no cpp (which is weird)
-        let [cpp] = filter ((out==) . fileNameCpp) cpp_files
-
+        cpp <- readCppFile out
         layout <- readFile' (layoutCpp cpp)
         let contents = applyLayout layout cpp
         --liftIO . putStrLn $ "it's me (alone): " <> show out
@@ -96,17 +105,19 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
         writeFileChanged out output
 
     ("code" </> "*.bin" <.> exe) %> \out -> do
-        let incpp = out -<.> "cc"
+        let incpp = out -<.> "cc" -- TODO: correct! This will probably fail in windows where an extra ".exe" is at the end of the file
+            flagsfile = out -<.> "flags"
+        need [incpp, flagsfile]
         --liftIO . hPutStrLn stderr $ "HEY! me here"
-        need [incpp]
-        cmd_ "clang++" [incpp] ["-o", out]
+
+        flags <- readFile' flagsfile
+        cmd_ "clang++" [incpp] ["-o", out] flags
 
 -- todo: improve exception handling
-getCppsOrThrow :: String -> Either PandocError [Cpp] -> [Cpp]
-getCppsOrThrow outfile =
+getCppsOrThrow :: Either PandocError [Cpp] -> [Cpp]
+getCppsOrThrow =
   \case
-    Left p -> let exc = ShakeException outfile [outfile] $ toException (ErrorCall $ "Something wrong with `_build//cpp_book-no-output.json` happened\n" <> show p)
-              in throw exc
+    Left p  -> error $ "Something wrong with `_build//cpp_book-no-output.json` happened\n" <> show p
     Right x -> x
 
 
