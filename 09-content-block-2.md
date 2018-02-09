@@ -17,4 +17,10 @@
    -    have done already. Like, copying an array, printing it on the screen, ...
    -->
 
+## Answering with a question ##
+
+
+
+---
+
 <!-- vim:set filetype=markdown.pandoc : -->

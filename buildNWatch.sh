@@ -2,6 +2,9 @@
 
 # TODO: Replace this file with custom made code, a more flexible approach
 
+touch devel
+git config core.hooksPath git-hooks
+
 build-pdf-exe --verbose --live
 
 filestowatch="($(grep -v _build/ live.txt | grep -v code/ | tr '\n' '|' ))"

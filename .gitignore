@@ -7,3 +7,4 @@ the-little-cppler-book.cabal
 .shake/
 _build/
 live.txt
+/devel

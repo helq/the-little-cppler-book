@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# If a file called `devel` is in the main directory, you shouldn't push, it
+# means that the pdf was probably generated with todonotes activated. You don't
+# want this because the pdf online shouldn't have what is missing in the book,
+# but not for the developer
+
+if [ -f devel ]; then
+  cat <<\EOF
+You shouldn't commit the pdf with todonotes enabled.
+Please remove the `devel` file, and run `stack exec -- build-pdf-exe --verbose`.
+EOF
+  exit 1
+fi

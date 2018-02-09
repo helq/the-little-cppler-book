@@ -4,7 +4,7 @@
 import Development.Shake (shakeOptions, shakeArgs, shakeFiles, shakeThreads,
                           need, readFile', (%>), writeFileChanged, writeFile',
                           getDirectoryFiles, newCache, phony, putNormal,
-                          removeFilesAfter, want)
+                          removeFilesAfter, want, doesFileExist)
 import Development.Shake.Command (Stdout(Stdout), CmdOption(Stdin, FileStdin),
                                   cmd, cmd_)
 import Development.Shake.FilePath ((</>), (-<.>), (<.>), exe)
@@ -45,14 +45,15 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
     "cpp_book.pdf" %> \out -> do
         let finaljsonpath = "_build//cpp_book.json"
             tex_header = "00-header.tex"
-        need [tex_header, finaljsonpath]
-        cmd_ "pandoc" "-f json"
+            template = "booktemplate.latex"
+        need [tex_header, finaljsonpath, template]
+        cmd_ "pandoc" "--template" template
+                      "-f json"
                       "--standalone"
                       "--pdf-engine xelatex"
                       "-H" tex_header
                       finaljsonpath
                       --"-t latex"
-                      --"--filter runcppcode.sh"
                       "-o" [out]
 
     "_build//cpp_book.json" %> \out -> do
@@ -77,9 +78,13 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
         mds <- getDirectoryFiles "" ["//*-*.md"]
         let input_files = "00-metadata.yaml" : mds
 
+        devel <- doesFileExist "devel"
+
         -- Creating json from markdown files with the special formating of the little ccpler
         need input_files
-        Stdout pre <- cmd "pandoc -t json -o -" input_files
+        Stdout pre <- if devel
+                         then cmd "pandoc -t json -o -" input_files "--metadata devel"
+                         else cmd "pandoc -t json -o -" input_files
         Stdout formated <-
             cmd (Stdin pre) "tlcppler-exe latex" -- important to add "latex"
         writeFile' no_output formated

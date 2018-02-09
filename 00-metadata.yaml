@@ -1,10 +1,9 @@
 ---
-title: "The Little CPPler"
-subtitle: v0.1.0
-
-author: Elkin Cruz
-
 documentclass: book
+
+title: "The Little CPPler"
+subtitle: v0.1.1
+author: Elkin Cruz
 
 # regular letter size is 215.9 wide by 279.44 long
 geometry:
@@ -16,6 +15,15 @@ geometry:
   - "lmargin=12mm"
   # - "paperwidth=275.9mm"
   # - "paperheight=279.4mm"
+
+todonotes:
+  - "textsize=tiny"
+  - "bordercolor=yellow"
+  - "color=yellow"
+  - "textwidth=4cm"
+#  - "disable"
+
+# devel: false
 ...
 
 <!--\layout{}-->
