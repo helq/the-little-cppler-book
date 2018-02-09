@@ -1,17 +1,18 @@
-# Block 3: _deprecated_ stuff that you better know cos everybody uses it #
+# Block 3: Pointers (the truth behind arrays) and some other useful things #
 
 <!--
-   -3. pointers, arrays, new keyword (pointers and arrays are a very, very long topic)
+   -3. pointers, new keyword, string operations, matrices, structures, and some std
+   -   functions.
+   -  * how to declare a reference variable
+   -  * declaring and using a pointer
+   -  * possible gotchas of pointers
+   -  * explain how a pointer works, how can we access memory as we wish
+   -  * math operations with pointers
+   -  * showing that arrays are pointers
+   -  * show problems of traditional function declarations, and explain how to
+   -    declare/define a function using `template` (optional)
+   -  * show how to use `std::vector`, and how to use it to do several interesting things like
+   -    getting input from the user
    -->
-
-So, for historical reasons there are hundreds of things we do often that don't make any
-sense but we do them because of tradition, because old people refuse or don't know to let
-go.
-
-This chapter discusses many features of the C++ language that come from its legacy with C.
-But, unlike other human traditions the things you will learn here can help you understand
-why the code you write behaves as it does, and you may need it because not only many
-people uses this features but many features are just so central to c++ and computers that
-you better understand them.
 
 <!-- vim:set filetype=markdown.pandoc : -->

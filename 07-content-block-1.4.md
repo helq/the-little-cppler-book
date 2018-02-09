@@ -163,13 +163,14 @@ std::cout << "1^2 + 2^2 + 3^2 + ... + 10^2 == "
 
 ---
 
-**Exercise for home:**
+**Task for home:**
 
 All the multiples of 3 or 5 smaller than 20 are 0, 3, 5, 6, 9, 10, 12, 15 and 18, and
 their sum is $78$.
 ^[exercise extracted from project euler (<https://projecteuler.net> exercise 1)]
 
-What is the sum of all natural numbers smaller than 1000 which are multiples of 3 or 5.
+What is the sum of all natural numbers smaller than 1000 which are multiples of 3 or 5?
+Write some code using a `for` or `while` loop to solve the problem.
 
 ---
 
@@ -331,7 +332,7 @@ themselves.
 
 ---
 
-**Exercise for home:**
+**Task for home:**
 
 The fibonacci sequence is a sequence defined by:
 
@@ -530,8 +531,223 @@ to the function `add_two_nums` and not to `main`.
 
 ---
 
-\inlinetodo{add 6 more exercises with returns of many classes, mainly used to make
-computation simpler, like making complex computations and returning values.}
+Have you noticed the `void`{.cpp} word[^actuallykeyword] at the definition of the
+function?
+
+[^actuallykeyword]: `void`{.cpp} is actually a keyword, i.e., a word that is special for
+  C++, nobody can use void as a name for a variable or function.
+
+`void`{.cpp} tells us that the function doesn't return any value as a result of its
+computation. There are other keywords that tell us when a function returns something, for
+example, the keyword `int`{.cpp}.
+
+What, do you think, is the output of the following code:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+int addtwice(int a, int b) {
+  int c = 2 * (a + b);
+  return c;
+}
+
+int main() {
+  std::cout << addtwice(5, 3) << std::endl;
+  return 0;
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+When you call a function, you pass it some data (variables values), the function makes
+some calculation and returns, optionally, some result value.
+
+---
+
+What is the output of:[^twoinone]
+
+[^twoinone]: Note: the statement `total += i;`{.cpp} is equivalent to
+  `total = total + i;`{.cpp}. There are several shourtcut versions for other operations
+  like `*`, `-`, `/`, `%`: `*=`, `-=`, `/=`, `%=`.
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+int sumToN(int n) {
+  int total = 0;
+  for (int i=0; i<=n; i++) {
+    total += i;
+  }
+  return total;
+}
+
+int main() {
+  if (sumToN(20) > 100) {
+    std::cout << "1+2+..+20 > 100"
+              << std::endl;
+  } else {
+    std::cout << "1+2+..+20 <= 100"
+              << std::endl;
+  }
+
+  return 0;
+}
+~~~
+
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+#include <cmath>
+
+double aproxTan(double angle) {
+  return sin(angle) / cos(angle);
+}
+
+int main() {
+  double angle = 0.2;
+  double pi = 3.14159265358979;
+  std::cout
+    << "The tangent of " << angle << "pi "
+    << "is aprox. " << aproxTan(pi*angle)
+    << std::endl;
+
+  return 0;
+}
+~~~
+
+= = =
+
+Yeah, we have a calculator on steroids:
+
+~~~output
+~~~
+
+---
+
+Does this code compile? (notice we changed `double angle`{.cpp} for `int angle`{.cpp}),
+if yes, what is the output?
+
+~~~{.cpp layout="00-empty.cc" flags="-Wno-literal-conversion"}
+#include <iostream>
+#include <cmath> // for `sin` and `cos` functions
+
+double aproxTan(double angle) {
+  return sin(angle) / cos(angle);
+}
+
+int main() {
+  int angle = 0.2;
+  double pi = 3.14159265358979;
+  std::cout
+    << "The tangent of " << angle << "pi "
+    << "is aprox. " << aproxTan(pi*angle)
+    << std::endl;
+
+  return 0;
+}
+~~~
+
+= = =
+
+Yeah, it does compile. And the result is:
+
+~~~output
+~~~
+
+What is happening is that we are assigning a `double`{.cpp} (`0.2`) to an `int`{.cpp}
+(`angle`). In this process, the value gets converted to a value that can be stored in an
+`int`{.cpp}, meaning that we loose the fractional part of `0.2` leaving us with `0`.
+
+Then `angle` gets converted (or **cast**) from an `int` to a `double`, because it is being
+operated with `pi` which is a variable that holds a `double`[^castrule]
+
+[^castrule]: General rule: the compiler detects if the operators in a binary operation are
+  both of the same type, if they aren't, the compiler **casts** the value that contains
+  the _less_ information to a type with more information, e.g., `int`{.cpp} -> `double`{.cpp},
+  `int`{.cpp} -> `long`{.cpp}, `float`{.cpp} -> `double`{.cpp}
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+#include <cmath>
+
+int aproxTan(int angle) {
+  return sin(angle) / cos(angle);
+}
+
+int main() {
+  double angle = 0.2;
+  double pi = 3.14159265358979;
+  std::cout
+    << "The tangent of " << angle << "pi "
+    << "is aprox. " << aproxTan(pi*angle)
+    << std::endl;
+
+  return 0;
+}
+~~~
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+No surprise here. `pi` and `angle` are variables of type `double`{.cpp}, when we operate
+with them we get a value of type `double`{.cpp}. But, once we pass the value to
+`aproxTan`, it gets cast to `int`{.cpp} because `aproxTan` receives `int`{.cpp}s, and
+returns `int`{.cpp}s. The value of tangent that gets computed is the integer part of
+`0.2 * pi`, i.e., `0`.
+
+---
+
+What do you think the following outputs?[^forcecast]
+
+~~~{.cpp layout="01-simple.cc"}
+std::cout
+  << (int)5.3      << " "
+  << (int)5.8      << " "
+  << ((int)5.3)*2  << " "
+  << (int)(5.3*2)  << " "
+  << 3/2           << " "
+  << (double)3/2   << " "
+  << (double)(3/2) << std::endl;
+~~~
+
+[^forcecast]: We can force a cast by prepending the value to cast with _`(type)`_, where
+  _`type`_ can be any type of the many we have seen, for example, `(int)12.1`{.cpp} casts `12`
+  (a `double`{.cpp} or `float`{.cpp}) into an `int`{.cpp}.
+
+= = =
+
+The output is:
+
+~~~output
+~~~
+
+---
+
+\inlinetodo{Add two more exercises to practice with fors and whiles}
 
 \newpage
 

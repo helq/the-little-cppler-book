@@ -604,7 +604,8 @@ std::cout << "var1 * pow(var2, 3) => "
 [^includes]: Notice the dots (`...`) in the code. This dots are just for notation, they
     aren't meant to be written in the file to be compiled. The dots represent a division
     between two different parts of code. You can see the code for this example in the
-    source code of the book <https://github.com/helq/the-little-cppler-book>.
+    source code of the book <https://github.com/helq/the-little-cppler-book> (take a look
+    into the folder that says **code**).
 
     \inlinetodo{Add whole file here}
 

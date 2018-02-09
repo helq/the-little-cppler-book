@@ -1,5 +1,7 @@
 ## What if's ##
 
+\inlinetodo{explain what is a keyword, and why some exercises may fail}
+
 ---
 
 What is the output of:[^double]
