@@ -1,6 +1,8 @@
-# [**Link to the book**](cpp_book.pdf)
+# [**Link to the book** (pdf)](the_little_cppler.pdf) #
 
-A book on how to learn to code in C++.
+A book on how to learn to code in C++. I've been using this book in an introductory class
+on programming at the "Universidad Nacional de Colombia". The course webpage including
+some suggested additional material can be found at: <https://helq.github.io/teaching/coding-2018-I/>
 
 ## "Compiling" Book ##
 

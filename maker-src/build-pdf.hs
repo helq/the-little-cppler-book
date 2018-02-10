@@ -19,7 +19,7 @@ import Data.Text (pack)
 
 main :: IO ()
 main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
-    want ["cpp_book.pdf"]
+    want ["the_little_cppler.pdf"]
     --want ["_build//cpp_book.json"]
 
     phony "clean" $ do
@@ -42,7 +42,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
                  (cpp:_) -> cpp
                  _       -> error $ "There is for some reason no file `" <> show cppFile <> "` inside the code O_o"
 
-    "cpp_book.pdf" %> \out -> do
+    "the_little_cppler.pdf" %> \out -> do
         let finaljsonpath = "_build//cpp_book.json"
             tex_header = "00-header.tex"
             template = "booktemplate.latex"
@@ -82,9 +82,9 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
 
         -- Creating json from markdown files with the special formating of the little ccpler
         need input_files
-        Stdout pre <- if devel
-                         then cmd "pandoc -t json -o -" input_files "--metadata devel"
-                         else cmd "pandoc -t json -o -" input_files
+        Stdout pre <- cmd "pandoc" "-t json -o -"
+                                   input_files
+                                   (if devel then "--metadata devel" else "")
         Stdout formated <-
             cmd (Stdin pre) "tlcppler-exe latex" -- important to add "latex"
         writeFile' no_output formated
