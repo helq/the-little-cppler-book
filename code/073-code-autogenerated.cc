@@ -2,14 +2,16 @@
 
 int main()
 {
-  int sum = 0;
-  int i = 1;
-  while (i<=10) {
-    sum = sum + i;
-    i++;
+  int a = 0;
+  int b = 0;
+  while (a<=10) {
+    if (a%2 == 0) {
+      b = b + a;
+      std::cout << b << " ";
+    }
+    a++;
   }
-  std::cout << "1+2+3+...+10 == " << sum
-            << std::endl;
+  std::cout << std::endl;
 
   return 0;
 }

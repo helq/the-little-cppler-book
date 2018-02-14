@@ -1,17 +1,21 @@
 #include <iostream>
-#include <cmath>
 
-double aproxTan(double angle) {
-  return sin(angle) / cos(angle);
+int sumToN(int n) {
+  int total = 0;
+  for (int i=0; i<=n; i++) {
+    total += i;
+  }
+  return total;
 }
 
 int main() {
-  double angle = 0.2;
-  double pi = 3.14159265358979;
-  std::cout
-    << "The tangent of " << angle << "pi "
-    << "is aprox. " << aproxTan(pi*angle)
-    << std::endl;
+  if (sumToN(20) > 100) {
+    std::cout << "1+2+..+20 > 100"
+              << std::endl;
+  } else {
+    std::cout << "1+2+..+20 <= 100"
+              << std::endl;
+  }
 
   return 0;
 }

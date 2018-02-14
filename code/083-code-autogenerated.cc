@@ -1,22 +1,14 @@
 #include <iostream>
 
-void add_two_nums(int a, int b, int c) {
-  c = b + a;
-
-  std::cout << "a == " << a << std::endl;
-  std::cout << "b == " << b << std::endl;
-  std::cout << "c == " << c << std::endl;
+void show_addition(int a, int b) {
+  std::cout << a << " + " << b
+            << " == " << a*b;
 }
 
 int main() {
-  int first  = 4;
-  int second = 3;
-  int total  = -2;
-
-  add_two_nums(first, second, total);
-
-  std::cout
-    << "total == " << total << std::endl;
+  for (int i=4; i<=7; i++) {
+    show_addition(i,3);
+  }
 
   return 0;
 }

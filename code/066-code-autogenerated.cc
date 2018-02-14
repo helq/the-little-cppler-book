@@ -6,7 +6,7 @@ int main()
   int c = 5;
   int i = 0;
   
-  while ((i<b) && (2*i<c)) {
+  while ((i<b) && (i<c)) {
     std::cout << i << " ";
     i++;
   }

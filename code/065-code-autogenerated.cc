@@ -2,15 +2,15 @@
 
 int main()
 {
-  int b = 10;
-  int c = 5;
-  int i = 0;
-  
-  while ((i<b) && (i<c)) {
-    std::cout << i << " ";
-    i++;
-  }
-  std::cout << std::endl;
+  std::cout
+    << "1 ^ 1 == " << (true  ^ true)
+    << std::endl
+    << "1 ^ 0 == " << (true  ^ false)
+    << std::endl
+    << "0 ^ 1 == " << (false ^ true)
+    << std::endl
+    << "0 ^ 0 == " << (false ^ false)
+    << std::endl;
 
   return 0;
 }

@@ -2,10 +2,13 @@
 
 int main()
 {
-  int imzero = 0;
+  int b = 10;
+  int c = 5;
+  int i = 0;
   
-  while (imzero < 4) {
-    std::cout << imzero << " ";
+  while ((i<b) && (2*i<c)) {
+    std::cout << i << " ";
+    i++;
   }
   std::cout << std::endl;
 

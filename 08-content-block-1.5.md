@@ -406,6 +406,129 @@ smallestBig(2.0) == 2
 
 ---
 
+Files are sequences of bytes[^mostofthetime]. A byte contains 8 bits, which means that we
+have $2^8$ different possibilities/states of a byte. We have `00000000`, but also
+`00000001`, and `10110001`, all representable as numbers in decimal notation (the first
+one in decimal notation is 0, the second is 1, and the third is
+$2^7 + 2^5 + 2^4 + 2^0 = 177$)[^moreinfobytes]
+
+[^mostofthetime]: Most of the time
+[^moreinfobytes]: If you want to know how precisely convert from binary to decimal, and
+  viceversa, please visit Wikipedia's article: _Binary number_.
+
+Do you remember which of the following types has size one byte?
+
+`int`{.cpp}, `float`{.cpp}, `char`{.cpp}, and `double`{.cpp}.
+
+= = =
+
+Yeah, it was `char`{.cpp}, we can save up to 256 numbers in a char (from -128 to 127).
+
+---
+
+We can represent each of these 256 possibilities in many ways, one of them is a decimal
+number, but other possibility is assigning arbitrarily a symbol to each. Somebody has
+already done the work for us here, and it is called ASCII. For example, the byte
+`01000001`, in decimal is 65, and the symbol given to it is: `'A'`. This means we can
+print a single character by saving 65 in a `char`{.cpp} variable and printing it:
+
+~~~{.cpp layout="01-simple.cc"}
+char symbol = 65;
+
+std::cout << symbol << std::endl;
+~~~
+
+= = =
+
+The output as expected:
+
+~~~output
+~~~
+
+---
+
+Because when we print a `char`{.cpp} variable we print its ASCII symbol, then there is a
+simpler way to input the value to the variable, using single quotes (`'`).
+
+This
+
+~~~cpp
+char symbol = 'A';
+
+std::cout << symbol << std::endl;
+~~~
+
+prints the same as above. What do you think this will print?
+
+~~~{.cpp layout="01-simple.cc"}
+char symbol = 'A';
+
+while (symbol <= 'Z') {
+  std::cout << symbol;
+  symbol++;
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+All characters from `A` to `Z`! (as they're defined in the Enghlish alphabet)
+
+~~~output
+~~~
+
+---
+
+Now let's try to print more characters (if you look at the ASCII table (online or
+somewhere), you will notice that not all characters are visible, therefore we will print
+just a subset of the characters):
+
+~~~{.cpp layout="01-simple.cc"}
+char symbol = 32; // first "visible" character
+
+while (symbol < 127) {
+  std::cout << symbol;
+  symbol++;
+  if (symbol % 32 == 0) {
+    std::cout << std::endl;
+  }
+}
+std::cout << std::endl;
+~~~
+
+= = =
+
+Well, a list of all characters available to us.[^allotherchars]
+
+[^allotherchars]: All symbols for the other 128 characters, which values are between 128
+  and 255, are machine dependent, they will render in the windows console but not anywhere
+  else (If you want to know more I recommend Wikipedia's articles on _Unicode_ and
+    _UTF-8_).
+
+~~~output
+~~~
+
+---
+
+**Task for home**: Given a `char`{.cpp} variable with a value between `A` and `Z`, convert
+it to small case, for example:
+
+~~~cpp
+char capitalCase = 'M';
+
+// your code goes here
+
+std::cout << capitalCase << std::endl;
+~~~
+
+And it should print:
+
+~~~
+m
+~~~
+
+---
+
 \inlinetodo{Add two more exercises to practice with fors and whiles}
 
 \newpage

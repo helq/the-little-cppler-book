@@ -2,13 +2,12 @@
 
 int main()
 {
-  int top = 10;
-  int i = 0;
-  while (i<top) {
-    std::cout << i * top + 1 << " ";
-    i++;
+  for (int i=0; i<=10; i++) {
+    for (int j=0; j<=20; j++) {
+      std::cout << "*";
+    }
+    std::cout << std::endl;
   }
-  std::cout << std::endl;
 
   return 0;
 }

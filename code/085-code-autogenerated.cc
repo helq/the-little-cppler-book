@@ -1,22 +1,12 @@
 #include <iostream>
 
-int sumToN(int n) {
-  int total = 0;
-  for (int i=0; i<=n; i++) {
-    total += i;
-  }
-  return total;
+int addtwice(int a, int b) {
+  int c = 2 * (a + b);
+  return c;
 }
 
 int main() {
-  if (sumToN(20) > 100) {
-    std::cout << "1+2+..+20 > 100"
-              << std::endl;
-  } else {
-    std::cout << "1+2+..+20 <= 100"
-              << std::endl;
-  }
-
+  std::cout << addtwice(5, 3) << std::endl;
   return 0;
 }
 

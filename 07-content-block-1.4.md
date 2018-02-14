@@ -379,6 +379,32 @@ Nice, it runs 10 times the same code, a code that prints twenty asterisks.
 
 ---
 
+**Task for home:** Print the numbers from one to 9 each in a diagonal, something like:
+
+~~~
+1
+  2
+    3
+      4
+        5
+          6
+            7
+              8
+                9
+~~~
+
+It is is easy to write:
+
+~~~cpp
+std::cout << "1"     << std::endl;
+std::cout << "  2"   << std::endl;
+std::cout << "    3" << std::endl;
+~~~
+
+The challenge is to use a `while`{.cpp} loop.
+
+---
+
 But I'm getting bored of writing so much code with the `while`{.cpp} loop. In fact, the
 pattern whe have been using with while is so common that there is a shorter version of it,
 the `for`{.cpp}. Let's see if you can guess what the following code does:
@@ -428,6 +454,35 @@ and it's equivalent to the following `while`{.cpp} loop.
     C;
   }
 }
+~~~
+
+---
+
+**Task for home:** Write the multiplication table for any number I give you, for example,
+with some code like:
+
+~~~cpp
+int num = 3;
+
+for (int i=0; i<=10; i++) {
+  // your code goes here
+}
+~~~
+
+I want you to output:
+
+~~~
+3 * 0 == 0
+3 * 1 == 3
+3 * 2 == 6
+3 * 3 == 9
+3 * 4 == 12
+3 * 5 == 15
+3 * 6 == 18
+3 * 7 == 21
+3 * 8 == 24
+3 * 9 == 27
+3 * 10 == 30
 ~~~
 
 ---

@@ -7,8 +7,8 @@ int main()
   while (a<=10) {
     if (a%2 == 0) {
       b = b + a;
-      std::cout << b << " ";
     }
+    std::cout << b << " ";
     a++;
   }
   std::cout << std::endl;

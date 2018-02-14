@@ -2,16 +2,12 @@
 
 int main()
 {
-  int i = 0;
-  while (i<=10) {
-    int j = 0;
-    while (j<=20) {
-      std::cout << "*";
-      j++;
-    }
-    std::cout << std::endl;
-    i++;
+  int i = 10;
+  while (i>=1) {
+    std::cout << i << " ";
+    i--;
   }
+  std::cout << std::endl;
 
   return 0;
 }

@@ -1,15 +1,18 @@
 #include <iostream>
+#include <cmath>
 
-int main()
-{
+int aproxTan(int angle) {
+  return sin(angle) / cos(angle);
+}
+
+int main() {
+  double angle = 0.2;
+  double pi = 3.14159265358979;
   std::cout
-    << (int)5.3      << " "
-    << (int)5.8      << " "
-    << ((int)5.3)*2  << " "
-    << (int)(5.3*2)  << " "
-    << 3/2           << " "
-    << (double)3/2   << " "
-    << (double)(3/2) << std::endl;
+    << "The tangent of " << angle << "pi "
+    << "is aprox. " << aproxTan(pi*angle)
+    << std::endl;
 
   return 0;
 }
+

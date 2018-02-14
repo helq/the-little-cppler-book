@@ -92,9 +92,9 @@ The structure:
 
 ~~~cpp
 if (statement) {
-  true branch
+  // true branch
 } else {
-  false branch
+  // false branch
 }
 ~~~
 
@@ -159,7 +159,7 @@ What is the output of:
 
 ~~~{.cpp layout="01-simple.cc"}
 int var1 = 2*2+20;
-if (var1 >= 7 + 3) {
+if (var1 <= 7 + 3) {
   std::cout << "i never run :(" << std::endl;
 } else {
   if (var1 > 23) {
@@ -182,7 +182,7 @@ it. The code at left is equivalent then to:
 
 ~~~cpp
 int var1 = 2*2+20;
-if (var1 >= 7 + 3) {
+if (var1 <= 7 + 3) {
   std::cout << "i never run :(" << std::endl;
 } else {
   if (var1 > 23) {
@@ -193,7 +193,22 @@ if (var1 >= 7 + 3) {
 
 ---
 
-It's possible to put more than one statement inside the `if` statement. For example:
+**Task for home:** I give you three numbers, each in a distinc variable, and what I want is
+you to print them in ascendent order, i.e., if I give you `3`, `20` and `-2`, you should
+print in terminal: `-2 3 20`. For example, the code could start by:
+
+~~~cpp
+int a = /*a number here*/;
+int b = /*a number here*/;
+int c = /*a number here*/;
+
+// Your code goes here ;)
+~~~
+
+---
+
+It's possible to put more than one statement inside the true branch of the `if` statement.
+For example:
 
 ~~~{.cpp layout="01-simple.cc"}
 int var1 = 2*2+20;
@@ -248,6 +263,18 @@ $0 = k*n$ where $k=0$ and $n$ is an arbitrary number.
 breakfast if there are multiple options for breakfast. You should be able to select your
 option for breakfast by setting a variable to one of many values (as many as you like).
 
+For example:
+
+~~~cpp
+int option = 3;
+
+std::cout << "Good morning, Sir" << std::endl;
+std::cout << "For today's breakfast you will need:" << std::endl;
+
+if (option == 0) {
+// Your code goes here...
+~~~
+
 ---
 
 What is the output of:
@@ -288,7 +315,7 @@ It does compile, and its output is:
 ~~~output
 ~~~
 
-But wait, what? -2 is not always divisible by anyother integer!
+But wait, what? -2 is not divisible by any arbitrary integer, only by one and itself!
 
 ---
 
@@ -312,12 +339,12 @@ The output is:
 ~~~output
 ~~~
 
-But is the same, why? What have we changed from before? What is the difference with the
-code that gives us a zero?
+Uff, fortunatelly they are not the same, but why? What have we changed from before? What
+is the difference with the code that gives us a zero?
 
 ---
 
-Ok, let's stop with the silliness and try with an example that actually give us some clue
+Ok, let's stop with the silliness and try with an example that actually gives us some clue
 of the situation.
 
 ~~~{.cpp layout="01-simple.cc"}
@@ -362,7 +389,7 @@ std::cout << num << std::endl;
 
 Any time we enclose code between brackets (`{}`) we are defining a new **scope**. Any
 variable we declare inside a scope lives only in that scope, the variable _dies_ once the
-scope is closed, is this the reason why this code
+scope is closed, this is the reason why this code
 
 ~~~cpp
 {
@@ -458,6 +485,12 @@ The output is:
 
 ---
 
+**Task for home:** Given an integer, print if it is divisible by `3` or not. _Tip_: the
+remainder of an integer (divisible by 3) divided by 3 is zero, e.g., $33 = 3*11 + 0$, thus
+the remainder of the division $33/3$ is three.
+
+---
+
 What does this output:
 
 ~~~{.cpp layout="01-simple.cc"}
@@ -537,6 +570,25 @@ The output is:
 
 ~~~output
 ~~~
+
+---
+
+**Task for home**: The sum of a triangle's internal angles (in an euclidian space) is
+always equal to 180. Write a program, that given the three internal angles of a triangle,
+tells the user if the triangle is really a triangle or not (ie, it can be constructed):
+
+Example:
+
+~~~cpp
+int angle1 = /*a number here*/;
+int angle2 = /*a number here*/;
+int angle3 = /*a number here*/;
+
+// Your code goes here
+~~~
+
+Note: All the angles in a triangle are always positive, never zero, but the user could
+input here negative integers. Check positiveness of numbers!
 
 ---
 
@@ -657,12 +709,12 @@ The output, as you may have easily guessed is:
 
 ---
 
-\newpage
+**Task for home**: Given a number between 1 and 12 output the number of days in a month
+(where each month is represented by a number, 1 for January and 12 for December).
 
-### Interlude: How are numbers represented? ###
+---
 
-
-\inlinetodo{fill me!}
+\inlinetodo{Add interlude on How are numbers represented}
 
 \newpage
 

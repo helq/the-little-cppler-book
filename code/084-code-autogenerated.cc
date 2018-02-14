@@ -1,12 +1,23 @@
 #include <iostream>
 
-int addtwice(int a, int b) {
-  int c = 2 * (a + b);
-  return c;
+void add_two_nums(int a, int b, int c) {
+  c = b + a;
+
+  std::cout << "a == " << a << std::endl;
+  std::cout << "b == " << b << std::endl;
+  std::cout << "c == " << c << std::endl;
 }
 
 int main() {
-  std::cout << addtwice(5, 3) << std::endl;
+  int first  = 4;
+  int second = 3;
+  int total  = -2;
+
+  add_two_nums(first, second, total);
+
+  std::cout
+    << "total == " << total << std::endl;
+
   return 0;
 }
 

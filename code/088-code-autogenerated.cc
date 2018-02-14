@@ -1,12 +1,12 @@
 #include <iostream>
-#include <cmath>
+#include <cmath> // for `sin` and `cos` functions
 
-int aproxTan(int angle) {
+double aproxTan(double angle) {
   return sin(angle) / cos(angle);
 }
 
 int main() {
-  double angle = 0.2;
+  int angle = 0.2;
   double pi = 3.14159265358979;
   std::cout
     << "The tangent of " << angle << "pi "

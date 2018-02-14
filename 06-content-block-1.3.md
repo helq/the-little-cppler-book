@@ -298,6 +298,15 @@ operator, they operate on `bool`{.cpp}s only.[^notreallbool]
 
 ---
 
+**Task for home**: Write some code to print the odd numbers from 20 to 0. The output should
+be:
+
+~~~cpp
+20 18 16 14 12 10 8 6 4 2
+~~~
+
+---
+
 What is the output of:
 
 ~~~{.cpp layout="01-simple.cc"}
@@ -381,7 +390,7 @@ std::cout
 ~~~
 
 [^parenthesismandatory]: the parenthesis around the boolean expressions are necessary,
-  otherwise they would get confused with `<<`.
+  otherwise they would get `<<` confused.
 
 = = =
 
@@ -390,7 +399,7 @@ std::cout
 
 ---
 
-And the _truth table_ for `!`{.cpp} (not, negation):
+And the _truth table_ for `!`{.cpp} (not/negation):
 
 ~~~{.cpp layout="01-simple.cc"}
 std::cout
@@ -407,7 +416,7 @@ All tables as you know them from logic, old stuff (actually, not that old, this 
 were first used as tables in the 20th century, but they are so intuitive that one may
 think they're an older invention [^morehistory]).
 
-[^morehistory]: for some more history see wikipedia article _Truth table_.
+[^morehistory]: for some more history see wikipedia's article: _Truth table_.
 
 ---
 
@@ -432,6 +441,72 @@ std::cout
   << "0 || 0 == " << (false || false)
   << std::endl;
 ~~~
+
+---
+
+There is an special operation on boolean variables[^onnumbersreally] called $\oplus$
+(**xor**), and can be written in C++ with `^`.
+
+[^onnumbersreally]: Actually, the operation is on numbers, but we can ignore that for the
+  time being.
+
+This is its truth table[^codeinrepo]:
+
+~~~{.cpp .hidden layout="01-simple.cc"}
+std::cout
+  << "1 ^ 1 == " << (true  ^ true)
+  << std::endl
+  << "1 ^ 0 == " << (true  ^ false)
+  << std::endl
+  << "0 ^ 1 == " << (false ^ true)
+  << std::endl
+  << "0 ^ 0 == " << (false ^ false)
+  << std::endl;
+~~~
+
+[^codeinrepo]: You can find the source code that prints this table on: https://github.com/helq/the-little-cppler-book/tree/master/code
+
+~~~output
+~~~
+
+Write down what is the table for $(p \oplus q) \oplus q$.
+
+= = =
+
+| $p$ | $q$ | $p \oplus q$ | $(p \oplus q) \oplus q$ |
+|:---:|:---:|:------------:|:-----------------------:|
+|  1  |  1  |       0      |            1            |
+|  1  |  0  |       1      |            1            |
+|  0  |  1  |       1      |            0            |
+|  0  |  0  |       0      |            0            |
+
+Notice how $p = (p \oplus q) \oplus q$!!
+
+This characteristic is very important in cryptography, because one can use some secret
+key as $q$ (one bit in this case), and we cypher a bit of information $p$ by applying
+$p \oplus q$. We can get the result back if we apply _xor_ again over the result we just
+got, and you know what, if you don't tell anybody the key, nobody could guess what the
+value of $p$ originally were!
+
+---
+
+**Task for home**: Swaping two variables content is quite simple if one uses an auxiliary
+variable. But, it is indeed possible to swap the content of two variables without using
+any more memory, without an auxiliary variable. Your goal is to find the trick.
+
+But how could that be possible?
+
+_Tip:_ To make it simpler, try to swap the value of boolean variables using only
+assignations and the _xor_ operation. Use this as a template. And remember the property of
+_xor_: $p = (p \oplus q) \oplus q$!
+
+~~~cpp
+bool a = 1;
+bool b = 0;
+
+// .. your code goes here, use only `=` (assignment) and `^` (xor operation)
+~~~
+
 
 ---
 

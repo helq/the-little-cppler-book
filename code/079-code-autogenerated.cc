@@ -2,12 +2,11 @@
 
 int main()
 {
-  for (int i=0; i<18; i++) {
-    if ((i%3!=0) && (i%7!=0)) {
-      std::cout << i << " ";
-    } else {
-      std::cout << ". ";
-    }
+  int top = 10;
+  int i = 0;
+  while (i<top) {
+    std::cout << i * top + 1 << " ";
+    i++;
   }
   std::cout << std::endl;
 

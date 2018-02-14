@@ -8,7 +8,7 @@
 if [ -f devel ]; then
   cat <<\EOF
 You shouldn't commit the pdf with todonotes enabled.
-Please remove the `devel` file, and run `stack exec -- build-pdf-exe --verbose`.
+Please remove the `devel` file, and run `rm code/*.{cc,out}; stack exec -- build-pdf-exe --verbose`.
 EOF
   exit 1
 fi

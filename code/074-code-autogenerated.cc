@@ -5,11 +5,11 @@ int main()
   int sum = 0;
   int i = 1;
   while (i<=10) {
-    sum = sum + i*i;
+    sum = sum + i;
     i++;
   }
-  std::cout << "1^2 + 2^2 + 3^2 + ... + 10^2 == "
-            << sum << std::endl;
+  std::cout << "1+2+3+...+10 == " << sum
+            << std::endl;
 
   return 0;
 }

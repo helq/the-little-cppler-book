@@ -2,11 +2,16 @@
 
 int main()
 {
-  std::cout << "3%2 == " << (3%2) << std::endl;
-  std::cout << "4%2 == " << (4%2) << std::endl;
-  std::cout << "0%2 == " << (0%2) << std::endl;
-  std::cout << "7%2 == " << (7%2) << std::endl;
-  std::cout << "2%2 == " << (2%2) << std::endl;
+  int b = 7;
+  int c = 10; // it works with 11 too
+  int i = 0;
+  
+  while ((i<b) || (i+1<c)) {
+    std::cout << i << " ";
+    i++;
+    i++;
+  }
+  std::cout << std::endl;
 
   return 0;
 }
