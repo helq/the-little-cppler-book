@@ -250,6 +250,23 @@ std::cout << std::endl;
 
 ---
 
+**Task for home**: Given a number, print it in reverse. For example, given the kick start
+code:
+
+~~~cpp
+int mynum = 12367;
+
+// Your code continues here
+~~~
+
+It should print in screen:
+
+~~~
+76321
+~~~
+
+---
+
 Say now, we want something simple, like knowing what is $1+2+3+ \cdots +10$ equal to.
 There are many ways to do this, for example:[^manyways]
 
@@ -379,7 +396,7 @@ Nice, it runs 10 times the same code, a code that prints twenty asterisks.
 
 ---
 
-**Task for home:** Print the numbers from one to 9 each in a diagonal, something like:
+**Task for home:** Print the numbers from 1 to 9 in a diagonal, something like:
 
 ~~~
 1
@@ -401,7 +418,7 @@ std::cout << "  2"   << std::endl;
 std::cout << "    3" << std::endl;
 ~~~
 
-The challenge is to use a `while`{.cpp} loop.
+The challenge is to use a `while`{.cpp} loop. Use a `while`{.cpp} loop to print the diagonal.
 
 ---
 
@@ -550,7 +567,7 @@ $$ fib(x) =
   \end{cases} $$
 
 Which gives us the sequence $0,1,1,2,3,5,8,13,21,34,55,...$. Notice how every number in
-the sequence (except the first two) is equal to the sum to both its predecesors.
+the sequence (except the first two) is equal to the sum of both its predecesors.
 
 Write a program that prints on the screen the first 20 fibonacci numbers using loops
 (either `while`{.cpp} or `for`{.cpp} loops).

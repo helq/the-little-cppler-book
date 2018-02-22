@@ -81,7 +81,7 @@ The output is:
 
 ---
 
-What is the output the above if we change all appearances of `i<3`{.cpp} for `i<2`{.cpp}
+What is the output of the above if we change all appearances of `i<3`{.cpp} for `i<2`{.cpp}
 or `i<4`{.cpp}.
 
 = = =
@@ -104,12 +104,32 @@ for `i<4`{.cpp}.
 
 What is the output if we change `i<3`{.cpp} for `i<5`{.cpp}?
 
+~~~{.cpp .hidden layout="01-simple.cc"}
+int i = 0;
+if (i<5) {
+  std::cout << i << " ";
+  i = i + 1;
+}
+if (i<5) {
+  std::cout << i << " ";
+  i = i + 1;
+}
+if (i<5) {
+  std::cout << i << " ";
+  i = i + 1;
+}
+if (i<5) {
+  std::cout << i << " ";
+  i = i + 1;
+}
+std::cout << std::endl;
+~~~
+
 = = =
 
 Well there are only 4 `if`{.cpp}s, the limit is 4 numbers printed on the screen:
 
-~~~cpp
-0 1 2 3
+~~~output
 ~~~
 
 ---
@@ -150,7 +170,7 @@ What happens if we change `i<4`{.cpp} above for `i<5`{.cpp}?
 
 ~~~{.cpp .hidden layout="01-simple.cc"}
 int i = 0;
-while (i<4) {
+while (i<5) {
   std::cout << i << " ";
   i = i + 1;
 }
@@ -166,7 +186,7 @@ Well, now we can see five numbers:
 
 ---
 
-What is the output of:
+What is the output of (notice the initialization):
 
 ~~~{.cpp layout="01-simple.cc"}
 int i = 1;
@@ -246,7 +266,9 @@ while (i<=-2) {
 
 ---
 
-\inlinetodo{add exercises using \texttt{while}}
+**Task for home**: Print the sum of all cubed odd numbers from 21 to 53, i.e.,
+
+$$\sum_{i=21}^{i \leq 53} i^3$$
 
 ---
 
@@ -469,7 +491,7 @@ std::cout
 ~~~output
 ~~~
 
-Write down what is the table for $(p \oplus q) \oplus q$.
+Write down the truth table for $(p \oplus q) \oplus q$.
 
 = = =
 
@@ -485,20 +507,22 @@ Notice how $p = (p \oplus q) \oplus q$!!
 This characteristic is very important in cryptography, because one can use some secret
 key as $q$ (one bit in this case), and we cypher a bit of information $p$ by applying
 $p \oplus q$. We can get the result back if we apply _xor_ again over the result we just
-got, and you know what, if you don't tell anybody the key, nobody could guess what the
-value of $p$ originally were!
+got, and you know what? if you don't tell anybody the key, nobody could guess what the
+value of $p$ originally was!
+
+\inlinetodo{show example of cyphering some bit}
 
 ---
 
 **Task for home**: Swaping two variables content is quite simple if one uses an auxiliary
 variable. But, it is indeed possible to swap the content of two variables without using
-any more memory, without an auxiliary variable. Your goal is to find the trick.
+any more memory, without an auxiliary variable! Your goal is to find the trick.
 
-But how could that be possible?
+But, how could that be possible?
 
 _Tip:_ To make it simpler, try to swap the value of boolean variables using only
-assignations and the _xor_ operation. Use this as a template. And remember the property of
-_xor_: $p = (p \oplus q) \oplus q$!
+assignations and the _xor_ operation. Use the following code as a template, and remember
+the property of _xor_: $p = (p \oplus q) \oplus q$!
 
 ~~~cpp
 bool a = 1;
@@ -507,8 +531,13 @@ bool b = 0;
 // .. your code goes here, use only `=` (assignment) and `^` (xor operation)
 ~~~
 
+---
+
+**Task for home:** Given a number find the sum of its digits, e.g., the sum of the
+digits of $850347$ is $8 + 5 + 0 + 3 + 4 + 7 = 27$.
 
 ---
+
 
 \newpage
 

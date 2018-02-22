@@ -1,5 +1,7 @@
 ## Breaking the code into pieces ##
 
+\inlinetodo{add what happens when we call return and we write code after}
+
 ---
 
 What does the following code does?
@@ -510,15 +512,19 @@ Well, a list of all characters available to us.[^allotherchars]
 
 ---
 
-**Task for home**: Given a `char`{.cpp} variable with a value between `A` and `Z`, convert
-it to small case, for example:
+**Task for home**: Write a function that takes a `char`{.cpp} variable with a value
+between `A` and `Z`, and returns it in small case, for example:
 
 ~~~cpp
-char capitalCase = 'M';
+char toSmallCase(char c) {
+  // your code goes here
+}
 
-// your code goes here
-
-std::cout << capitalCase << std::endl;
+int main() {
+  char capitalCase = 'M';
+  char smallCase = toSmallCase(capitalCase);
+  std::cout << capitalCase << std::endl;
+}
 ~~~
 
 And it should print:

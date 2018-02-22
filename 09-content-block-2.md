@@ -19,6 +19,30 @@
 
 ## Answering with a question ##
 
+---
+
+In maths we define addition (`+`) on natural numbers in the following way:
+
+1. We define there is a `0`
+2. We define every function has a successor: $n \in Z -> n + 1$
+  \inlinetodo{write well}
+3. We define how to add two numbers
+  $$a + b = (if )$$ \inlinetodo{finish}
+
+\inlinetodo{add function for succ}
+
+How do you think `add(a, b)` can be defined?
+
+= = =
+
+\inlinetodo{write function for adding numbers}
+
+\inlinetodo{digression, this is NOT how the computer adds, but this is how in maths
+addition is defined}
+
+---
+
+\inlinetodo{add example how to multiply two numbers}
 
 ---
 
@@ -101,6 +125,13 @@ The output as we expected:
 ~~~output
 ~~~
 
+Or we could've written:
+
+~~~cpp
+char helloagain[] = "Hello Again :)";
+std::cout << helloagain << std::endl;
+~~~
+
 ---
 
 What will this print?
@@ -123,6 +154,13 @@ And the output is, uh, truncated:
 ~~~
 
 The line only prints to the point where it finds the first zero.
+
+Alternatively, we could write:
+
+~~~cpp
+char helloagain[] = "Hello\0 Again :)";
+std::cout << helloagain << std::endl;
+~~~
 
 ---
 

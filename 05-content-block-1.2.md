@@ -193,9 +193,9 @@ if (var1 <= 7 + 3) {
 
 ---
 
-**Task for home:** I give you three numbers, each in a distinc variable, and what I want is
+**Task for home:** I give you three numbers, each in a distinct variable, and what I want is
 you to print them in ascendent order, i.e., if I give you `3`, `20` and `-2`, you should
-print in terminal: `-2 3 20`. For example, the code could start by:
+print in terminal: `-2 3 20`. The code could start by:
 
 ~~~cpp
 int a = /*a number here*/;
@@ -272,7 +272,7 @@ std::cout << "Good morning, Sir" << std::endl;
 std::cout << "For today's breakfast you will need:" << std::endl;
 
 if (option == 0) {
-// Your code goes here...
+// Your code continues from here...
 ~~~
 
 ---
@@ -487,7 +487,7 @@ The output is:
 
 **Task for home:** Given an integer, print if it is divisible by `3` or not. _Tip_: the
 remainder of an integer (divisible by 3) divided by 3 is zero, e.g., $33 = 3*11 + 0$, thus
-the remainder of the division $33/3$ is three.
+the remainder of the division $33/3$ is zero.
 
 ---
 
@@ -662,8 +662,8 @@ The output is:[^charchange]
 ~~~
 
 [^charchange]: This output may change depending on the compiler you are using, it could
-  happened that you don't see anything wrong at all. In that case, try changing `100` for
-  `220`.
+  have happened that you don't see anything wrong at all. In that case, try changing `100`
+  for `220`.
 
 well, that's surprising! What the heck happened?
 
@@ -676,7 +676,8 @@ rarely used, we would be representing 0 in two ways +0 and -0, the answer is to 
 0 to 127 and from -128 to -1, i.e., we can lay down all the representable numbers by 8
 bits in the following way: -128, -127, -126, ..., -2, -1, 0, 1, 2, ..., 125, 126, 127.
 
-[^notruthsign]: For more details look at "two's complement binary representation"
+[^notruthsign]: For more details look at "two's complement binary representation".
+  Wikipedia's article <https://en.wikipedia.org/wiki/Signed_number_representations#Two%27s_complement>
 
 When you pass over the limit of what 7 bits[^overflow] can store you need to go somewhere,
 and by convention that is going back to the first number, i.e., adding numbers one by one
