@@ -522,7 +522,7 @@ should print:
 ---
 
 **Task for home**: Write a program that prints a triangle of base `n`, for example, the
-triangles created by the program for sizes of `n` equal to `5` and `7` are:
+triangles created by the program for sizes of `n` equal to `5` and `9` are:
 
 ~~~
   #
