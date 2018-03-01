@@ -344,7 +344,7 @@ Write some code using a `for` or `while` loop to solve the problem.
 
 Writing code is often annoying because you can get errors that you didn't expect. The
 following code supposedly should print on the screen the numbers from 10 to 1, top-bottom.
-What is wrong with the code?
+But it doesn't! What is wrong with the code?
 
 ~~~cpp
 int i = 10;
@@ -410,7 +410,7 @@ Nice, it runs 10 times the same code, a code that prints twenty asterisks.
                 9
 ~~~
 
-It is is easy to write:
+It is is easy to write something like (but it's boring):
 
 ~~~cpp
 std::cout << "1"     << std::endl;
@@ -418,7 +418,8 @@ std::cout << "  2"   << std::endl;
 std::cout << "    3" << std::endl;
 ~~~
 
-The challenge is to use a `while`{.cpp} loop. Use a `while`{.cpp} loop to print the diagonal.
+The challenge is to use a `while`{.cpp} loop. Write the program using a `while`{.cpp} loop
+to print the diagonal.
 
 ---
 
@@ -475,6 +476,8 @@ and it's equivalent to the following `while`{.cpp} loop.
 
 ---
 
+\newpage
+
 **Task for home:** Write the multiplication table for any number I give you, for example,
 with some code like:
 
@@ -500,6 +503,39 @@ I want you to output:
 3 * 8 == 24
 3 * 9 == 27
 3 * 10 == 30
+~~~
+
+---
+
+**Task for home:** Write a program that prints a rectangle (made of characters `'#'`) of
+height `m` and width `n`, for example, for the values `m = 5` and `n = 12`, the program
+should print:
+
+~~~
+############
+#          #
+#          #
+#          #
+############
+~~~
+
+---
+
+**Task for home**: Write a program that prints a triangle of base `n`, for example, the
+triangles created by the program for sizes of `n` equal to `5` and `7` are:
+
+~~~
+  #
+ # #
+#####
+~~~
+
+~~~
+    #
+   # #
+  #   #
+ #     #
+#########
 ~~~
 
 ---

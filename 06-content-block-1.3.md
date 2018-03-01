@@ -320,11 +320,11 @@ operator, they operate on `bool`{.cpp}s only.[^notreallbool]
 
 ---
 
-**Task for home**: Write some code to print the odd numbers from 20 to 0. The output should
+**Task for home**: Write some code to print the even numbers from 20 to 0. The output should
 be:
 
 ~~~cpp
-20 18 16 14 12 10 8 6 4 2
+20 18 16 14 12 10 8 6 4 2 0
 ~~~
 
 ---

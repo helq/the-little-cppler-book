@@ -2,7 +2,7 @@
 documentclass: book
 
 title: "The Little CPPler"
-subtitle: v0.1.3
+subtitle: v0.1.4
 author: Elkin Cruz
 
 # regular letter size is 215.9 wide by 279.44 long
@@ -53,8 +53,6 @@ todonotes:
 \inlinetodo{idea: have a couple of exercises that could only be done in groups, and make
 students do an activity at the start and middle of the class with totally random people to
 solve those activities (talleres)}
-
-\inlinetodo{add version of document in a subtitle}
 
 \inlinetodo{Add a space before footnotes}
 

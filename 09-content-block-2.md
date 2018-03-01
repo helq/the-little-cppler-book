@@ -24,14 +24,14 @@
 In maths we define addition (`+`) on natural numbers in the following way:
 
 1. We define there is a `0`
-2. We define every function has a successor: $n \in Z -> n + 1$
+2. We define every function has a successor: $n \in N \rightarrow (n+1) \in N$
   \inlinetodo{write well}
 3. We define how to add two numbers
   $$a + b = (if )$$ \inlinetodo{finish}
 
 \inlinetodo{add function for succ}
 
-How do you think `add(a, b)` can be defined?
+How do you think `add(a, b)` can be defined? \inlinetodo{define first the succ function}
 
 = = =
 

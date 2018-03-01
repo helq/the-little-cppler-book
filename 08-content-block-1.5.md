@@ -474,7 +474,7 @@ std::cout << std::endl;
 
 = = =
 
-All characters from `A` to `Z`! (as they're defined in the Enghlish alphabet)
+All characters from `A` to `Z`! (as they're ordered in the Enghlish alphabet)
 
 ~~~output
 ~~~
@@ -531,6 +531,13 @@ And it should print:
 
 ~~~
 m
+~~~
+
+_Tip_: Look at the ASCII values of each of the characters, for example, to print the value
+of `'R'`{.cpp} use:
+
+~~~cpp
+std::cout << (int)'R' << std::endl
 ~~~
 
 ---
