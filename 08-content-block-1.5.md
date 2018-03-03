@@ -240,10 +240,10 @@ int sumToN(int n) {
 
 int main() {
   if (sumToN(20) > 100) {
-    std::cout << "1+2+..+20 > 100"
+    std::cout << "0+1+2+..+20 > 100"
               << std::endl;
   } else {
-    std::cout << "1+2+..+20 <= 100"
+    std::cout << "0+1+2+..+20 <= 100"
               << std::endl;
   }
 
@@ -257,6 +257,82 @@ int main() {
 The output is:
 
 ~~~output
+~~~
+
+---
+
+Given the function `sumToN`:
+
+~~~
+1 |  int sumToN(int n) {
+2 |    int total = 0;
+3 |    for (int i=0; i<=n; i++) {
+4 |      total += i;
+5 |    }
+6 |    return total;
+7 |  }
+~~~
+
+we can analyse line by line and step by step (the **trace** of a program execution) of
+what happens when we call the function `sumToN(1)`:
+
+~~~
+sumToN(1)
+ (n=1; L2)=> int total = 0;
+ (n=1, total=0; L3)=> int i=0
+ (n=1, total=0, i=0; L3)=> i<=n
+ (n=1, total=0, i=0; L3)=> 0<=1
+ (n=1, total=0, i=0; L4)=> total += i
+ (n=1, total=0, i=0; L4)=> total += 0
+ (n=1, total=0, i=0; L3)=> i++
+ (n=1, total=0, i=1; L3)=> i<=n
+ (n=1, total=0, i=1; L3)=> 1<=1
+ (n=1, total=0, i=1; L4)=> total += i
+ (n=1, total=0, i=1; L4)=> total += 1
+ (n=1, total=1, i=1; L3)=> i++
+ (n=1, total=1, i=2; L3)=> i<=n
+ (n=1, total=1, i=2; L3)=> 2<=1
+ (n=1, total=1, L5)=> return total;
+ (n=1, total=1, L5)=> return 1;
+=> 1
+~~~
+
+where `(n = 3; L2)` tells us what is the value of `n` inside the function, and `L`
+indicates which line are we analysing (`3` and `2` in this case).
+
+What is the _trace_ of `sumToN(3)`?
+
+= = =
+
+~~~
+sumToN(3)
+ (n=3; L2)=> int total = 0;
+ (n=3, total=0; L3)=> int i=0
+ (n=3, total=0, i=0; L3)=> i<=n
+ (n=3, total=0, i=0; L3)=> 0<=3
+ (n=3, total=0, i=0; L4)=> total += i
+ (n=3, total=0, i=0; L4)=> total += 0
+ (n=3, total=0, i=0; L3)=> i++
+ (n=3, total=0, i=1; L3)=> i<=n
+ (n=3, total=0, i=1; L3)=> 1<=3
+ (n=3, total=0, i=1; L4)=> total += i
+ (n=3, total=0, i=1; L4)=> total += 1
+ (n=3, total=1, i=1; L3)=> i++
+ (n=3, total=1, i=2; L3)=> i<=n
+ (n=3, total=1, i=2; L3)=> 2<=3
+ (n=3, total=1, i=2; L4)=> total += i
+ (n=3, total=1, i=2; L4)=> total += 2
+ (n=3, total=3, i=2; L3)=> i++
+ (n=3, total=3, i=3; L3)=> i<=n
+ (n=3, total=3, i=3; L3)=> 3<=3
+ (n=3, total=3, i=3; L4)=> total += i
+ (n=3, total=3, i=3; L4)=> total += 3
+ (n=3, total=6, i=3; L3)=> i++
+ (n=3, total=6, i=4; L3)=> i<=n
+ (n=3, total=6, i=4; L3)=> 4<=3
+ (n=3, total=6, L5)=> return total;
+ (n=3, total=6, L5)=> return 6;
+=> 6
 ~~~
 
 ---
@@ -396,6 +472,8 @@ The output is:
 
 ~~~output
 ~~~
+
+---
 
 **Task for home:** Define a function (in C++) that takes a number $n$ (a `double`{.cpp})
 and returns the smallest integer $m$ (an `int`{.cpp}) such that $m \geq n$. For example:

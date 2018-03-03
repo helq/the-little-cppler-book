@@ -2,14 +2,11 @@
 
 int main()
 {
-  char symbol = 32; // first "visible" character
+  char symbol = 'A';
   
-  while (symbol < 127) {
+  while (symbol <= 'Z') {
     std::cout << symbol;
     symbol++;
-    if (symbol % 32 == 0) {
-      std::cout << std::endl;
-    }
   }
   std::cout << std::endl;
 

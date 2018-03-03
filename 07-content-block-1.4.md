@@ -597,9 +597,9 @@ The fibonacci sequence is a sequence defined by:
 
 $$ fib(x) =
   \begin{cases}
-    0                  & \quad \text{if } n = 0 \\
-    1                  & \quad \text{if } n = 1 \\
-    fib(x-1)+fib(x-2)  & \quad \text{if } n > 1
+    0                  & \quad \text{if } x = 0 \\
+    1                  & \quad \text{if } x = 1 \\
+    fib(x-1)+fib(x-2)  & \quad \text{if } x > 1
   \end{cases} $$
 
 Which gives us the sequence $0,1,1,2,3,5,8,13,21,34,55,...$. Notice how every number in

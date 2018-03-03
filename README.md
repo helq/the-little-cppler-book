@@ -28,6 +28,7 @@ If you want to build continuously, i.e., without calling stack everytime you wan
 the results but automatically, run `buildNWatch.sh`:
 
 ~~~bash
+$ git config --local core.hooksPath "git-hooks"
 $ stack build hobbes
 $ stack exec -- ./buildNWatch.sh
 ~~~

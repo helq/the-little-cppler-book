@@ -10,10 +10,10 @@ int sumToN(int n) {
 
 int main() {
   if (sumToN(20) > 100) {
-    std::cout << "1+2+..+20 > 100"
+    std::cout << "0+1+2+..+20 > 100"
               << std::endl;
   } else {
-    std::cout << "1+2+..+20 <= 100"
+    std::cout << "0+1+2+..+20 <= 100"
               << std::endl;
   }
 

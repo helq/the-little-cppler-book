@@ -2,13 +2,9 @@
 
 int main()
 {
-  char symbol = 'A';
+  char symbol = 65;
   
-  while (symbol <= 'Z') {
-    std::cout << symbol;
-    symbol++;
-  }
-  std::cout << std::endl;
+  std::cout << symbol << std::endl;
 
   return 0;
 }
