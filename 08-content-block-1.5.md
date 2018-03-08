@@ -1,7 +1,5 @@
 ## Breaking the code into pieces ##
 
-\inlinetodo{add what happens when we call return and we write code after}
-
 ---
 
 What does the following code does?
@@ -208,15 +206,24 @@ The output is:
 When you call a function, you pass it some data (variables values), the function makes
 some calculation and returns, optionally, some result value.
 
+Notice the similarities between a function definition in C++ and they representation in
+math. The function above can be written in "math" as:
+
+\begin{align*}
+  f : (\mathbb{Z} \times \mathbb{Z}) &\rightarrow \mathbb{Z} \\
+  f(a,b) &= 2(a+b)
+\end{align*}
+
 ---
 
 **Task for home:** Write a function that takes two integers (`int`{.cpp}) and returns
-6 if the sum of the integers is even otherwise -2, i.e., code the function below in C++:
+6 if the sum of the integers is even otherwise -2, i.e., code the function
+$someScore: (\mathbb{Z}\times\mathbb{Z}) \rightarrow \mathbb{Z}$ in C++:
 
 $$ someScore(x, y) =
   \begin{cases}
-    6                  & \quad \text{if } x + y \text{ is even} \\
-    -2                 & \quad \text{otherwise}
+    6  & \quad \text{if } x + y \text{ is even} \\
+    -2 & \quad \text{otherwise}
   \end{cases} $$
 
 ---
@@ -617,6 +624,214 @@ of `'R'`{.cpp} use:
 ~~~cpp
 std::cout << (int)'R' << std::endl
 ~~~
+
+_Note_: A possible type for the function toSmallCase (if we were to write it more mathy)
+would be: $toSmallCase: \mathbb{ASCII} \rightarrow \mathbb{ASCII}$, which is telling us
+that it is a function that takes an ASCII value and returns an ASCII value.
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+int adding(int a, int b) {
+  int c = a + b;
+  return c;
+  std::cout << "I'm never run :("
+            << std::endl;
+  c = c + 2;
+}
+
+int main() {
+  for(int i=0; i<10; i++) {
+    std::cout << adding(i,i) << ' ';
+  }
+  std::cout << std::endl;
+  return 0;
+}
+~~~
+
+= = =
+
+~~~output
+~~~
+
+Nothing written after `return`{.cpp} gets ever done! This is telling us a very important
+property of `return`{.cpp}: Any time `return`{.cpp} is called the function call ends and
+its output value is whatever the `return`{.cpp} had defined to compute.
+
+---
+
+What is the output of:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+int adding(int a, int b) {
+  int c = a + b;
+  return c;
+  return a * 2;
+  if (a<b*c==0) {
+    return b;
+  }
+}
+
+int main() {
+  for(int i=0; i<10; i++) {
+    std::cout << adding(i,i) << ' ';
+  }
+  std::cout << std::endl;
+  return 0;
+}
+~~~
+
+= = =
+
+~~~output
+~~~
+
+The same as before, the first time we meet a `return`{.ccp} the function gives back the
+value it is told to, in this case is `c`.
+
+---
+
+What does the following outputs:
+
+~~~{.cpp layout="01-simple.cc"}
+for(int i=0; i<10; i++) {
+  for(int j=0; j<15; j++) {
+    if(i%2 == 0) {
+      std::cout << '#';
+    } else {
+      std::cout << '.';
+    }
+  }
+  std::cout << std::endl;
+}
+~~~
+
+= = =
+
+~~~output
+~~~
+
+Neat!
+
+Notice the rule `i%2 == 0`{.cpp}, what is it doing?
+
+---
+
+We can look at the statement/proposition in the `if` statement as a function that takes
+two numbers and returns if they fulfill something, i.e., the type of `(i+j)%4 == 0`{.cpp}
+is $(\mathbb{Z} \times \mathbb{Z}) \rightarrow \mathbb{B}$[^abusemath]
+
+[^abusemath]: I'm abusing the math notation here to indicate that the result is a boolean,
+  i.e., `true` or `false`. The set $\mathbb{B}$ is defined as the set that contains only
+  two elements, namely: $\{ \bot, \top \}$ ($\bot$ is `false`, and $\top$ is `true`)
+
+~~~{.cpp layout="01-simple.cc"}
+for(int i=0; i<10; i++) {
+  for(int j=0; j<15; j++) {
+    if((i+j)%4 == 0) {
+      std::cout << '#';
+    } else {
+      std::cout << '.';
+    }
+  }
+  std::cout << std::endl;
+}
+~~~
+
+= = =
+
+~~~output
+~~~
+
+Neat! And so weird. So, I guess we can write very complex propositions inside the `if` to
+print arbitrary things.
+
+---
+
+Let's take a look at a little more complex rule^[remember, this rule can be seen as a
+function of type is $(\mathbb{Z} \times \mathbb{Z}) \rightarrow \mathbb{B}$]:
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+bool surprise(int a, int b) {
+  double y = a - 4.5;
+  double x = (b - 7)/2;
+  double rad = 3;
+  bool circle = x*x + y*y < rad*rad;
+  return circle;
+}
+
+int main() {
+  for(int i=0; i<10; i++) {
+    for(int j=0; j<15; j++) {
+      if( surprise(i, j) ) {
+        std::cout << '#';
+      } else {
+        std::cout << '.';
+      }
+    }
+    std::cout << std::endl;
+  }
+  return 0;
+}
+~~~
+
+= = =
+
+~~~output
+~~~
+
+What the heck is happening here?!
+
+Notice how the function above can be written more concisely as:
+$$surprise(a,b) := (a-4.5)^2 + \left( \frac{b-7}{2} \right)^2 < 3^2$$[^suchform]
+
+_Tip_: Go to <http://pythotutor.com>, you can copy and paste there the code and look for
+yourself what is the code doing step by step.
+
+[^suchform]: Where have you seen such a formula before? Haven't you? Well, take a look
+  at, it may refresh your memory ;) : <https://en.wikipedia.org/wiki/%43%69%72cle#Equations>
+
+---
+
+**Task for home:**
+Define a function $triangle: (\mathbb{Z} \times \mathbb{Z}) \rightarrow \mathbb{B}$ that
+when called in the loop
+
+~~~cpp
+for(int i=0; i<10; i++) {
+  for(int j=0; j<15; j++) {
+    if( surprise(i, j) ) {
+      std::cout << '#';
+    } else {
+      std::cout << '.';
+    }
+  }
+  std::cout << std::endl;
+}
+~~~
+
+prints a triangle, any triangle.
+
+Play and experiment with many different functions. Some functions you can experiment with
+are:
+
+$$p(x, y) := (x+y=8)$$
+
+$$q(x, y) := (x+2=y)$$
+
+$$r_1(x, y) := p(x,y) \wedge q(x,y)$$
+
+$$r_2(x, y) := p(x,y) \vee q(x,y)$$
+
+$$s(x, y) := (x+y \leq 8) \vee (x+2 \geq y)$$
 
 ---
 

@@ -3,10 +3,9 @@
 int adding(int a, int b) {
   int c = a + b;
   return c;
-  return a * 2;
-  if (a<b*c==0) {
-    return b;
-  }
+  std::cout << "I'm never run :("
+            << std::endl;
+  c = c + 2;
 }
 
 int main() {

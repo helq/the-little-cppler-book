@@ -1,17 +1,10 @@
 #include <iostream>
 
-bool surprise(int a, int b) {
-  double y = a - 4.5;
-  double x = (b - 7)/2;
-  double rad = 3;
-  bool circle = x*x + y*y < rad*rad;
-  return circle;
-}
-
-int main() {
+int main()
+{
   for(int i=0; i<10; i++) {
     for(int j=0; j<15; j++) {
-      if( surprise(i, j) ) {
+      if(i%2 == 0) {
         std::cout << '#';
       } else {
         std::cout << '.';
@@ -19,6 +12,6 @@ int main() {
     }
     std::cout << std::endl;
   }
+
   return 0;
 }
-

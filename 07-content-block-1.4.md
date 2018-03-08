@@ -424,7 +424,7 @@ to print the diagonal.
 ---
 
 But I'm getting bored of writing so much code with the `while`{.cpp} loop. In fact, the
-pattern whe have been using with while is so common that there is a shorter version of it,
+pattern we have been using with while is so common that there is a shorter version of it,
 the `for`{.cpp}. Let's see if you can guess what the following code does:
 
 ~~~{.cpp layout="01-simple.cc"}
@@ -443,9 +443,12 @@ for (int i=0; i<=10; i++) {
 
 It does the same as the previous code![^itdoesbutisnot]
 
+
 [^itdoesbutisnot]: It does the same, but the two pieces of code are semantically different
-  if we put them in a different context, like inside a block of code which has already a
+    if we put them in a different context, like inside a block of code which has already a
     variable named `i` in it.
+    \inlinetodo{Explain more clearly this, it should be clear that both pieces of code
+    behave differently if one tries to declare i again, for example}
 
 A `for`{.cpp} loop is syntactic sugar[^syntacticsugar] for a `while`{.cpp} loop, it makes
 convenienent and more explicit that we want to iterate over a value.
