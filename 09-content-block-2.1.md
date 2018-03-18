@@ -25,7 +25,7 @@ The successor function is the function that returns the natural number that foll
 natural number we give it, i.e., the successor function is $succ(x) = x+1$ where $x$ is a
 natural number.
 
-Can you right this function in C++?
+Can you write this function in C++?
 
 = = =
 
@@ -88,7 +88,7 @@ How would you write `add(a, b)` in C++?
 
 = = =
 
-One possibility is writing:
+One possibility is:
 
 ~~~cpp
 int add(int x, int y) {
@@ -231,29 +231,30 @@ written as:
 ~~~
 
 Notice, how each time we call the function the values of the variables `x` and `y` are
-different, this is because their scope its different, **everytime we call a function it
+different, this is because their scope its different. **Everytime we call a function it
 creates a new scope!**
 
 ---
 
-As you can see, what we are doing is to answer a question of how much is 1 plus 3, and we
-are giving a question as an answer, well that is 2 plus 2. We are solving problems by
-reframing them.
+As you can see, what we are doing is to answer a question with another question. We ask,
+"how much is 1 plus 3," and we answer, "the successor of 1 plus 2". We are solving
+problems by reframing them, by asking the same problem from a different angle.
 
-How does it work? How is it possible to answer a question with another question?
+But, how does it work? How is it possible to answer a question with another question?
 
 Well, the trick is ...
 
 = = =
 
-that the answer is not any question, it is a question that tries to simplify our problem,
-or it tries to change it in a way that there is a very simple way to solve it. In special
-a function that calls itself to solve a problem is named **recursive** and it has two
-important parts:
+that the answer is not any question, it is a special question, a simpler question. The
+idea is to simplify our problem by asking something simpler.
 
-- **Base case**: A base rule that determines the answer to the simplest case (above this
+A function that calls itself to solve a problem is named **recursive** and it's composed
+of two important parts:
+
+- **A base case**: A base rule that determines the answer to the simplest case (above this
   would be $n + 0 = n$, the sum of any number with zero is the same number)
-- **Recursive case**: A rule that simplifies the problem but answers it with the same
+- **A recursive case**: A rule that simplifies the problem but answers it with the same
   function (e.g., $n + (k+1) = (n + k) + 1$, the sum of two natural numbers is the same as
   the successor of the sum of the first number and the predecesor of the second).
 
@@ -292,12 +293,8 @@ int fib(int x) {
 }
 ~~~
 
-Can you think on other ways to write it?, for example, using only an `if` statement.
-
----
-
-**Task for home**: Write a recursive function that adds the numbers from $1$ to $10$
-without using any `for` or `while` loop.
+Challenge: Can you think on other ways to write fibonacci's formula? using only an `if`
+statement?
 
 ---
 
@@ -345,7 +342,8 @@ int fact(int x) {
 
 ---
 
-What is the trace of running `fact(4)`?
+What is the trace of running `fact(4)`?^[same as to say, what is the trace of evaluating
+the function, in this case only]
 
 = = =
 
@@ -378,7 +376,7 @@ fact(4)
 
 ---
 
-Again, we can write `fact(5)` more compactly:
+We can write the evaluation of `fact(5)` more compactly:
 
 \begin{align*}
   fact(5) &= 5 \cdot fact(4) \\
@@ -392,7 +390,7 @@ Again, we can write `fact(5)` more compactly:
           &= 120
 \end{align*}
 
-How does `fib(4)` look in this notation?
+How does the evaluation of `fib(4)` looks?
 
 = = =
 
@@ -414,132 +412,137 @@ How does `fib(4)` look in this notation?
 
 ---
 
-\inlinetodo{at least 4 tasks for home more on recursive functions!}
+Recursive functions are, seriosly though, powerful. They are as powerful as loops (`for`
+and `while`) to iterate over a series of numbers.
 
----
+Take a look at the following function:
 
-**Task for home**: Sort a given an array with 3 elements. For example:
-
-~~~cpp
-int elems[] = {3, 20, -2};
-
-// Your code goes here
-
-std::cout << elems[0] << " " << elems[1] << " " << elems[2] << std::endl;
-// -> It should output: `-2 3 20`
-~~~
-
----
-
-**Task for home**: Given an array and its length, your task is to sort the array in
-ascending order. For example:
-
-~~~cpp
-int elems[] = {3, 20, -2, 3, 4, -30, -2, 0, 12, 5, -100};
-int n_elems = 11;
-
-// Your code goes here
-
-std::cout << "{ ";
-for (int i=0; i<n_elems; i++) {
-  std::cout << elems[i] << " ";
+~~~{.cpp layout="01-simple.cc"}
+void huh(int i, int n) {
+  if(i>=n) {
+    std::cout << "This is the end: " << n
+              << std::endl;
+  } else {
+    std::cout << i << std::endl;
+    huh(i+1, n);
+  }
 }
-std::cout << "}" << std::endl;
-// -> It should output: `{ -100, -30, -2, -2, 0, 3, 3, 4, 5, 12, 20 }`
+...
+huh(4, 10);
 ~~~
 
----
+What do you think it does when run with `huh(4, 10)`{.cpp}?
 
-What do you think this will output?
+= = =
 
-~~~{.cpp layout="01-simple.cc"}
-char helloagain[] =
-    {'H', 'e', 'l', 'l', 'o', ' ',
-    'A', 'g', 'a', 'i', 'n', ' ', ':', ')'};
-int hellolen = 14;
+Yeah, it acts precisely as a `for` loop!
 
-for (int i=0; i<hellolen; i++) {
-  std::cout << helloagain[i];
+~~~output
+~~~
+
+In fact, we can rewrite the function to work with a `for` loop and not recursion:
+
+~~~cpp
+void huh(int i, int n) {
+  for(int j=i; j<=n; j++) {
+    std::cout << i << std::endl;
+  }
+  std::cout << "This is the end: " << n
+            << std::endl;
 }
-std::cout << std::endl;
-~~~
-
-= = =
-
-Well, it is just like a **string**, just like if we had written
-`std::cout << "Hello Again :)" << std::endl;`{.cpp}:
-
-~~~output
+...
+huh(4, 10);
 ~~~
 
 ---
 
-Good news everyone! What you see above is (almost) precisely how strings are saved on
-memory, they are sequences of bytes!
+**Task for home**: Write a recursive function that adds the numbers from $1$ to $10$
+without using any `for` or `while` loop.
 
-We could write the above code as:
+---
+
+Why would we want to use recursion if it is equally powerful to loops? Well, there are
+situations in which recursion is more desirable. They are particularly useful when
+operating in data structures different from simple lists, for examples, trees. Let's print
+a tree!
 
 ~~~{.cpp layout="01-simple.cc"}
-char helloagain[] =
-    {'H', 'e', 'l', 'l', 'o', ' ',
-    'A', 'g', 'a', 'i', 'n', ' ', ':', ')', 0};
+#include <cmath>
 
-std::cout << helloagain << std::endl;
+void branches(int i, int spaces, int depth) {
+  if(i<pow(2, depth)) {
+    std::cout << depth;
+    for (int j = 0; j < spaces; j++) {
+      std::cout << " ";
+    }
+    branches(i+1, spaces, depth);
+  }
+}
+
+void tree(int spacesbefore, int depth) {
+  if(depth>=0) {
+    for(int j=0; j<spacesbefore; j++) {
+      std::cout << " ";
+    }
+    branches(0, 2*spacesbefore+1, depth);
+    std::cout << std::endl;
+    tree(2*spacesbefore+1, depth-1);
+  }
+}
+...
+tree(0, 4);
 ~~~
 
-Notice that this time helloagain contains a final `0`. This is used to tell `std::cout`
-when to stop.
+\inlinetodo{better to do this using ncurses, there will the power of recursion really show}
+
+Can you guess the output?
 
 = = =
 
-The output as we expected:
+The output of the program:
 
 ~~~output
 ~~~
 
-Or we could've written:
+---
 
-~~~cpp
-char helloagain[] = "Hello Again :)";
-std::cout << helloagain << std::endl;
+**Task for home:** Modify the function `tree` (see above) to print the tree like this:
+
+~~~
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+\ / \ / \ / \ / \ / \ / \ / \ /
+ 3   3   3   3   3   3   3   3
+ \   /   \   /   \   /   \   /
+  \ /     \ /     \ /     \ /
+   2       2       2       2
+   \       /       \       /
+    \     /         \     /
+     \   /           \   /
+      \ /             \ /
+       1               1
+       \               /
+        \             /
+         \           /
+          \         /
+           \       /
+            \     /
+             \   /
+              \ /
+               0
 ~~~
 
 ---
 
-What will this print?
-
-~~~{.cpp layout="01-simple.cc"}
-char helloagain[] =
-    {'H', 'e', 'l', 'l', 'o', ' ', 0, //<- added
-    'A', 'g', 'a', 'i', 'n', ' ', ':', ')', 0};
-
-std::cout << helloagain << std::endl;
-~~~
-
-Notice the added `0` after "Hello ".
-
-= = =
-
-And the output is, uh, truncated:
-
-~~~output
-~~~
-
-The line only prints to the point where it finds the first zero.
-
-Alternatively, we could write:
-
-~~~cpp
-char helloagain[] = "Hello\0 Again :)";
-std::cout << helloagain << std::endl;
-~~~
+**Task for home:** Write a recursive function that returns the number its given inverted.
+For example, if we call `reversed(23464)` it should return `46432`.
 
 ---
 
-\inlinetodo{show that a string can be manipulated}
-
-\inlinetodo{add task to tell students to convert all capital case letters into small case}
+**Task for home:** Write a function that prints on the screen the first `20` numbers of
+the fibonacci sequence.
 
 ---
+
+\newpage
 
 <!-- vim:set filetype=markdown.pandoc : -->

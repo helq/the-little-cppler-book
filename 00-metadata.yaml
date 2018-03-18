@@ -2,7 +2,7 @@
 documentclass: book
 
 title: "The Little CPPler"
-subtitle: v0.1.6
+subtitle: v0.1.7
 author: Elkin Cruz
 
 # regular letter size is 215.9 wide by 279.44 long

@@ -1,16 +1,17 @@
 #include <iostream>
+void huh(int i, int n) {
+  if(i>=n) {
+    std::cout << "This is the end: " << n
+              << std::endl;
+  } else {
+    std::cout << i << std::endl;
+    huh(i+1, n);
+  }
+}
 
 int main()
 {
-  char helloagain[] =
-      {'H', 'e', 'l', 'l', 'o', ' ',
-      'A', 'g', 'a', 'i', 'n', ' ', ':', ')'};
-  int hellolen = 14;
-  
-  for (int i=0; i<hellolen; i++) {
-    std::cout << helloagain[i];
-  }
-  std::cout << std::endl;
+  huh(4, 10);
 
   return 0;
 }

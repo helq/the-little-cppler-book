@@ -3,10 +3,14 @@
 int main()
 {
   char helloagain[] =
-      {'H', 'e', 'l', 'l', 'o', ' ', 0, //<- added
-      'A', 'g', 'a', 'i', 'n', ' ', ':', ')', 0};
+      {'H', 'e', 'l', 'l', 'o', ' ',
+      'A', 'g', 'a', 'i', 'n', ' ', ':', ')'};
+  int hellolen = 14;
   
-  std::cout << helloagain << std::endl;
+  for (int i=0; i<hellolen; i++) {
+    std::cout << helloagain[i];
+  }
+  std::cout << std::endl;
 
   return 0;
 }

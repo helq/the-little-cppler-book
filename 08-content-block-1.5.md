@@ -589,7 +589,7 @@ Well, a list of all characters available to us.[^allotherchars]
 
 [^allotherchars]: All symbols for the other 128 characters, which values are between 128
   and 255, are machine dependent, they will render in the windows console but not anywhere
-  else (If you want to know more I recommend Wikipedia's articles on _Unicode_ and
+  else (If you want to know more, I recommend Wikipedia's articles on _Unicode_ and
     _UTF-8_).
 
 ~~~output
@@ -724,7 +724,7 @@ Notice the rule `i%2 == 0`{.cpp}, what is it doing?
 ---
 
 We can look at the statement/proposition in the `if` statement as a function that takes
-two numbers and returns if they fulfill something, i.e., the type of `(i+j)%4 == 0`{.cpp}
+two numbers and returns `true` if they fulfill something, i.e., the type of `(i+j)%4 == 0`{.cpp}
 is $(\mathbb{Z} \times \mathbb{Z}) \rightarrow \mathbb{B}$[^abusemath]
 
 [^abusemath]: I'm abusing the math notation here to indicate that the result is a boolean,
