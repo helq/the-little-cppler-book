@@ -3,10 +3,7 @@
 <!--
    -2. recursive functions, input, pass by reference, arrays, and string operations
    -  * introduce the magic of recursive functions
-   -  * show examples of input from the user
    -  * show how variables passed as value don't change while passed by reference do
-   -  * show things to get wrong with input from the user (from wrong type to unexpected
-   -    stuff from spaces, tabs and newlines)
    -  * introduce arrays
    -  * show how arrays behave differently from any other value, and how they appear to be
    -    always pass by reference and not by value
@@ -15,6 +12,11 @@
    -  * (optional) tell them that many people, professionaly, don't like arrays and use
    -    better the standard libraries, which have a lot of functions for common things we
    -    have done already. Like, copying an array, printing it on the screen, ...
+   -
+   -  maybe:
+   -  * show examples of input from the user (nahh..)
+   -  * show things to get wrong with input from the user (from wrong type to unexpected
+   -    stuff from spaces, tabs and newlines)
    -->
 
 ## Answering with a question ##
@@ -281,6 +283,11 @@ Now, translate the fibonacci function into C++ code.
 
 One possible C++ version is:
 
+<!--Yes, there is a mistake in this code but I'll keep it because I've noticed that not
+many students notice the mistake and many write down the same code in the quiz, which
+would mean they are just copy/pasting the solutions and they are not really thinking.
+Also, hello if any of you happen to be reading this XD-->
+
 ~~~cpp
 int fib(int x) {
   if (x==0) {
@@ -343,7 +350,7 @@ int fact(int x) {
 ---
 
 What is the trace of running `fact(4)`?^[same as to say, what is the trace of evaluating
-the function, in this case only]
+the function (in this case only)]
 
 = = =
 
@@ -412,8 +419,8 @@ How does the evaluation of `fib(4)` looks?
 
 ---
 
-Recursive functions are, seriosly though, powerful. They are as powerful as loops (`for`
-and `while`) to iterate over a series of numbers.
+Recursive functions are very powerful. They are as powerful as loops (`for` and `while`)
+to iterate over a series of numbers.
 
 Take a look at the following function:
 
@@ -461,74 +468,274 @@ without using any `for` or `while` loop.
 
 ---
 
-Why would we want to use recursion if it is equally powerful to loops? Well, there are
-situations in which recursion is more desirable. They are particularly useful when
-operating in data structures different from simple lists, for examples, trees. Let's print
-a tree!
+<!--
+   -Why would we want to use recursion if it is equally powerful to loops? Well, there are
+   -situations in which recursion is more desirable. They are particularly useful when
+   -operating in data structures different from simple lists, for examples, trees. Let's print
+   -a tree!
+   -
+   -~~~{.cpp layout="01-simple.cc"}
+   -#include <cmath>
+   -
+   -void branches(int i, int spaces, int depth) {
+   -  if(i<pow(2, depth)) {
+   -    std::cout << depth;
+   -    for (int j = 0; j < spaces; j++) {
+   -      std::cout << " ";
+   -    }
+   -    branches(i+1, spaces, depth);
+   -  }
+   -}
+   -
+   -void tree(int spacesbefore, int depth) {
+   -  if(depth>=0) {
+   -    for(int j=0; j<spacesbefore; j++) {
+   -      std::cout << " ";
+   -    }
+   -    branches(0, 2*spacesbefore+1, depth);
+   -    std::cout << std::endl;
+   -    tree(2*spacesbefore+1, depth-1);
+   -  }
+   -}
+   -...
+   -tree(0, 4);
+   -~~~
+   -
+   -\inlinetodo{better to do this using ncurses, there will the power of recursion really show}
+   -
+   -Can you guess the output?
+   -
+   -= = =
+   -
+   -The output of the program:
+   -
+   -~~~output
+   -~~~
+   -
+   ----
+   -
+   -**Task for home:** Modify the function `tree` (see above) to print the tree like this:
+   -
+   -~~~
+   -4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+   -\ / \ / \ / \ / \ / \ / \ / \ /
+   - 3   3   3   3   3   3   3   3
+   - \   /   \   /   \   /   \   /
+   -  \ /     \ /     \ /     \ /
+   -   2       2       2       2
+   -   \       /       \       /
+   -    \     /         \     /
+   -     \   /           \   /
+   -      \ /             \ /
+   -       1               1
+   -       \               /
+   -        \             /
+   -         \           /
+   -          \         /
+   -           \       /
+   -            \     /
+   -             \   /
+   -              \ /
+   -               0
+   -~~~
+-->
 
-~~~{.cpp layout="01-simple.cc"}
-#include <cmath>
+---
 
-void branches(int i, int spaces, int depth) {
-  if(i<pow(2, depth)) {
-    std::cout << depth;
-    for (int j = 0; j < spaces; j++) {
-      std::cout << " ";
-    }
-    branches(i+1, spaces, depth);
-  }
-}
+What does the following function outputs:
 
-void tree(int spacesbefore, int depth) {
-  if(depth>=0) {
-    for(int j=0; j<spacesbefore; j++) {
-      std::cout << " ";
-    }
-    branches(0, 2*spacesbefore+1, depth);
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+void print_i2n_squared(int i, int n) {
+  if(i<=n) {
+    std::cout << i*i << " ";
+    print_i2n_squared(i+1, n);
+  } else {
     std::cout << std::endl;
-    tree(2*spacesbefore+1, depth-1);
   }
 }
-...
-tree(0, 4);
+
+int main() {
+  print_i2n_squared(3, 5);
+  print_i2n_squared(12, 21);
+  return 0;
+}
 ~~~
-
-\inlinetodo{better to do this using ncurses, there will the power of recursion really show}
-
-Can you guess the output?
 
 = = =
 
-The output of the program:
+The output is:
 
 ~~~output
 ~~~
 
 ---
 
-**Task for home:** Modify the function `tree` (see above) to print the tree like this:
+Write the function from the last example (`print_i2n_squared`) using a `for` loop and not
+recursion
 
+= = =
+
+~~~{.cpp layout="00-empty.cc"}
+#include <iostream>
+
+void print_i2n_squared(int start, int n) {
+  for(int i=start; i<=n; i++) {
+    std::cout << i*i << " ";
+  }
+  std::cout << std::endl;
+}
+
+int main() {
+  print_i2n_squared(3, 5);
+  print_i2n_squared(12, 21);
+  return 0;
+}
 ~~~
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
-\ / \ / \ / \ / \ / \ / \ / \ /
- 3   3   3   3   3   3   3   3
- \   /   \   /   \   /   \   /
-  \ /     \ /     \ /     \ /
-   2       2       2       2
-   \       /       \       /
-    \     /         \     /
-     \   /           \   /
-      \ /             \ /
-       1               1
-       \               /
-        \             /
-         \           /
-          \         /
-           \       /
-            \     /
-             \   /
-              \ /
-               0
+
+---
+
+So, there seems to be a pattern. Look at the two pieces of code in the last two examples.
+Are they gonna do the same for every input `i` and `n`?
+
+Can you write down the rules on how to convert a function like `print_i2n_squared` from a
+`for` loop to a recursive function?
+
+= = =
+
+Yes, they behave almost in the same way. Thought, depending on the compiler you're using
+and the options you've set it on, the recursive function may not work properly always.
+
+And what are the rules, or the scheme, to translate from one to the other, well:
+
+As a recursive function:
+
+~~~cpp
+void f_rec(VARS) {
+  if(ASSERTION) {
+    MAIN ROUTINE
+    f_rec(VARS on next step);
+  } else {
+    END ROUTINE
+  }
+}
+~~~
+
+And as a for or while loop:
+
+~~~cpp
+void f_loop(VARS) {
+  for( init vars; ASSERTION; VARS on next step)
+    MAIN ROUTINE
+  }
+  END ROUTINE
+}
+~~~
+
+Where `init vars` initialises the variables we are going to use inside the loop.
+
+---
+
+But some functions do return something (i.e., their type is not `void` but `int`,
+`double`, ...). For example:
+
+~~~cpp
+int sum_i2n(int i, int n) {
+  if(i<=n) {
+    return i + sum_i2n(i+1, n);
+  } else {
+    return 0;
+  }
+}
+~~~
+
+What is this function doing? What is the output of:
+
+~~~cpp
+int main() {
+  std::cout << sum_i2n(1,10) << std::endl;
+  std::cout << sum_i2n(1,10)*3 << std::endl;
+  return 0;
+}
+~~~
+
+~~~{.cpp .hidden layout="00-empty.cc"}
+#include <iostream>
+
+int sum_i2n(int i, int n) {
+  if(i<=n) {
+    return i + sum_i2n(i+1, n);
+  } else {
+    return 0;
+  }
+}
+
+int main() {
+  std::cout << sum_i2n(1,10) << std::endl;
+  std::cout << sum_i2n(1,10)*3 << std::endl;
+  return 0;
+}
+~~~
+
+= = =
+
+Well, the function is adding all numbers from `i` to `n` (inclusively). The output is:
+
+~~~output
+~~~
+
+---
+
+Now, write the function above using a `for` loop and not recursion.
+
+= = =
+
+~~~cpp
+int sum_i2n(int i, int n) {
+  int sum = 0;
+  for(int j=i; j<=n; j++) {
+    sum += i;
+  }
+  return sum;
+}
+~~~
+
+---
+
+These kind of recursive functions (which return something rather than `void`) have a
+similar pattern to convert them from and to `for` (or `while`) loops.
+
+What are the rules, or scheme, to translate from a `for` loop to a recursive function.
+
+= = =
+
+Given a "`for` loop" function:
+
+~~~cpp
+TYPE f_loop(VARS) {
+  TYPE result = BASE_VALUE;
+  for(init vars; ASSERTION; VARS on next step) {
+    result = OPERATE( result, VARS );
+  }
+  return result;
+}
+~~~
+
+Where operate may be one simple operation like `+` (or `*`), or it may be a more complex
+operation.
+
+We can write the "equivalent"^[dependend on the compiler and optimizations] recursive
+function:
+
+~~~cpp
+TYPE f_rec(VARS) {
+  if( ASSERTION ) {
+    return OPERATE( result, VARS on next step );
+  } else {
+    return BASE_VALUE;
+  }
+}
 ~~~
 
 ---
@@ -536,10 +743,94 @@ The output of the program:
 **Task for home:** Write a recursive function that returns the number its given inverted.
 For example, if we call `reversed(23464)` it should return `46432`.
 
+Take the following code as template:
+
+~~~cpp
+#include <iostream>
+
+int reversed(int n) {
+  // Your code should go here
+  return 0;
+}
+
+int main() {
+  std::cout << 1234 << " reversed is " << reversed(1234) << std::endl;
+  std::cout << 643 << " reversed times two is " << 2*reversed(643) << std::endl;
+  return 0;
+}
+~~~
+
+with output:
+
+~~~
+1234 reversed is 4321
+643 reversed times two is 692
+~~~
+
 ---
 
-**Task for home:** Write a function that prints on the screen the first `20` numbers of
-the fibonacci sequence.
+Sometimes, it's easier to write a recursive function with an additional parameter
+(variable) which it's gonna hold the result of the recursive operation. For example, what
+does the following function do if it is called with the parameters `arecfun(1, 10, 0)`?
+
+~~~cpp
+int arecfun(int i, int n, int acc) {
+  if(i<=n) {
+    return sum_i2n(i+1, n, acc+i);
+  } else {
+    return acc;
+  }
+}
+~~~
+
+= = =
+
+Yep, this is precisely the same function we were playing with before. And it would return
+when called with the parameters `(1, 10, 0)` the value `55`.
+
+---
+
+**Task for home:** Write a recursive function that prints on the screen the first `20`
+numbers of the fibonacci sequence.
+
+---
+
+**Task for home:** Read, analyse (and execute) the following two equivalent functions:
+
+Its `for` version.
+
+~~~cpp
+int sum_i2n(int i, int n) {
+  int sum = 0;
+  for(int j=i; j<=n; j++) {
+    sum += i;
+  }
+  return sum;
+}
+~~~
+
+and, its recursive version.
+
+~~~cpp
+int helper_f(int i, int n, int acc) {
+  if(i<=n) {
+    return sum_i2n(i+1, n, acc+i);
+  } else {
+    return acc;
+  }
+}
+
+int sum_i2n(int i, int n) {
+  return helper_f(i, n, 0);
+}
+~~~
+
+Derive a set of rules, or a scheme, to convert a `for` loop-function into a recursive
+function[^tailrecursive].
+
+[^tailrecursive]: This kind of recursive functions is called "tail recursive functions",
+  and can be usually be easily converted into `for` loops by the compiler, therefore, they
+  are recommended over non-tail recursive function if they can be converted.
 
 ---
 

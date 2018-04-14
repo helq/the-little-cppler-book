@@ -1,4 +1,4 @@
-# Block 3: Pointers (the truth behind arrays) and some other useful things #
+# Block 3: Pointers (the truth behind arrays) and some other useful stuff #
 
 <!--
    -3. pointers, new keyword, string operations, matrices, structures, and some std

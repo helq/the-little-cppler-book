@@ -1,16 +1,15 @@
 #include <iostream>
 
-int main()
-{
-  char helloagain[] =
-      {'H', 'e', 'l', 'l', 'o', ' ',
-      'A', 'g', 'a', 'i', 'n', ' ', ':', ')'};
-  int hellolen = 14;
-  
-  for (int i=0; i<hellolen; i++) {
-    std::cout << helloagain[i];
+void print_i2n_squared(int start, int n) {
+  for(int i=start; i<=n; i++) {
+    std::cout << i*i << " ";
   }
   std::cout << std::endl;
+}
 
+int main() {
+  print_i2n_squared(3, 5);
+  print_i2n_squared(12, 21);
   return 0;
 }
+
