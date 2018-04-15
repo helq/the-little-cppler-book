@@ -19,7 +19,10 @@
    -    stuff from spaces, tabs and newlines)
    -->
 
-## Answering with a question ##
+## Answering with a question[^answithquestion] ##
+
+[^answithquestion]: Well, one of the ideas of recursive functions is that we can write an
+  answer as a question.
 
 ---
 
