@@ -1,5 +1,12 @@
 -- maker-src/pandoc-filters/tlcppler.hs
 
+-- This pandoc filter "parses" a Pandoc file and every time it finds the
+-- pattern "= = =" alone in a line, it breaks the text above and below a '---'
+-- into two columns. Very useful to write code in the style of "The little
+-- Schemer". In the left column you can put some question, and at the right its
+-- answer.
+
+
 import Text.Pandoc (Block(HorizontalRule,OrderedList,BulletList,DefinitionList,Div,Para,CodeBlock,Header,RawBlock,Null),
                     Format(Format), Pandoc(Pandoc), Inline(Str,Space))
 import Text.Pandoc.JSON (toJSONFilter)

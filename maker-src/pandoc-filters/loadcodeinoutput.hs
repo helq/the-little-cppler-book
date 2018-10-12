@@ -1,4 +1,10 @@
 -- maker-src/pandoc-filters/loadcodeinoutput.hs
+
+-- This pandoc filter takes a Pandoc file and modifies all CodeBlocks that
+-- fulfill some criteria. It can format codeblocks in several ways and when
+-- the block contains `.output` and `.numid` setted, it can load a generated
+-- file.
+
 {-# LANGUAGE LambdaCase #-}
 
 import Text.Pandoc (Block(CodeBlock,RawBlock,Div,Null), Format(Format))

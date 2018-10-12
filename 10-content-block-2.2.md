@@ -26,14 +26,14 @@ int sum_squared(int i, int n) {
 And what if we wanted to write a C++ function with the following type:
 
 $$\begin{aligned}
-  twothings : \, \mathbb{N} \times \mathbb{N} &\rightarrow \mathbb{N} \\
+  twothings : \, \mathbb{N} \times \mathbb{N} &\rightarrow \mathbb{N} \times \mathbb{N} \\
                 (i,n) &\mapsto \left(\sum_{j=i}^{n}{j^2}, \prod_{j=i}^{n}{j^2} \right)
 \end{aligned}$$
 
 = = =
 
-Well, that's not possible right now. The only thing we may do is to write two functions
-which each one computes a fraction of the output. Something like this:
+Well, that's not possible right now. The only thing we may do is to write two functions,
+each one of them computes a single part of the output. Something like this:
 
 $$\begin{aligned}
   twothings_1 : \, \mathbb{N} \times \mathbb{N} &\rightarrow \mathbb{N} \\
@@ -44,12 +44,19 @@ $$\begin{aligned}
 
 ---
 
-Diving a function like this into its two components is feasible sometimes, but not always,
-take a look at the following function[^letin]:
+\inlinetodo{add exercise to convert both functions above into C++}
+
+\inlinetodo{split this explanation (probably in three parts: function definition, function
+output, function splitted) first asking the student to break the function into
+it's two main components, and showing them that is actually quite hard for some functions,
+thus it could be easier to just be able to return pairs of numbers}
+
+Breaking a function its components is feasible only sometimes. For example, take a look at
+the following function[^letin]:
 
 [^letin]: **let in** lets us declare a variable (or many variables) to later use them in
-  more computations, for example: **let** $x = 3+4$ **in** $y=x*20$ is the same as
-  writing $y=(3+4)*20$.
+  more computations, for example: **let** $x = 3+4$ **in** $y=x*x*20$ is the same as
+  writing $y=(3+4)*(3+4)*20$.
 
 $$\begin{aligned}
   fib : \, \mathbb{N} &\rightarrow \mathbb{N} \times \mathbb{N} \\
@@ -68,7 +75,7 @@ What is the result of $fib(5)$?
 
 = = =
 
-Let's start with the smallest value ($0$), and go up till $5$:
+Let's start with the smallest value $0$, and go up till $5$:
 
 $$fib(0) = (0, 1)$$
 
@@ -133,7 +140,7 @@ struct pair {
 };
 ~~~
 
-What is the output of the following code^[we're back inside in `main` for simplicity]:
+What is the output of the following code^[we're back inside `main` for simplicity]:
 
 ~~~{.cpp layout="02-pair.cc"}
 pair first;
@@ -159,9 +166,10 @@ std::cout << first.x << " "
 ---
 
 What is very neat about **struct**s is that we can use them as any other type we have
-encountered to date. We can declare a `pair` which will reserve two spaces of memory `int`
-on the fly. Even we can pass and get values of type `pair` to and from a function. For
-example:
+encountered to date. We can declare a `pair` which will reserve two spaces of memory of
+type `int` on the fly. We can even pass and get values of type `pair`, i.e., we can use
+`pair` as any other type we have seen, we can pass it to a function or return it from a
+function. For example:
 
 ~~~{.cpp layout="02-pair.cc"}
 pair fib(int i) {
@@ -193,7 +201,7 @@ What will be its output?
 ~~~
 
 Yeah, this is precisely the $fib$ function from above, we can now write functions with
-outputs that are not only `int`, `double`, `char`, `bool`, ... :D
+outputs that are not only `int`, `double`, `char`, `bool`, ... `:D`
 
 ---
 
@@ -213,8 +221,6 @@ and not:
 int a;
 a = 5;
 ~~~
-
-Even though they are the same.
 
 We can write
 
@@ -263,14 +269,14 @@ pair ret = {0, 1};
 return ret;
 ~~~
 
-seems wasteful, why two lines for something like that. Fortunatelly, this is a common
+seems wasteful. Why two lines for something like that? Fortunatelly, this is a common
 enough case to have a short version.
 
 ~~~cpp
 return pair{0, 1};
 ~~~
 
-:D
+`:D`
 
 Rewrite, again, the `fib` function from above to use this new simplification.
 
@@ -294,11 +300,11 @@ std::cout << res.x << " "
 
 Well, that is nice.
 
-We could even go further, for example there is no need for brackets around a single
-sentence, like inside the if branch, or `else` statement when there is a return in the
-`if` statement, but that doesn't really matter, that would be too much trimming ;)
+We could even simplify the code further. For example, there is no need for brackets around
+a single sentence in an `if` branch; also, there is no need to have an `else` branch when
+the `if` branch calls a `return`.
 
-Here, this is how it would look like:
+This is how it looks like after some more simplifications:
 
 ~~~cpp
 pair fib(int i) {
@@ -314,15 +320,17 @@ pair fib(int i) {
 **Task for home**: Write the function
 
 $$\begin{aligned}
-  twothings : \, \mathbb{N} \times \mathbb{N} &\rightarrow \mathbb{N} \\
+  twothings : \, \mathbb{N} \times \mathbb{N} &\rightarrow \mathbb{N} \times \mathbb{N} \\
                 (i,n) &\mapsto \left( \sum_{j=i}^{n}{j^2}, \prod_{j=i}^{n}{j^2} \right)
 \end{aligned}$$
 
-using the struct `pair`. Take this as a template:
+using the struct `pair`.
+
+Take this as a template:
 
 ~~~cpp
 pair twothings(int i, int n) {
-  // your code in here
+  // your code goes here
   return pair{0, 0};
 }
 ~~~

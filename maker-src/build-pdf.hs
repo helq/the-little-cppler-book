@@ -17,14 +17,24 @@ import Text.Pandoc.Error (PandocError)
 import Text.Pandoc.Walk (query)
 import Data.Text (pack)
 
+pdfname = "the_little_cppler.pdf"
+
 main :: IO ()
 main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
-    want ["the_little_cppler.pdf"]
+    want [pdfname]
     --want ["_build//cpp_book.json"]
 
     phony "clean" $ do
         putNormal "Cleaning files in _build"
         removeFilesAfter "_build" ["//*"]
+
+    phony "clean-all" $ do
+        putNormal "Cleaning files in _build and other stuff created"
+        removeFilesAfter "." [pdfname]
+        removeFilesAfter "_build" ["//*"]
+        removeFilesAfter "code" ["//*.bin"]
+        removeFilesAfter "code" ["//*.flags"]
+        removeFilesAfter "code" ["//*.out"]
 
     -- this cache is used to read "_build//cpp_book-no-output.json" only once
     cachedReadCpps <- newCache $ \file -> do
@@ -42,7 +52,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build", shakeThreads=4} $ do
                  (cpp:_) -> cpp
                  _       -> error $ "There is for some reason no file `" <> show cppFile <> "` inside the code O_o"
 
-    "the_little_cppler.pdf" %> \out -> do
+    pdfname %> \out -> do
         let finaljsonpath = "_build//cpp_book.json"
             tex_header = "00-header.tex"
             template = "booktemplate.latex"

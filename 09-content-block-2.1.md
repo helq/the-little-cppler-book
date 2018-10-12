@@ -469,9 +469,9 @@ huh(4, 10);
 **Task for home**: Write a recursive function that adds the numbers from $1$ to $10$
 without using any `for` or `while` loop.
 
----
-
 <!--
+   ----
+   -
    -Why would we want to use recursion if it is equally powerful to loops? Well, there are
    -situations in which recursion is more desirable. They are particularly useful when
    -operating in data structures different from simple lists, for examples, trees. Let's print
@@ -709,10 +709,6 @@ int sum_i2n(int i, int n) {
 These kind of recursive functions (which return something rather than `void`) have a
 similar pattern to convert them from and to `for` (or `while`) loops.
 
-What are the rules, or scheme, to translate from a `for` loop to a recursive function.
-
-= = =
-
 Given a "`for` loop" function:
 
 ~~~cpp
@@ -725,8 +721,12 @@ TYPE f_loop(VARS) {
 }
 ~~~
 
-Where operate may be one simple operation like `+` (or `*`), or it may be a more complex
+where `OPERATE` may be one simple operation like `+` (or `*`), or it may be a more complex
 operation.
+
+What is it equivalent recursive function?
+
+= = =
 
 We can write the "equivalent"^[dependend on the compiler and optimizations] recursive
 function:
@@ -740,6 +740,9 @@ TYPE f_rec(VARS) {
   }
 }
 ~~~
+
+Congratulations! Now you have a new scheme to convert from a recursive function to a
+loop-function.
 
 ---
 
@@ -769,6 +772,9 @@ with output:
 1234 reversed is 4321
 643 reversed times two is 692
 ~~~
+
+Note: you may use more than one function if necessary (in fact, it may be impossible to do
+it without auxiliary (additional) functions).
 
 ---
 

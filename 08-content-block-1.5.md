@@ -288,19 +288,13 @@ sumToN(1)
  (n=1; L2)=> int total = 0;
  (n=1, total=0; L3)=> int i=0
  (n=1, total=0, i=0; L3)=> i<=n
- (n=1, total=0, i=0; L3)=> 0<=1
  (n=1, total=0, i=0; L4)=> total += i
- (n=1, total=0, i=0; L4)=> total += 0
  (n=1, total=0, i=0; L3)=> i++
  (n=1, total=0, i=1; L3)=> i<=n
- (n=1, total=0, i=1; L3)=> 1<=1
  (n=1, total=0, i=1; L4)=> total += i
- (n=1, total=0, i=1; L4)=> total += 1
  (n=1, total=1, i=1; L3)=> i++
  (n=1, total=1, i=2; L3)=> i<=n
- (n=1, total=1, i=2; L3)=> 2<=1
  (n=1, total=1, L5)=> return total;
- (n=1, total=1, L5)=> return 1;
 => 1
 ~~~
 
@@ -316,29 +310,19 @@ sumToN(3)
  (n=3; L2)=> int total = 0;
  (n=3, total=0; L3)=> int i=0
  (n=3, total=0, i=0; L3)=> i<=n
- (n=3, total=0, i=0; L3)=> 0<=3
  (n=3, total=0, i=0; L4)=> total += i
- (n=3, total=0, i=0; L4)=> total += 0
  (n=3, total=0, i=0; L3)=> i++
  (n=3, total=0, i=1; L3)=> i<=n
- (n=3, total=0, i=1; L3)=> 1<=3
  (n=3, total=0, i=1; L4)=> total += i
- (n=3, total=0, i=1; L4)=> total += 1
  (n=3, total=1, i=1; L3)=> i++
  (n=3, total=1, i=2; L3)=> i<=n
- (n=3, total=1, i=2; L3)=> 2<=3
  (n=3, total=1, i=2; L4)=> total += i
- (n=3, total=1, i=2; L4)=> total += 2
  (n=3, total=3, i=2; L3)=> i++
  (n=3, total=3, i=3; L3)=> i<=n
- (n=3, total=3, i=3; L3)=> 3<=3
  (n=3, total=3, i=3; L4)=> total += i
- (n=3, total=3, i=3; L4)=> total += 3
  (n=3, total=6, i=3; L3)=> i++
  (n=3, total=6, i=4; L3)=> i<=n
- (n=3, total=6, i=4; L3)=> 4<=3
  (n=3, total=6, L5)=> return total;
- (n=3, total=6, L5)=> return 6;
 => 6
 ~~~
 
